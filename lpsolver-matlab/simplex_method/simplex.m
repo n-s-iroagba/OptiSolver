@@ -20,7 +20,7 @@ most_negative_column = get_most_negative_crow_value(columns,c_row)
 most_negative_value = c_row(1,most_negative_column)
 
 
-while most_negative_valu > 0
+while most_negative_value < 0
         minimum_row_index = get_minimum_ratio(constant_matrix,constraint_equation_matrix,most_negative_column,rows)
         basic_variable_matrix = next_get_basic_variable_matrix(basic_variable_matrix,objective_function_coefficients,minimum_row_index,most_negative_column)
         constraint_equation_matrix = pivot(rows,constraint_equation_matrix,minimum_row_index,most_negative_column)
