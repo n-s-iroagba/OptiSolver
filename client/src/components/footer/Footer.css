@@ -1,0 +1,29 @@
+.built{
+    display:flex;
+    width: 90vw;
+    justify-content: space-between;
+   
+}
+.built div{
+    color: white;
+}
+.footer{
+    z-index: 2;
+    position: absolute;
+    left:5vw;
+    border-top: 1px solid grey;
+    padding-top :0.5cm
+}
+.footer div{
+    color:white;
+    margin:0.1cm;
+}
+.supervisor{
+    display:flex;
+    width:90vw;
+}
+.cp{
+ width: 90vw;
+ text-align: center;
+ 
+}

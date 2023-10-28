@@ -1,0 +1,79 @@
+.opaque{
+    background-color: black;
+    width:100vw;
+    height: 20cm;
+    opacity: 0.8;
+    z-index: 1;
+    
+}
+.image-carousel, .opaque {
+    position:absolute;
+    top:0;
+    left:0;
+    
+}
+.text-carousel{
+    position:absolute;
+    z-index: 2;
+    top: 35vh;
+   
+    
+  
+}
+.image-carousel img {
+    width: 100vw;
+    height:20cm;
+    
+}
+
+
+
+.carousel-indicators{
+    position: absolute;
+    top:3.8cm;
+    width: 100px;
+   left:5vw;
+   margin-left: 0;
+    
+    height: 5px;
+
+
+}
+.carousel-caption{
+    position: absolute;
+    top:4.8cm;
+    margin-left: 0;
+    left:5vw;
+    color: white;
+    z-index: 2
+}
+
+.text{
+    position: absolute;
+    top: 11cm;
+    width:60vw;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    left:5vw;
+    color:grey;
+    font-size: medium;
+}
+.aspects{
+    position:absolute;
+    top : 14cm;
+    left:5vw;
+    display: flex;
+    z-index: 2;
+    justify-content: space-between;
+    width: 90vw;
+}
+.aspects div{
+    color: white;
+    font-size: small;
+    border: 1px solid white;
+    border-radius: 15px;
+    height: 1cm;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 0.15cm;
+    width:28vw;
+}
