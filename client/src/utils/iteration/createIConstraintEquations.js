@@ -1,5 +1,7 @@
-import { ceIPush,cRowIPush } from "./iPush";
-const createIConstraintEquations = ( preventNewLine, dimensions, setRows,setCrow, iTableau,setITableau) => {
+import { ceIPush } from "./iPush";
+import { cRowIPush } from  "./iPush";
+
+const createIConstraintEquations = async ( preventNewLine, dimensions, setRows, setCrow, iTableau,setITableau) => {
 
   let renderedRows = []
   let matrixRows = []
@@ -18,7 +20,7 @@ const createIConstraintEquations = ( preventNewLine, dimensions, setRows,setCrow
     matrixRows.push(MatrixColumns)
     renderedRows.push(renderedColumns)
   }
-   setRows(renderedRows)
+  await setRows(renderedRows)
   renderedRows = []
 
   let tempVariables = []
@@ -26,23 +28,23 @@ const createIConstraintEquations = ( preventNewLine, dimensions, setRows,setCrow
   let cRowMatrix = []
 
   for (let j = 1; j <= dimensions.numberOfColumns; j++) {
-   
+    
     tempCrow.push(<td contentEditable onKeyDown={
       (e) => preventNewLine(e)} onInput={
         (e) => {
-          cRowIPush(e)
+          cRowIPush(j,e,iTableau,setITableau)
         }}>0</td>)
     cRowMatrix.push(0)
   }
-   
+  
   tempVariables = []
-   setCrow(tempCrow)
+   await setCrow(tempCrow)
   tempCrow = []
-  let tempTab = { ...iTableau }
+  let tempTab = iTableau 
   tempTab.constraintEquations = matrixRows
   tempTab.cRow = cRowMatrix
-  console.log(tempTab)
-  setITableau(tempTab)
+  
+  await setITableau(tempTab)
   matrixRows = []
   cRowMatrix = []
 

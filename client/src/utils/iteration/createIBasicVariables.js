@@ -1,7 +1,7 @@
 
 import { bIPush } from "./iPush"
 
-const createIBasicVariables = (dimensions,setRows,preventNewLine,ITableau,setITableau)=>{
+const createIBasicVariables = (dimensions,setRows,preventNewLine,iTableau,setITableau)=>{
 let tempRows=[]
 let tempBv=[] 
 
@@ -11,10 +11,10 @@ let tempBv=[]
         tempRows.push(<td>X<sub  contentEditable onKeyDown={
             (e) =>preventNewLine(e)} onInput={
               (e) => {
-                bIPush(i,e,ITableau,setITableau) }}>0</sub></td>)
+                bIPush(i,e,iTableau,setITableau) }}>0</sub></td>)
         tempBv.push(i)
     }
-    let tempTab = {...ITableau}
+    let tempTab = iTableau
     tempTab.basicVariables=tempBv
     setITableau(tempTab)
     setRows(tempRows)

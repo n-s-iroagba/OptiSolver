@@ -1,24 +1,20 @@
 import React from 'react'
 import { useContext } from 'react'
-import { MatrixContext } from '../context/ContextApi'
-import './InitialSolve.css'
-import { checkTableau } from '../utils/checkTableau'
-import { preventNewLine } from '../utils/preventNewLine'
-import { ceIPush } from '../utils/iteration/iPush'
+import { MatrixContext } from '../features/solve_simplex/context/SimplexContext'
+import './pages.css'
+import { checkTableau } from '../utils/iteration/checkTableau'
 
-import ResponseTableau from '../components/responseTableau/ResponseTableau'
-import { redirect, useNavigate} from 'react-router-dom'
+
+
+import ResponseTableau from '../features/solve_simplex/components/ResponseTableau'
+
 const Response = ()=>{
   
-const {iTableau,setITableau,solvedArray, index,setIndex,dimensions,rTableau,setRTableau,setChange} = useContext(MatrixContext)
-const navigate = useNavigate()
-const refresh = () => window.location.reload(true)
+const {iTableau,setITableau,solvedArray, index,setIndex,dimensions,rTableau,setRTableau,setChange,header} = useContext(MatrixContext)
 const responseSolve = async ()=>{
-    const shouldRefresh = await checkTableau(iTableau,solvedArray, index,setIndex,dimensions,rTableau,setRTableau,setChange,setITableau,preventNewLine,ceIPush)
+    const shouldRefresh = await checkTableau(iTableau, solvedArray, index, setIndex, dimensions, rTableau, setRTableau, setITableau)
     if(shouldRefresh){
         alert('some values are still wrong')
-    }else{
-        navigate('/iterate') 
     }
 
 }
@@ -27,7 +23,7 @@ const responseSolve = async ()=>{
         <>
         <div className="is-wrap">
         <div className='initial-solve'><ResponseTableau/></div>
-        <div className='s-button'><button onClick={responseSolve}>Solve</button></div>
+        <div className='s-button'><button onClick={()=>console.log(rTableau.basicCoefficients)}>Solve</button></div>
         </div>
         </>
     )

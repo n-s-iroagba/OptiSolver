@@ -1,30 +1,34 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home";
+//import Home from "../pages/Home";
 import InitialSolve from "../pages/InitialSolve";
-
-import Response from "../pages/Response";
 import IterationSolve from "../pages/IterationSolve";
+import RenderPage from "../pages/RenderPage";
+/*
+import Response from "../pages/Response";
+
 import Welcome from "../pages/Welcome";
 import SolveEntry from "../pages/SolveEntry";
+*/
 
 
-
-export const router = createBrowserRouter([{
-    path:'/',
-    element:<Home/>
-},
+export const router = createBrowserRouter([
+//{
+//    path:'/',
+//    element:<Home/>
+//},
 {
-    path:'/input',
+    path:'/',
     element: <InitialSolve/>,
 },
 {
+    path:'/solve',
+    element: <RenderPage/>
+},
+/*{
     path: '/response',
     element:<Response/>
 },
-{
-    path:'/iterate',
-    element: <IterationSolve/>
-},
+
 {
     path:'/welcome',
     element:<Welcome/>
@@ -37,5 +41,5 @@ export const router = createBrowserRouter([{
     path: 'start-solve',
     element:<InitialSolve/>
 }
-
+*/
 ])

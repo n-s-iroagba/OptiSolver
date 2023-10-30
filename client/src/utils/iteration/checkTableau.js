@@ -1,0 +1,185 @@
+import { bIPush,cIPush,ceIPush,rIPush,bcIPush,fIPush,cRowIPush } from "./iPush"
+import { preventNewLine } from "../preventNewLine"
+
+
+const checkConstraintEquations = async (tempRTableau, iTableau, setITableau, solvedConstraintEquations, dimensions, setRTableau) => {
+    const inputConstraintEquations = iTableau.constraintEquations
+    let tempRow = []
+    let noMatch = false
+    for (let i = 0; i < dimensions.numberOfRows; i++) {
+        let tempColumns = []
+        for (let j = 0; j < dimensions.numberOfColumns; j++) {
+            if (inputConstraintEquations[i][j] != solvedConstraintEquations[i][j]) {
+                tempColumns.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
+                    (e) => preventNewLine(e)} onInput={
+                        (e) => {
+                            ceIPush(i, j, e, iTableau, setITableau)
+                        }}>{inputConstraintEquations[i][j]}</td>)
+                noMatch = true
+            } else {
+                tempColumns.push(<td onKeyDown={
+                    (e) => preventNewLine(e)}>{inputConstraintEquations[i][j]}</td>)
+            }
+        }
+        tempRow.push(tempColumns)
+    }
+    tempRTableau.constraintEquations = tempRow
+    await setRTableau(tempRTableau)
+
+    return noMatch;
+
+}
+const checkBasicVariables = async (solvedBasicVariables, dimensions, tempRTableau, setRTableau, iTableau, setITableau) => {
+    let tempRows = []
+    const inputBasicVariables = iTableau.basicVariables
+    let noMatch = false
+    for (let j = 0; j < dimensions.numberOfRows; j++) {
+        if (inputBasicVariables[j] != solvedBasicVariables[j]) {
+            tempRows.push(<td style={{ backgroundColor: 'red' }}>X<sub  contentEditable onKeyDown={
+                        (e) =>preventNewLine(e)} onInput={
+                          (e) => {
+                            bIPush(j,e,iTableau,setITableau) }}>{inputBasicVariables[j]}</sub></td>)
+            noMatch = true
+        } else {
+            tempRows.push(<td >X<sub>{inputBasicVariables[j]} </sub></td>)
+        }
+    }
+    tempRTableau.basicVariables = tempRows
+    await setRTableau(tempRTableau)
+    return noMatch;
+}
+const checkBasicCoefficients = async (solvedBasicCoefficients, dimensions, tempRTableau, setRTableau, iTableau, setITableau) => {
+    let tempRows = []
+    const inputBasicCoefficients = iTableau.basicCoefficients
+    let noMatch = false
+    for (let j = 0; j < dimensions.numberOfRows; j++) {
+        if (inputBasicCoefficients[j] != solvedBasicCoefficients[j]) {
+            tempRows.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
+                (e) => preventNewLine(e)} onInput={
+                    (e) => {
+                        bcIPush(j, e, iTableau, setITableau)
+                    }}>{inputBasicCoefficients[j]}</td>)
+            noMatch = true
+        } else {
+            tempRows.push(<td onKeyDown={
+                (e) => preventNewLine(e)}>{inputBasicCoefficients[j]}</td>)
+        }
+    }
+    tempRTableau.basicCoefficients = tempRows
+    await setRTableau(tempRTableau)
+    return noMatch;
+}
+const checkRatio = async (solvedRatio, dimensions, tempRTableau, setRTableau, iTableau, setITableau) => {
+    let tempRows = []
+    const inputRatio = iTableau.ratio
+    let noMatch = false
+    for (let j = 0; j < dimensions.numberOfRows; j++) {
+        if (inputRatio[j] != solvedRatio[j]) {
+            tempRows.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
+                (e) => preventNewLine(e)} onInput={
+                    (e) => {
+                        rIPush(j, e, iTableau, setITableau)
+                    }}>{inputRatio[j]}</td>)
+            noMatch = true
+        } else {
+            tempRows.push(<td onKeyDown={
+                (e) => preventNewLine(e)}>{inputRatio[j]}</td>)
+        }
+    }
+    tempRTableau.ratio = tempRows
+    await setRTableau(tempRTableau)
+    return noMatch;
+}
+const checkConstants = async (solvedConstants, dimensions, tempRTableau, setRTableau, iTableau, setITableau,) => {
+    let tempRows = []
+    const inputConstants = iTableau.constants
+    let noMatch = false
+    for (let j = 0; j < dimensions.numberOfRows; j++) {
+        if (inputConstants[j] != solvedConstants[j]) {
+            tempRows.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
+                (e) => preventNewLine(e)} onInput={
+                    (e) => {
+                        cIPush(j, e, iTableau, setITableau)
+                    }}>{inputConstants[j]}</td>)
+            noMatch = true
+        } else {
+            tempRows.push(<td onKeyDown={
+                (e) => preventNewLine(e)}>{inputConstants[j]}</td>)
+        }
+    }
+    tempRTableau.constants = tempRows
+    await setRTableau(tempRTableau)
+    return noMatch;
+}
+const checkCrow = async (solvedCrow, dimensions, tempRTableau, setRTableau, iTableau, setITableau) => {
+    let tempRows = []
+    const inputCRow = iTableau.cRow
+    let noMatch = false
+    for (let j = 0; j < dimensions.numberOfColumns; j++) {
+        if (inputCRow[j] != solvedCrow[j]) {
+            tempRows.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
+                (e) => preventNewLine(e)} onInput={
+                    (e) => {
+                        cRowIPush(j, e, iTableau, setITableau)
+                    }}>{inputCRow[j]}</td>)
+            noMatch = true
+        } else {
+            tempRows.push(<td onKeyDown={
+                (e) => preventNewLine(e)}>{inputCRow[j]}</td>)
+        }
+    }
+    tempRTableau.cRow = tempRows
+    await setRTableau(tempRTableau)
+    return noMatch;
+}
+const checkFValue = async (solvedFValue, dimensions, tempRTableau, setRTableau, iTableau, setITableau) => {
+    let noMatch = false
+    const inputFValue = iTableau.fValue
+    let tempFValue;
+        if (inputFValue != solvedFValue) {
+            let noMatch = false
+             tempFValue =<td style={{ height:'1.5cm',borderTop:'2px solid grey',textAlign:'start',backgroundColor: 'red' }}> F=
+             <span contentEditable  onKeyDown={
+                (e) => preventNewLine(e)} onInput={
+                    (e) => { fIPush(e,iTableau,setITableau) }}>0</span></td>
+            noMatch = true
+        } else if(inputFValue === solvedFValue) {
+             tempFValue = <td style={{
+                height:'1.5cm',borderTop:'2px solid grey',textAlign:'start',
+            }}> F =<span>0</span></td>
+        }
+    
+    tempRTableau.fValue = tempFValue
+    tempFValue=''
+    await setRTableau(tempRTableau)
+    return noMatch;
+}
+
+
+export const checkTableau = async (iTableau, solvedArray, index, setIndex, dimensions, rTableau, setRTableau, setITableau) => {
+    let tempRTableau = rTableau
+    const solvedConstraintEquations = solvedArray[index].constraintEquations
+    const solvedBasicVariables = solvedArray[index].basicVariables
+    const solvedBasicCoefficients = solvedArray[index].basicCoefficients
+    const solvedConstants = solvedArray[index].constants
+    const solvedCrow = solvedArray[index].cRow
+    const solvedRatio= solvedArray[index].ratio
+    const solvedFValue= solvedArray[index].fValue
+    const constraintEquationDidNotMatch = await checkConstraintEquations(tempRTableau, iTableau, setITableau, solvedConstraintEquations, dimensions, setRTableau, preventNewLine, ceIPush)
+    const basicVariablesDidNotMatch = await checkBasicVariables(solvedBasicVariables, dimensions, tempRTableau, setRTableau, iTableau, setITableau, preventNewLine, bIPush)
+    const cRowDidNotMatch= await checkCrow(solvedCrow, dimensions, tempRTableau, setRTableau, iTableau, setITableau,)
+    const constantsDidNotMatch = await checkConstants(solvedConstants, dimensions, tempRTableau, setRTableau, iTableau, setITableau,)
+    const rationDidNotMatch = await checkRatio(solvedRatio, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
+    const fValueDidNotMatch = await checkFValue(solvedFValue, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
+    const basicCoefficientsDidNotMatch = await checkBasicCoefficients(solvedBasicCoefficients, dimensions, tempRTableau, setRTableau, iTableau, setITableau) 
+    if (fValueDidNotMatch||basicCoefficientsDidNotMatch||rationDidNotMatch||basicVariablesDidNotMatch || constraintEquationDidNotMatch||constantsDidNotMatch||cRowDidNotMatch) {
+        return false
+       
+
+    } else {
+
+
+        return true
+    }
+
+}

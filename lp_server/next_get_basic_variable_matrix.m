@@ -1,0 +1,3 @@
+function basic_variable_matrix = next_get_basic_variable_matrix(basic_variable_matrix,objective_function_coefficients,minimum_row_index,most_negative_column)
+basic_variable_matrix(minimum_row_index,1) = objective_function_coefficients(1,most_negative_column);
+end
