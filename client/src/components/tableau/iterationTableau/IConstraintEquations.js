@@ -15,8 +15,8 @@ function IConstraintEquations() {
  
   useEffect(()=>{
   createIConstraintEquations(preventNewLine, dimensions, setRows, setrow, iTableau,setITableau)
-  console.log(header)
-},[])
+
+},[dimensions,iTableau,setITableau])
   return (<>
     <div className='ce-wrapper'>
       <ObjectiveCoefficient />

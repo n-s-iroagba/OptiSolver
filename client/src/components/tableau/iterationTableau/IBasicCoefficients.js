@@ -15,7 +15,7 @@ const IBasicCoefficients = () => {
   useEffect (()=>{
 
   createIBasicCoefficients(dimensions,setRows,iTableau,setITableau,preventNewLine)
-},[])
+},[dimensions,iTableau,setITableau])
   return <>
     <div className='bc-wrapper' style={{ width: '1cm' }}>
       <div style={{height:'1.2cm'}}></div>

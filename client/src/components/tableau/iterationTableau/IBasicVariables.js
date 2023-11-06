@@ -17,7 +17,7 @@ const IBasicVariables = () => {
   useEffect(() => {
 
     createIBasicVariables(dimensions, setRows, preventNewLine, iTableau, setITableau)
-  }, [])
+  }, [dimensions,iTableau,setITableau])
   return <>
     <div className='b-wrapper'>
       <table style={{ heigth: '1.2cm', borderLeft: '3px solid grey' }}>

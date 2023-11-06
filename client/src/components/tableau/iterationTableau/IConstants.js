@@ -11,7 +11,7 @@ const IConstants = () => {
     const [iFValue,setIFValue] = useState(null)
 useEffect(()=>{
     createIConstant(dimensions, preventNewLine,  setRows,  iTableau, setITableau,setIFValue)
-},[])
+},[dimensions,iTableau,setITableau])
     return <>
         <div className='ic-wrapper'>
             <div style={{ height: '1.2cm', borderLeft: '3px solid grey' }}></div>
