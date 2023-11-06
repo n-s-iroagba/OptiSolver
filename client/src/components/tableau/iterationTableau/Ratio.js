@@ -11,7 +11,7 @@ const Ratio = () => {
 
    useEffect(()=>{
     createRatios(dimensions,preventNewLine,setRows,iTableau,setITableau)
-},[])
+},[dimensions,iTableau,setITableau])
     return <>
      <div style={{width:'1.3cm'}}className='c-wrapper'>
      <div style={{height:'1.2cm'}}></div>
