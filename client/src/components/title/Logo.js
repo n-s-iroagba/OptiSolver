@@ -6,7 +6,7 @@ import './Title.css'
 
 const Logo = ()=>{
     return<>
-    <div className='logo'>
+<div className='logo'>
 <img src = {uniport} alt='uniport logo'/>
 <img src={nsche} alt='nsche logo'/>
 </div>

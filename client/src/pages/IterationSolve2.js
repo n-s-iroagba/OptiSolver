@@ -6,13 +6,18 @@ import IterationTableau from '../features/solve_simplex/components/IterationTabl
 
 const IterationSolve2= ()=>{
   
-const {setPage,page,iTableau,setITableau,solvedArray,tableau, index,setIndex,dimensions,rTableau,setRTableau,setChange} = useContext(MatrixContext)
+const {length,iteration, setIteration,setPage,page,iTableau,setITableau,solvedArray, index,setIndex,dimensions,rTableau,setRTableau} = useContext(MatrixContext)
 
 
 const iterateSolve = async ()=>{
     const shouldAdvance =  await checkTableau(iTableau, solvedArray, index, setIndex, dimensions, rTableau, setRTableau, setITableau)
     if(shouldAdvance){
-        await setPage(2)
+        if(iteration === length){
+            setPage(7)
+        }else{
+        setPage(2)
+        setIteration(iteration+1)
+        }
     }else{
         
         await setPage(3)

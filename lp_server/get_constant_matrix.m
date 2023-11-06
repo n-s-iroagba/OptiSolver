@@ -1,5 +1,5 @@
 function constant_matrix = get_constant_matrix(rows,variable)
-constants = str2num(variable)
+constants = variable
 
 constant_matrix = zeros(rows,1);
 for r = 1:rows

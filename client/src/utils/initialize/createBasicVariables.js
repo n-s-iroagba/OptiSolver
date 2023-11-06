@@ -15,7 +15,7 @@ let tempRows=[]
             (e) =>preventNewLine(e)} onInput={
               (e) => {
                 bPush(i,e,tableau,setTableau) }}>{digit}</sub></td>)
-        tempBv.push(i)
+        tempBv.push(digit)
        j++
     }
     let tempTab =tableau

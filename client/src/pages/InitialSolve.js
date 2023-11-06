@@ -2,20 +2,22 @@ import React from 'react'
 
 import './pages.css'
 import { MatrixContext } from '../features/solve_simplex/context/SimplexContext'
-import { useContext,useEffect } from 'react'
+import { useContext} from 'react'
 import InitialTableau from '../features/solve_simplex/components/InitialTableau'
-import createObjectiveCoefficient from '../utils/initialize/createObjectiveCoefficients'
-import { preventNewLine } from '../utils/preventNewLine'
+import { solveSimplex } from '../utils/api'
 
 const InitialSolve = ()=>{
-    const{tableau,setTableau,dimensions,setPage,page} = useContext(MatrixContext)
-    const iterate =async () => {
-        await setPage(2)
+    
+    const{tableau,setPage,setSolvedArray,setLength} = useContext(MatrixContext)
+    const iterate = async() => {
+        const solution = await solveSimplex(tableau)
+        if (solution){
+           await setSolvedArray(solution.data)
+           await setPage(2)
+           const length = solution.data.length
+           setLength(length)
+        }
     }
-
-    useEffect(()=>{
-        createObjectiveCoefficient(dimensions,tableau,setTableau,preventNewLine) 
-        },[])
     return(
         <>
         <div className="is-wrap">

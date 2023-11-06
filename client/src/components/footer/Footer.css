@@ -1,29 +1,54 @@
-.built{
-    display:flex;
-    width: 90vw;
-    justify-content: space-between;
-   
+.titles {
+    display: flex;
+    width: 23vw;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 2.5vw;
+    
+    
+
 }
-.built div{
+
+.names {
+
+    display: flex;
+    
+    flex-direction: column;
+    align-items: flex-start;
+  
+ 
+}
+.students{
+    display:flex;
+    width: 72vw;
+    justify-content: space-between;
+}
+
+ div {
     color: white;
 }
-.footer{
+
+.footer {
     z-index: 2;
-    position: absolute;
-    left:5vw;
+   display: flex;
+    left: 5vw;
     border-top: 1px solid grey;
-    padding-top :0.5cm
+    padding-top: 0.5cm;
+
 }
-.footer div{
-    color:white;
-    margin:0.1cm;
+
+.supervisor {
+    display: flex;
+    width: 90vw;
 }
-.supervisor{
-    display:flex;
-    width:90vw;
+
+.cp {
+    width: 100vw;
+    text-align: center;
+
 }
-.cp{
- width: 90vw;
- text-align: center;
- 
+.footer-wrapper{
+    position: absolute;
+    top:14.5cm;
+    z-index: 2;
 }

@@ -1,0 +1,7 @@
+.wtitle-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vw;
+    margin-top: 0.2cm;
+    background-color: rgba(0, 0, 0, 0);
+}

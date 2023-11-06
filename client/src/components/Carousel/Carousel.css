@@ -1,79 +1,158 @@
-.opaque{
+.opaque {
     background-color: black;
-    width:100vw;
-    height: 20cm;
+    width: 100vw;
+    height: 17.5cm;
     opacity: 0.8;
     z-index: 1;
-    
 }
-.image-carousel, .opaque {
-    position:absolute;
-    top:0;
-    left:0;
-    
+p,span{
+    font-size: 0.7cm;
+    font-family: cursive;
 }
-.text-carousel{
-    position:absolute;
-    z-index: 2;
-    top: 35vh;
-   
-    
-  
+
+.image-carousel,
+.opaque {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
+
 .image-carousel img {
     width: 100vw;
-    height:20cm;
-    
+    height: 17.5cm;
 }
 
-
-
-.carousel-indicators{
+.carousel-indicators {
     position: absolute;
-    top:3.8cm;
+    top: 3.8cm;
     width: 100px;
-   left:5vw;
-   margin-left: 0;
-    
-    height: 5px;
-
-
-}
-.carousel-caption{
-    position: absolute;
-    top:4.8cm;
+    left: 2.5vw;
     margin-left: 0;
-    left:5vw;
+    height: 5px;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 4.8cm;
+    margin-left: 0;
+    left: 2.5vw;
     color: white;
     z-index: 2
 }
 
-.text{
+.text {
     position: absolute;
-    top: 11cm;
-    width:60vw;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    left:5vw;
-    color:grey;
+    top: 9.5cm;
+    width: 100vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 0;
+    margin-left: 0;
+    align-items: start;
+    color: grey;
     font-size: medium;
+    align-items: start;
 }
-.aspects{
-    position:absolute;
-    top : 14cm;
-    left:5vw;
+
+.aspects {
+    position: absolute;
+    top: 12.5cm;
+    left: 5vw;
     display: flex;
     z-index: 2;
     justify-content: space-between;
     width: 90vw;
 }
-.aspects div{
+
+.aspects div {
     color: white;
     font-size: small;
     border: 1px solid white;
     border-radius: 15px;
     height: 1cm;
     text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-top: 0.15cm;
-    width:28vw;
+    width: 28vw;
+}
+
+@media screen and (max-width:19.9cm) {
+    .large-screen {
+        display: none
+    }
+}
+
+@media screen and (min-width: 20cm) {
+    .carousel {
+        width: 95vw;
+        height: 2.5cm;
+        position: absolute;
+        top: 0;
+    }
+
+    .carousel-indicators {
+        position: absolute;
+        top:0.2cm;
+        width: 100px;
+        height: 5px;
+        margin-left: 3vw;
+    
+    }
+
+    .carousel-caption {
+        position: absolute;
+        top:0.5cm;
+        color: white;
+        z-index: 2;
+        width: auto;
+        margin-left: 3vw;
+    }
+
+    .image-carousel {
+        position: absolute;
+        top: 3cm;
+        height: 11cm;
+        border: 1px solid gray;
+        width: 95vw;
+        margin-left: 2.5vw;
+        padding-right: 1cm;
+        border-top-right-radius: 0.4cm;
+        border-top-left-radius: 0.4cm;
+        border-bottom-right-radius:0.4cm;
+        border-bottom-left-radius: 0.4cm;
+        
+    }
+
+    .image-carousel img {
+        height:6cm;
+        width: 4cm;
+       
+        position: relative;
+        left:35vw;
+        margin-right: 0.5cm;
+        margin-top:1cm;
+        margin-bottom: 0.5cm;
+        
+        border-top-right-radius: 0.4cm;
+        border-top-left-radius:0.4cm;
+        border-bottom-right-radius:0.4cm;
+        border-bottom-left-radius: 0.4cm;
+    }
+    .aspects{
+        position: absolute;
+        top:9cm;
+        width:80vw
+
+    }
+    .text{
+        position: absolute;
+        top:7cm;
+        right: 2.5vw;
+
+    }
+    .small-screen {
+        display: none
+    }
+    .opaque{
+        display: none;
+    }
 }

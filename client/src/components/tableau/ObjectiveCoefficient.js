@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useContext } from 'react'
 import { MatrixContext } from '../../features/solve_simplex/context/SimplexContext'
 

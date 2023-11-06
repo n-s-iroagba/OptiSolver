@@ -19,11 +19,11 @@ const createConstant = (dimensions,preventNewLine,setRows,tableau,setTableau,set
 
         let tempFvalue = <td style={{
             height:'1.5cm',borderTop:'2px solid grey',textAlign:'start'
-        }}>F = <span contentEditable  onKeyDown={
+        }}><span contentEditable  onKeyDown={
             (e) => preventNewLine(e)} onInput={
                 (e) => {
                    fPush(e,tableau,setTableau)
-                }}>{tableau.fValue}</span></td>
+                }}></span></td>
         setRows(tempRows)
         let tempTab =tableau
         tempTab.constants= tempConstants

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import RBasicVariables from '../../../components/tableau/responseTableau/RBasicVariables';
 import RBasicCoefficients from '../../../components/tableau/responseTableau/RBasicCoefficients';
 import RConstraintEquations from '../../../components/tableau/responseTableau/RConstraintEquations';

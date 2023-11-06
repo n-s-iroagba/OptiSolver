@@ -5,8 +5,8 @@ const createIBasicVariables = (dimensions,setRows,preventNewLine,iTableau,setITa
 let tempRows=[]
 let tempBv=[] 
 
-    let len = dimensions.numberOfColumns
-    let i = dimensions.numberOfRows+1
+    let len = dimensions.numberOfRows-1
+    let i = 0
     for (i; i <= len; i++) {
         tempRows.push(<td>X<sub  contentEditable onKeyDown={
             (e) =>preventNewLine(e)} onInput={

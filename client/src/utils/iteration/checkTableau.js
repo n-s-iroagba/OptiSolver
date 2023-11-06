@@ -9,7 +9,7 @@ const checkConstraintEquations = async (tempRTableau, iTableau, setITableau, sol
     for (let i = 0; i < dimensions.numberOfRows; i++) {
         let tempColumns = []
         for (let j = 0; j < dimensions.numberOfColumns; j++) {
-            if (inputConstraintEquations[i][j] != solvedConstraintEquations[i][j]) {
+            if (parseFloat(inputConstraintEquations[i][j].toFixed(2)) !== parseFloat(solvedConstraintEquations[i][j].toFixed(2))) {
                 tempColumns.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
                     (e) => preventNewLine(e)} onInput={
                         (e) => {
@@ -34,7 +34,7 @@ const checkBasicVariables = async (solvedBasicVariables, dimensions, tempRTablea
     const inputBasicVariables = iTableau.basicVariables
     let noMatch = false
     for (let j = 0; j < dimensions.numberOfRows; j++) {
-        if (inputBasicVariables[j] != solvedBasicVariables[j]) {
+        if (parseFloat(inputBasicVariables[j].toFixed(2)) !== parseFloat(solvedBasicVariables[j].toFixed(2))) {
             tempRows.push(<td style={{ backgroundColor: 'red' }}>X<sub  contentEditable onKeyDown={
                         (e) =>preventNewLine(e)} onInput={
                           (e) => {
@@ -53,7 +53,7 @@ const checkBasicCoefficients = async (solvedBasicCoefficients, dimensions, tempR
     const inputBasicCoefficients = iTableau.basicCoefficients
     let noMatch = false
     for (let j = 0; j < dimensions.numberOfRows; j++) {
-        if (inputBasicCoefficients[j] != solvedBasicCoefficients[j]) {
+        if (parseFloat(inputBasicCoefficients[j].toFixed(2)) !== parseFloat(solvedBasicCoefficients[j].toFixed(2))) {
             tempRows.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
                 (e) => preventNewLine(e)} onInput={
                     (e) => {
@@ -74,7 +74,7 @@ const checkRatio = async (solvedRatio, dimensions, tempRTableau, setRTableau, iT
     const inputRatio = iTableau.ratio
     let noMatch = false
     for (let j = 0; j < dimensions.numberOfRows; j++) {
-        if (inputRatio[j] != solvedRatio[j]) {
+        if (parseFloat(inputRatio[j].toFixed(2)) !== parseFloat(solvedRatio[j].toFixed(2))) {
             tempRows.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
                 (e) => preventNewLine(e)} onInput={
                     (e) => {
@@ -95,7 +95,7 @@ const checkConstants = async (solvedConstants, dimensions, tempRTableau, setRTab
     const inputConstants = iTableau.constants
     let noMatch = false
     for (let j = 0; j < dimensions.numberOfRows; j++) {
-        if (inputConstants[j] != solvedConstants[j]) {
+        if (parseFloat(inputConstants[j].toFixed(2)) !== parseFloat(solvedConstants[j].toFixed(2))) {
             tempRows.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
                 (e) => preventNewLine(e)} onInput={
                     (e) => {
@@ -116,7 +116,7 @@ const checkCrow = async (solvedCrow, dimensions, tempRTableau, setRTableau, iTab
     const inputCRow = iTableau.cRow
     let noMatch = false
     for (let j = 0; j < dimensions.numberOfColumns; j++) {
-        if (inputCRow[j] != solvedCrow[j]) {
+        if (parseFloat(inputCRow[j].toFixed(2)) !== parseFloat(solvedCrow[j].toFixed(2))) {
             tempRows.push(<td style={{ backgroundColor: 'red' }} contentEditable onKeyDown={
                 (e) => preventNewLine(e)} onInput={
                     (e) => {
@@ -132,12 +132,11 @@ const checkCrow = async (solvedCrow, dimensions, tempRTableau, setRTableau, iTab
     await setRTableau(tempRTableau)
     return noMatch;
 }
-const checkFValue = async (solvedFValue, dimensions, tempRTableau, setRTableau, iTableau, setITableau) => {
+const checkFValue = async (solvedFValue, tempRTableau, setRTableau, iTableau, setITableau) => {
     let noMatch = false
     const inputFValue = iTableau.fValue
     let tempFValue;
-        if (inputFValue != solvedFValue) {
-            let noMatch = false
+        if (parseFloat(inputFValue.toFixed(2)) !== parseFloat(solvedFValue.toFixed(2))) {
              tempFValue =<td style={{ height:'1.5cm',borderTop:'2px solid grey',textAlign:'start',backgroundColor: 'red' }}> F=
              <span contentEditable  onKeyDown={
                 (e) => preventNewLine(e)} onInput={
@@ -146,7 +145,7 @@ const checkFValue = async (solvedFValue, dimensions, tempRTableau, setRTableau, 
         } else if(inputFValue === solvedFValue) {
              tempFValue = <td style={{
                 height:'1.5cm',borderTop:'2px solid grey',textAlign:'start',
-            }}> F =<span>0</span></td>
+            }}> F =<span>{solvedFValue}</span></td>
         }
     
     tempRTableau.fValue = tempFValue
@@ -170,7 +169,7 @@ export const checkTableau = async (iTableau, solvedArray, index, setIndex, dimen
     const cRowDidNotMatch= await checkCrow(solvedCrow, dimensions, tempRTableau, setRTableau, iTableau, setITableau,)
     const constantsDidNotMatch = await checkConstants(solvedConstants, dimensions, tempRTableau, setRTableau, iTableau, setITableau,)
     const rationDidNotMatch = await checkRatio(solvedRatio, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
-    const fValueDidNotMatch = await checkFValue(solvedFValue, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
+    const fValueDidNotMatch = await checkFValue(solvedFValue, tempRTableau, setRTableau, iTableau, setITableau)
     const basicCoefficientsDidNotMatch = await checkBasicCoefficients(solvedBasicCoefficients, dimensions, tempRTableau, setRTableau, iTableau, setITableau) 
     if (fValueDidNotMatch||basicCoefficientsDidNotMatch||rationDidNotMatch||basicVariablesDidNotMatch || constraintEquationDidNotMatch||constantsDidNotMatch||cRowDidNotMatch) {
         return false
@@ -183,3 +182,22 @@ export const checkTableau = async (iTableau, solvedArray, index, setIndex, dimen
     }
 
 }
+export const checkFirstSolve = async (iTableau, solvedArray, index, setIndex, dimensions, rTableau, setRTableau, setITableau) =>{
+    let tempRTableau = rTableau
+    const solvedCrow = solvedArray[index].cRow
+    const solvedRatio= solvedArray[index].ratio
+    const solvedFValue= solvedArray[index].fValue
+    const ratioDidNotMatch = await checkRatio(solvedRatio, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
+    const fValueDidNotMatch = await checkFValue(solvedFValue, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
+    const cRowDidNotMatch= await checkCrow(solvedCrow, tempRTableau, setRTableau, iTableau, setITableau,)
+    if (fValueDidNotMatch||ratioDidNotMatch||cRowDidNotMatch) {
+        return false
+       
+
+    } else {
+
+
+        return true
+    }
+
+}    

@@ -10,11 +10,14 @@ import ResponseTableau from '../features/solve_simplex/components/ResponseTablea
 
 const Response = ()=>{
   
-const {iTableau,setITableau,solvedArray, index,setIndex,dimensions,rTableau,setRTableau,setChange,header} = useContext(MatrixContext)
+const {iTableau,setITableau,solvedArray, index,setIndex,dimensions,rTableau,setRTableau,setPage} = useContext(MatrixContext)
 const responseSolve = async ()=>{
-    const shouldRefresh = await checkTableau(iTableau, solvedArray, index, setIndex, dimensions, rTableau, setRTableau, setITableau)
-    if(shouldRefresh){
+    const shouldAdvance = await checkTableau(iTableau, solvedArray, index, setIndex, dimensions, rTableau, setRTableau, setITableau)
+    if(shouldAdvance){
+        setPage(2)
+    }else{
         alert('some values are still wrong')
+        setPage(3)
     }
 
 }
@@ -23,7 +26,7 @@ const responseSolve = async ()=>{
         <>
         <div className="is-wrap">
         <div className='initial-solve'><ResponseTableau/></div>
-        <div className='s-button'><button onClick={()=>console.log(rTableau.basicCoefficients)}>Solve</button></div>
+        <div className='s-button'><button onClick={responseSolve}>Solve</button></div>
         </div>
         </>
     )

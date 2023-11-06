@@ -10,7 +10,6 @@ export const MatrixContextProvider = ({children}) => {
         constraintEquations:[],
         basicVariables:[],
         constants:[],
-        cRow:[],
         fValue:0,
         date:null
     }
@@ -26,37 +25,29 @@ export const MatrixContextProvider = ({children}) => {
     const [header, setHeader] = useState([])
     const [dimensions, setDimensions] = useState( {
         numberOfRows:2,
-        numberOfColumns:4
+        numberOfColumns:5
     })
+    const[iteration, setIteration]= useState(0)
     const [change,setChange] = useState(true)
     const [index, setIndex] = useState(0)
     const [tableau, setTableau] = useState(tempTab)
     const [iTableau,setITableau] = useState(iTempTab)
     const [rTableau,setRTableau] = useState ({
-        basicCoefficients:[],
-        constraintEquations:[],
+        basicCoefficients:[1,-1],
+        constraintEquations:[[1,2,2,1,0],[]],
         basicVariables:[],
         constants:[],
-        cRow:[],
         ratio:[],
         fValue:null
     })
-    const [page,setPage] = useState(1)
+    const [page,setPage] = useState(0)
 
-    const [solvedArray, setSolvedArray] = useState([{
-        constraintEquations:[[1,2,3,4],[2,3,4,5]],
-        basicVariables:[1,2],
-        constraintEquations:[[1,3,4,5],[0,0,0,0,0]],
-        constants:[1,4],
-        cRow:[0,1,0,0],
-        ratio:[1,0],
-        fValue:2,
-        basicCoefficients:[2,0],
-    }])
+    const [solvedArray, setSolvedArray] = useState([])
+    const [length,setLength] = useState(0)
     
     
         return<MatrixContext.Provider 
-        value={{rTableau,setRTableau,page,setPage,index, setIndex,solvedArray, setSolvedArray,dimensions,setDimensions,tableau,setTableau,iTableau,setITableau,header, setHeader,change,setChange}}>
+        value={{iteration, setIteration,length,setLength,rTableau,setRTableau,page,setPage,index, setIndex,solvedArray, setSolvedArray,dimensions,setDimensions,tableau,setTableau,iTableau,setITableau,header, setHeader,change,setChange}}>
             {children}
         </MatrixContext.Provider>
 }
