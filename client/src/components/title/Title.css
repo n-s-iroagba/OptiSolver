@@ -24,6 +24,11 @@
         justify-content: space-evenly;
     
     }
+    .p-block {
+       font-size:medium;
+        width:25vw;
+        
+    }
 }
 
  .logo {
