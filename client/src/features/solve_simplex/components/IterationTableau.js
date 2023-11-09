@@ -1,9 +1,9 @@
 import React from 'react'
-import IBasicVariables from '../../../components/tableau/firstIResponseTableau/FBasicVariables'
-import IBasicCoefficients from '../../../components/tableau/firstIResponseTableau/FBasicCoefficients';
-import IConstraintEquations from '../../../components/tableau/firstIResponseTableau/FConstraintEquations';
-import IConstants from '../../../components/tableau/firstIResponseTableau/FConstants';
-import Ratio from '../../../components/tableau/firstIResponseTableau/FRatio';
+import IBasicVariables from '../../../components/tableau/iterationTableau/IBasicVariables'
+import IBasicCoefficients from '../../../components/tableau/iterationTableau/IBasicCoefficients';
+import IConstraintEquations from '../../../components/tableau/iterationTableau/IConstraintEquations';
+import IConstants from '../../../components/tableau/iterationTableau/IConstants';
+import Ratio from '../../../components/tableau/iterationTableau/Ratio';
 
 const IterationTableau = () => {
 

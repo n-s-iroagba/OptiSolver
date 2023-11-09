@@ -11,6 +11,7 @@ export const MatrixContextProvider = ({children}) => {
         basicVariables:[],
         constants:[],
         fValue:0,
+        cRow:[0,1,2,3,4],
         date:null
     }
     const iTempTab = {
@@ -22,23 +23,25 @@ export const MatrixContextProvider = ({children}) => {
         ratio:[],
         fValue:0
     }
+   
     const [header, setHeader] = useState([])
     const [dimensions, setDimensions] = useState( {
         numberOfRows:2,
         numberOfColumns:5
     })
-    const[iteration, setIteration]= useState(0)
+    const[iteration, setIteration]= useState(1)
     const [change,setChange] = useState(true)
     const [index, setIndex] = useState(0)
     const [tableau, setTableau] = useState(tempTab)
     const [iTableau,setITableau] = useState(iTempTab)
     const [rTableau,setRTableau] = useState ({
-        basicCoefficients:[1,-1],
-        constraintEquations:[[1,2,2,1,0],[]],
+        basicCoefficients:[],
+        constraintEquations:[],
         basicVariables:[],
         constants:[],
         ratio:[],
-        fValue:null
+        fValue:0,
+        cRow:[]
     })
     const [page,setPage] = useState(0)
 

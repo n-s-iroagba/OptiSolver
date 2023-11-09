@@ -14,7 +14,7 @@ let tempRows=[]
         tempRows.push(<td>X<sub  contentEditable onKeyDown={
             (e) =>preventNewLine(e)} onInput={
               (e) => {
-                bPush(i,e,tableau,setTableau) }}>{digit}</sub></td>)
+                bPush(j-1,e,tableau,setTableau) }}>{digit}</sub></td>)
         tempBv.push(digit)
        j++
     }

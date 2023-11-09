@@ -12,7 +12,7 @@ const { dimensions,tableau,setTableau} = useContext(MatrixContext)
 
   useEffect(()=>{
   createBasicCoefficients(dimensions,setRows,tableau,setTableau,preventNewLine)
-},[dimensions,setTableau,tableau])
+},[])
 
   return <>
     <div className='bc-wrapper' style={{ width: '1cm' }}>

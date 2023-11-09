@@ -14,7 +14,7 @@ function ConstraintEquations() {
   const [crow, setCrow] = useState([]) 
   useEffect(()=>{
   createConstraintEquations(setHeader, preventNewLine, dimensions, setRows, setCrow, tableau, setTableau)
-},[dimensions,  tableau,setTableau,header, setHeader])
+  },[])
   return (<>
 
     <div className='ce-wrapper'>

@@ -135,6 +135,8 @@ const checkCrow = async (solvedCrow, dimensions, tempRTableau, setRTableau, iTab
 const checkFValue = async (solvedFValue, tempRTableau, setRTableau, iTableau, setITableau) => {
     let noMatch = false
     const inputFValue = iTableau.fValue
+
+   
     let tempFValue;
         if (parseFloat(inputFValue.toFixed(2)) !== parseFloat(solvedFValue.toFixed(2))) {
              tempFValue =<td style={{ height:'1.5cm',borderTop:'2px solid grey',textAlign:'start',backgroundColor: 'red' }}> F=
@@ -155,49 +157,30 @@ const checkFValue = async (solvedFValue, tempRTableau, setRTableau, iTableau, se
 }
 
 
-export const checkTableau = async (iTableau, solvedArray, index, setIndex, dimensions, rTableau, setRTableau, setITableau) => {
+export const checkTableau = async (iTableau, solvedArray, index, dimensions, rTableau, setRTableau, setITableau) => {
     let tempRTableau = rTableau
-    const solvedConstraintEquations = solvedArray[index].constraintEquations
-    const solvedBasicVariables = solvedArray[index].basicVariables
-    const solvedBasicCoefficients = solvedArray[index].basicCoefficients
-    const solvedConstants = solvedArray[index].constants
-    const solvedCrow = solvedArray[index].cRow
-    const solvedRatio= solvedArray[index].ratio
-    const solvedFValue= solvedArray[index].fValue
+    const solvedConstraintEquations = solvedArray[index][0].constraintEquations
+    const solvedBasicVariables = solvedArray[index][0].basicVariables
+    const solvedBasicCoefficients = solvedArray[index][0].basicCoefficients
+    const solvedConstants = solvedArray[index][0].constants
+    const solvedCrow = solvedArray[0][index].cRow
+    const solvedRatio= solvedArray[0][index].ratio
+    const solvedFValue= solvedArray[0][index].fValue
+
+  
+    console.log(solvedFValue)
     const constraintEquationDidNotMatch = await checkConstraintEquations(tempRTableau, iTableau, setITableau, solvedConstraintEquations, dimensions, setRTableau, preventNewLine, ceIPush)
     const basicVariablesDidNotMatch = await checkBasicVariables(solvedBasicVariables, dimensions, tempRTableau, setRTableau, iTableau, setITableau, preventNewLine, bIPush)
-    const cRowDidNotMatch= await checkCrow(solvedCrow, dimensions, tempRTableau, setRTableau, iTableau, setITableau,)
     const constantsDidNotMatch = await checkConstants(solvedConstants, dimensions, tempRTableau, setRTableau, iTableau, setITableau,)
-    const rationDidNotMatch = await checkRatio(solvedRatio, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
-    const fValueDidNotMatch = await checkFValue(solvedFValue, tempRTableau, setRTableau, iTableau, setITableau)
     const basicCoefficientsDidNotMatch = await checkBasicCoefficients(solvedBasicCoefficients, dimensions, tempRTableau, setRTableau, iTableau, setITableau) 
-    if (fValueDidNotMatch||basicCoefficientsDidNotMatch||rationDidNotMatch||basicVariablesDidNotMatch || constraintEquationDidNotMatch||constantsDidNotMatch||cRowDidNotMatch) {
+    const ratioDidNotMatch = await checkRatio(solvedRatio, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
+    const fValueDidNotMatch = await checkFValue(solvedFValue, tempRTableau, setRTableau, iTableau, setITableau)
+    const cRowDidNotMatch= await checkCrow(solvedCrow, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
+    if (fValueDidNotMatch||basicCoefficientsDidNotMatch||ratioDidNotMatch||basicVariablesDidNotMatch || constraintEquationDidNotMatch||constantsDidNotMatch||cRowDidNotMatch) {
         return false
-       
-
     } else {
-
-
-        return true
+       return true
     }
 
 }
-export const checkFirstSolve = async (iTableau, solvedArray, index, setIndex, dimensions, rTableau, setRTableau, setITableau) =>{
-    let tempRTableau = rTableau
-    const solvedCrow = solvedArray[index].cRow
-    const solvedRatio= solvedArray[index].ratio
-    const solvedFValue= solvedArray[index].fValue
-    const ratioDidNotMatch = await checkRatio(solvedRatio, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
-    const fValueDidNotMatch = await checkFValue(solvedFValue, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
-    const cRowDidNotMatch= await checkCrow(solvedCrow, tempRTableau, setRTableau, iTableau, setITableau,)
-    if (fValueDidNotMatch||ratioDidNotMatch||cRowDidNotMatch) {
-        return false
-       
 
-    } else {
-
-
-        return true
-    }
-
-}    

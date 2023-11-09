@@ -14,7 +14,7 @@ const BasicVariables = () => {
   const { dimensions, tableau, setTableau } = useContext(MatrixContext)
   useEffect(() => {
     createBasicVariables(dimensions, setRows, preventNewLine, tableau, setTableau)
-  }, [dimensions,setTableau,tableau])
+  },[])
   return <>
     <div className='b-wrapper'>
       <table style={{ heigth: '1.2cm', borderLeft: '3px solid grey' }}>

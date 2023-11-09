@@ -26,7 +26,7 @@ const FBasicVariables = () => {
         <tbody>
           {
             tableau.basicVariables.map((row, index) => {
-              return (<tr className='small-font' key={index}><td>{row}</td></tr>)
+              return (<tr className='small-font' key={index}><td>X<sub>{row}</sub></td></tr>)
             })
           }
 

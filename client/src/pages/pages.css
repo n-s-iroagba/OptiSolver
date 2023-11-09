@@ -1,8 +1,21 @@
-.initial-solve{
-    margin-top: 3cm;
-   
+
+
+.initial-solve{   
     width: 100%;
 }
+.solve-wrapper{
+    animation: appear 3s ease;
+  }
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
 .is-wrap{
     background-color:rgba(0, 0, 0, 0.9);
     height: 20cm;
@@ -11,7 +24,8 @@
     align-items: center;
     gap: 1cm;
     overflow-x: scroll;
-    
+    transition: opacity 5s linear 0.1s;
+    opacity: 1;
 }
 .home{
     background: rgba(0, 0, 0, 0.98);
@@ -69,4 +83,11 @@ button{
     width:80px;
     background-color: grey;
     
+}
+.not-seen{
+    display:none
+}
+.seen{
+    width:100vw;
+    height:100vh;
 }

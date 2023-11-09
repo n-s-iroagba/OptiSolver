@@ -19,11 +19,11 @@ const createIConstant = (dimensions,preventNewLine,setRows,iTableau,setITableau,
 
         let tempFvalue = <td style={{
             height:'1.5cm',borderTop:'2px solid grey',textAlign:'start'
-        }}>F = <span contentEditable  onKeyDown={
+        }}>F=<span contentEditable  onKeyDown={
             (e) => preventNewLine(e)} onInput={
                 (e) => {
                    fIPush(e,iTableau,setITableau)
-                }}>{iTableau.fValue}</span></td>
+                }}>0</span></td>
         setRows(tempRows)
         let tempTab =iTableau
         tempTab.constants= tempConstants

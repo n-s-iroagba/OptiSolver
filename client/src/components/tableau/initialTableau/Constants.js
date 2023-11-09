@@ -12,7 +12,7 @@ const Constants = ()=>{
     const [fValue,setFValue] = useState(null)
     useEffect(()=>{
     createConstant(dimensions,preventNewLine,setRows,tableau,setTableau,setFValue)
-},[dimensions, tableau,setTableau])
+},[])
     return <>
     <div className='c-wrapper'>
     <div style={{height:'1.2cm',borderLeft:'3px solid grey'}}></div>

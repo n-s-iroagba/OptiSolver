@@ -18,12 +18,14 @@ const Welcome = () => {
         }
     });
     return <>
+     <div className='solve-wrapper'>
         <div className='welcome-wrapper' >
             <div ><WTitle /></div>
             <div><p className='welcome-text'>Welcome</p></div>
                
            <div className='btns'><Buttons/></div>
 
+        </div>
         </div>
     </>
 }

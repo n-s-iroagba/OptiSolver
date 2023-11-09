@@ -10,7 +10,7 @@ const InitialObjectiveCoefficient = ()=>{
     const{tableau,setTableau,preventNewLine,dimensions} = useContext(MatrixContext)
     useEffect(()=>{
     createObjectiveCoefficient(dimensions,tableau,setTableau,setRow,preventNewLine) 
-    },[setRow,tableau,setTableau,dimensions, preventNewLine,])
+    },[])
     return<>
    
     <table style={{heigth:'1.2cm',borderLeft:'3px solid grey'}}>
