@@ -2,7 +2,7 @@
 import { cIPush } from "./iPush"
 import { fIPush } from "./iPush"
 
-const createIConstant = (dimensions,preventNewLine,setRows,iTableau,setITableau,setIFValue)=>{
+const createIConstant =async (dimensions,preventNewLine,setRows,iTableau,setITableau,setIFValue)=>{
   
     let tempConstants =[]
     let tempRows= []
@@ -14,7 +14,7 @@ const createIConstant = (dimensions,preventNewLine,setRows,iTableau,setITableau,
                     (e) => {
                        cIPush(i,e,iTableau,setITableau)
                     }}>0</td>)
-                    tempConstants.push(0)
+            tempConstants.push(0)
         }
 
         let tempFvalue = <td style={{
@@ -24,11 +24,11 @@ const createIConstant = (dimensions,preventNewLine,setRows,iTableau,setITableau,
                 (e) => {
                    fIPush(e,iTableau,setITableau)
                 }}>0</span></td>
-        setRows(tempRows)
+        await setRows(tempRows)
         let tempTab =iTableau
         tempTab.constants= tempConstants
-        setITableau(tempTab)
-        setIFValue(tempFvalue)
+       await  setITableau(tempTab)
+        await setIFValue(tempFvalue)
         tempConstants= []
         tempRows= []
         tempFvalue = null

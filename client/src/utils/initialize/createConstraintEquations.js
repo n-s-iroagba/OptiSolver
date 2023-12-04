@@ -5,6 +5,7 @@ const createConstraintEquations = async (setHeader, preventNewLine, dimensions, 
 
   let renderedRows = []
   let matrixRows = []
+  let ratioMatrix=[]
 
   for (let i = 0; i < dimensions.numberOfRows; i++) {
     let renderedColumns = [];
@@ -17,10 +18,11 @@ const createConstraintEquations = async (setHeader, preventNewLine, dimensions, 
           }}>0</td>)
       MatrixColumns.push(0)
     }
+    ratioMatrix.push(0)
     matrixRows.push(MatrixColumns)
     renderedRows.push(renderedColumns)
   }
-   setRows(renderedRows)
+  await  setRows(renderedRows)
   renderedRows = []
 
   let tempVariables = []
@@ -35,14 +37,16 @@ const createConstraintEquations = async (setHeader, preventNewLine, dimensions, 
           cRowPush(e)
         }}>0</td>)
     cRowMatrix.push(0)
+   
   }
-   await setHeader(tempVariables)
+  setHeader(tempVariables)
   tempVariables = []
    setCrow(tempCrow)
   tempCrow = []
   let tempTab =  tableau 
   tempTab.constraintEquations = matrixRows
   tempTab.cRow = cRowMatrix
+  tempTab.ratio = ratioMatrix
   console.log(tempTab)
   setTableau(tempTab)
   matrixRows = []

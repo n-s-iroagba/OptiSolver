@@ -1,5 +1,10 @@
-function new_basic_variable = get_basic_variables(rows,most_negative_column,minimum_index,basic_variable)
-new_basic_variable = zeros(rows,1)
-new_basic_variable = basic_variable
-new_basic_variable(minimum_index,1) = most_negative_column
+function basic_variable = get_basic_variables(rows,variable)
+
+
+basic_variable = zeros(rows, 1);
+
+for r = 1:rows
+    row_element =variable(r);
+        basic_variable(r, 1) = row_element;
+    end
 end

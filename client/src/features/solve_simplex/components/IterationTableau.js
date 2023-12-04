@@ -3,7 +3,7 @@ import IBasicVariables from '../../../components/tableau/iterationTableau/IBasic
 import IBasicCoefficients from '../../../components/tableau/iterationTableau/IBasicCoefficients';
 import IConstraintEquations from '../../../components/tableau/iterationTableau/IConstraintEquations';
 import IConstants from '../../../components/tableau/iterationTableau/IConstants';
-import Ratio from '../../../components/tableau/iterationTableau/Ratio';
+import Ratio from '../../../components/tableau/iterationTableau/Ratio'
 
 const IterationTableau = () => {
 

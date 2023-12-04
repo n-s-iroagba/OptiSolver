@@ -8,7 +8,8 @@ import InitialObjectiveCoefficient from './InitialObjectiveCoefficient';
 import { preventNewLine } from '../../../utils/preventNewLine';
 import createConstraintEquations from '../../../utils/initialize/createConstraintEquations';
 function ConstraintEquations() {
-  const { dimensions,  tableau,setTableau,header, setHeader} = useContext(MatrixContext)
+  const {  tableau,setTableau,header, setHeader} = useContext(MatrixContext)
+  const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
  
   const [rows, setRows] = useState([])
   const [crow, setCrow] = useState([]) 

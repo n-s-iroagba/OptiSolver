@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContext } from 'react'
 import { MatrixContext } from '../../features/solve_simplex/context/SimplexContext'
 
 import './tableauComponents.css'
 
 const ObjectiveCoefficient = ()=>{
-    const{tableau} = useContext(MatrixContext)
+    const {tableau,setTableau} = useContext(MatrixContext)
     return<>
    
     <table style={{height:'1.2cm',borderLeft:'3px solid grey'}}>

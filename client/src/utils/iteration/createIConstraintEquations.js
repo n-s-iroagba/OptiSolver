@@ -27,13 +27,13 @@ const createIConstraintEquations = async ( preventNewLine, dimensions, setRows, 
   let tempCrow = []
   let cRowMatrix = []
 
-  for (let j = 1; j <= dimensions.numberOfColumns; j++) {
+  for (let j = 0; j < dimensions.numberOfColumns; j++) {
     
     tempCrow.push(<td contentEditable onKeyDown={
       (e) => preventNewLine(e)} onInput={
         (e) => {
           cRowIPush(j,e,iTableau,setITableau)
-        }}>0</td>)
+        }}>7</td>)
     cRowMatrix.push(0)
   }
   

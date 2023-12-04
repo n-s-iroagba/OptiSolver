@@ -13,11 +13,12 @@ const IBasicVariables = () => {
 
   const [rows, setRows] = useState([])
 
-  const { dimensions,  iTableau, setITableau} = useContext(MatrixContext)
+  const {iTableau, setITableau} = useContext(MatrixContext)
+  const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
   useEffect(() => {
 
     createIBasicVariables(dimensions, setRows, preventNewLine, iTableau, setITableau)
-  }, [dimensions,iTableau,setITableau])
+  },[])
   return <>
     <div className='b-wrapper'>
       <table style={{ heigth: '1.2cm', borderLeft: '3px solid grey' }}>

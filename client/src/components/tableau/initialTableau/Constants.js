@@ -6,7 +6,8 @@ import { preventNewLine } from '../../../utils/preventNewLine'
 import '../tableauComponents.css'
 
 const Constants = ()=>{
-    const {dimensions,tableau,setTableau} = useContext(MatrixContext)
+    const {tableau,setTableau} = useContext(MatrixContext)
+    const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
 
     const [rows, setRows] = useState([])
     const [fValue,setFValue] = useState(null)

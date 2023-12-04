@@ -1,12 +1,17 @@
 
 import { MatrixContext } from '../../../features/solve_simplex/context/SimplexContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import '../tableauComponents.css'
+import { useState } from 'react';
 import ObjectiveCoefficient from '../ObjectiveCoefficient';
 
 const RConstraintEquations=()=>{
   const {header,rTableau} = useContext(MatrixContext)
+ 
   
+  useEffect(()=>{
+
+  },[])
   
   return (<>
 
@@ -20,14 +25,14 @@ const RConstraintEquations=()=>{
           </tr>
         <tbody >
           {
-            rTableau.constraintEquations.map((row, index) => {
+             rTableau.constraintEquations.map((row, index) => {
               return (<tr key={index}>{row}</tr>)
             })
           }
           
           {
             rTableau.cRow.map((coefficient, index) => {
-              return (<td className='last-row' style={{borderTop:'2px solid grey',height:'1.5cm'}} contentEditable key={index}>{coefficient}</td>)
+              return (<th className='last-row' style={{borderTop:'2px solid grey',height:'1.5cm'}} key={index}>{coefficient}</th>)
             })
           }
           

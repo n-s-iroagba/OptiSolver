@@ -8,7 +8,9 @@ import ObjectiveCoefficient from '../ObjectiveCoefficient';
 import { preventNewLine } from '../../../utils/preventNewLine';
 import createIConstraintEquations from '../../../utils/iteration/createIConstraintEquations'
 function IConstraintEquations() {
-  const { dimensions,iTableau,setITableau,header} = useContext(MatrixContext)
+  const { iTableau,setITableau,header} = useContext(MatrixContext)
+  const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
+
  
   const [rows, setRows] = useState([])
   const [crow, setrow] = useState([])
@@ -16,7 +18,7 @@ function IConstraintEquations() {
   useEffect(()=>{
   createIConstraintEquations(preventNewLine, dimensions, setRows, setrow, iTableau,setITableau)
 
-},[dimensions,iTableau,setITableau])
+},[])
   return (<>
     <div className='ce-wrapper'>
       <ObjectiveCoefficient />
@@ -38,7 +40,7 @@ function IConstraintEquations() {
        
           {
             crow.map((coefficient, index) => {
-              return (<td className='last-row' style={{borderTop:'2px solid grey',height:'1.5cm'}} contentEditable key={index}>{coefficient}</td>)
+              return (<th className='last-row' style={{borderTop:'2px solid grey',height:'1.5cm'}} key={index}>{coefficient}</th>)
             })
           }
           

@@ -5,13 +5,14 @@ import { MatrixContext } from '../../../features/solve_simplex/context/SimplexCo
 import { preventNewLine } from '../../../utils/preventNewLine'
 import '../tableauComponents.css'
 const FRatio = () => {
-  const {dimensions,iTableau,setITableau} = useContext(MatrixContext)
+  const {iTableau,setITableau} = useContext(MatrixContext)
+  const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
 
     const [rows, setRows] = useState([])
 
    useEffect(()=>{
     createFRatios(dimensions,preventNewLine,setRows,iTableau,setITableau)
-},[dimensions, iTableau,setITableau])
+},[])
     return <>
      <div style={{width:'1.3cm'}}className='c-wrapper'>
      <div style={{height:'1.2cm'}}></div>

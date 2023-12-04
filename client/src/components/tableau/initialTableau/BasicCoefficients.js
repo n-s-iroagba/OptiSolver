@@ -8,7 +8,8 @@ import '../tableauComponents.css'
 const BasicCoefficients = () => {
 
   const [rows, setRows] = useState([])
-const { dimensions,tableau,setTableau} = useContext(MatrixContext)
+const {tableau,setTableau} = useContext(MatrixContext)
+const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
 
   useEffect(()=>{
   createBasicCoefficients(dimensions,setRows,tableau,setTableau,preventNewLine)

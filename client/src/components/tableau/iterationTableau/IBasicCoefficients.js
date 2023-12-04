@@ -11,11 +11,12 @@ const IBasicCoefficients = () => {
 
   const [rows, setRows] = useState([])
  
-  const { dimensions,iTableau,setITableau} = useContext(MatrixContext)
+  const {iTableau,setITableau} = useContext(MatrixContext)
+  const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
   useEffect (()=>{
 
   createIBasicCoefficients(dimensions,setRows,iTableau,setITableau,preventNewLine)
-},[dimensions,iTableau,setITableau])
+  },[])
   return <>
     <div className='bc-wrapper' style={{ width: '1cm' }}>
       <div style={{height:'1.2cm'}}></div>

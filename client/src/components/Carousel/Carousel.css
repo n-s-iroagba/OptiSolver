@@ -63,6 +63,7 @@ p,span{
     width: 90vw;
 }
 
+    
 .aspects div {
     color: white;
     font-size: small;
@@ -70,8 +71,12 @@ p,span{
     border-radius: 15px;
     height: 1.5cm;
     text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    padding-top:0.4cms;
+   
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding-top: 0.15cm;
+    
     width: 28vw;
 }
 
@@ -143,6 +148,7 @@ p,span{
         width:80vw
 
     }
+   
     .text{
         position: absolute;
         top:7cm;

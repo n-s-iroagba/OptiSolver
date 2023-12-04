@@ -6,21 +6,23 @@ import { useContext } from 'react';
 import { MatrixContext } from '../../../features/solve_simplex/context/SimplexContext';
 import {preventNewLine} from '../../../utils/preventNewLine'
 function FConstraintEquations() {
-  const { tableau,header,dimensions} = useContext(MatrixContext)
+  const { tableau,header,iTableau,setITableau} = useContext(MatrixContext)
+  const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
   const [cRow, setCRow] = useState([])
   useEffect(()=>{
     let cRowMatrix = []
     let tempCrow=[]
-    for (let j = 1; j <= dimensions.numberOfColumns; j++) {
+    for (let j = 0; j < dimensions.numberOfColumns; j++) {
       tempCrow.push(<td contentEditable onKeyDown={
         (e) => preventNewLine(e)} onInput={
           (e) => {
-            cRowIPush(e)
+            cRowIPush(j,e,iTableau,setITableau)
           }}>0</td>)
       cRowMatrix.push(0)
     }
+    console.log(tempCrow)
     setCRow(tempCrow);
-  },[dimensions.numberOfColumns])
+  },[])
 
   return (<>
     <div className='ce-wrapper'>
@@ -43,11 +45,11 @@ function FConstraintEquations() {
           }
           
        
-          {
+         <tr> {
             cRow.map((coefficient, index) => {
-              return (<td className='last-row' style={{borderTop:'2px solid grey',height:'1.5cm'}} contentEditable key={index}>{coefficient}</td>)
+              return (<td className='last-row' style={{borderTop:'2px solid grey',height:'1.5cm'}} key={index}>{coefficient}</td>)
             })
-          }
+          }  </tr> 
           
         </tbody>
 

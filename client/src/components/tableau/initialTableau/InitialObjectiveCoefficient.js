@@ -7,7 +7,8 @@ import createObjectiveCoefficient from '../../../utils/initialize/createObjectiv
 const InitialObjectiveCoefficient = ()=>{
     
     const [row, setRow] = useState([])
-    const{tableau,setTableau,preventNewLine,dimensions} = useContext(MatrixContext)
+    const{tableau,setTableau,preventNewLine} = useContext(MatrixContext)
+    const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
     useEffect(()=>{
     createObjectiveCoefficient(dimensions,tableau,setTableau,setRow,preventNewLine) 
     },[])

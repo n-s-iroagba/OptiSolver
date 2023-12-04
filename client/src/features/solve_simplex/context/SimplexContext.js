@@ -11,7 +11,7 @@ export const MatrixContextProvider = ({children}) => {
         basicVariables:[],
         constants:[],
         fValue:0,
-        cRow:[0,1,2,3,4],
+        cRow:[],
         date:null
     }
     const iTempTab = {
@@ -26,8 +26,8 @@ export const MatrixContextProvider = ({children}) => {
    
     const [header, setHeader] = useState([])
     const [dimensions, setDimensions] = useState( {
-        numberOfRows:2,
-        numberOfColumns:5
+        numberOfRows:0,
+        numberOfColumns:0
     })
     const[iteration, setIteration]= useState(1)
     const [change,setChange] = useState(true)
@@ -43,6 +43,8 @@ export const MatrixContextProvider = ({children}) => {
         fValue:0,
         cRow:[]
     })
+    const tempDetails={username:'*',password:'',email:''}
+    const [details,setDetails] = useState(tempDetails)
     const [page,setPage] = useState(0)
 
     const [solvedArray, setSolvedArray] = useState([])
@@ -50,7 +52,7 @@ export const MatrixContextProvider = ({children}) => {
     
     
         return<MatrixContext.Provider 
-        value={{iteration, setIteration,length,setLength,rTableau,setRTableau,page,setPage,index, setIndex,solvedArray, setSolvedArray,dimensions,setDimensions,tableau,setTableau,iTableau,setITableau,header, setHeader,change,setChange}}>
+        value={{details,setDetails,iteration, setIteration,length,setLength,rTableau,setRTableau,page,setPage,index, setIndex,solvedArray, setSolvedArray,dimensions,setDimensions,tableau,setTableau,iTableau,setITableau,header, setHeader,change,setChange}}>
             {children}
         </MatrixContext.Provider>
 }

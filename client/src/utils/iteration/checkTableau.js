@@ -17,15 +17,13 @@ const checkConstraintEquations = async (tempRTableau, iTableau, setITableau, sol
                         }}>{inputConstraintEquations[i][j]}</td>)
                 noMatch = true
             } else {
-                tempColumns.push(<td onKeyDown={
-                    (e) => preventNewLine(e)}>{inputConstraintEquations[i][j]}</td>)
+                tempColumns.push(<td>{inputConstraintEquations[i][j]}</td>)
             }
         }
         tempRow.push(tempColumns)
     }
     tempRTableau.constraintEquations = tempRow
-    await setRTableau(tempRTableau)
-
+    setRTableau(tempRTableau)
     return noMatch;
 
 }
@@ -45,7 +43,7 @@ const checkBasicVariables = async (solvedBasicVariables, dimensions, tempRTablea
         }
     }
     tempRTableau.basicVariables = tempRows
-    await setRTableau(tempRTableau)
+    setRTableau(tempRTableau)
     return noMatch;
 }
 const checkBasicCoefficients = async (solvedBasicCoefficients, dimensions, tempRTableau, setRTableau, iTableau, setITableau) => {
@@ -66,7 +64,7 @@ const checkBasicCoefficients = async (solvedBasicCoefficients, dimensions, tempR
         }
     }
     tempRTableau.basicCoefficients = tempRows
-    await setRTableau(tempRTableau)
+    setRTableau(tempRTableau)
     return noMatch;
 }
 const checkRatio = async (solvedRatio, dimensions, tempRTableau, setRTableau, iTableau, setITableau) => {
@@ -87,7 +85,7 @@ const checkRatio = async (solvedRatio, dimensions, tempRTableau, setRTableau, iT
         }
     }
     tempRTableau.ratio = tempRows
-    await setRTableau(tempRTableau)
+    setRTableau(tempRTableau)
     return noMatch;
 }
 const checkConstants = async (solvedConstants, dimensions, tempRTableau, setRTableau, iTableau, setITableau,) => {
@@ -108,7 +106,7 @@ const checkConstants = async (solvedConstants, dimensions, tempRTableau, setRTab
         }
     }
     tempRTableau.constants = tempRows
-    await setRTableau(tempRTableau)
+    setRTableau(tempRTableau)
     return noMatch;
 }
 const checkCrow = async (solvedCrow, dimensions, tempRTableau, setRTableau, iTableau, setITableau) => {
@@ -124,12 +122,11 @@ const checkCrow = async (solvedCrow, dimensions, tempRTableau, setRTableau, iTab
                     }}>{inputCRow[j]}</td>)
             noMatch = true
         } else {
-            tempRows.push(<td onKeyDown={
-                (e) => preventNewLine(e)}>{inputCRow[j]}</td>)
+            tempRows.push(<td>{inputCRow[j]}</td>)
         }
     }
     tempRTableau.cRow = tempRows
-    await setRTableau(tempRTableau)
+    setRTableau(tempRTableau)
     return noMatch;
 }
 const checkFValue = async (solvedFValue, tempRTableau, setRTableau, iTableau, setITableau) => {
@@ -152,25 +149,23 @@ const checkFValue = async (solvedFValue, tempRTableau, setRTableau, iTableau, se
     
     tempRTableau.fValue = tempFValue
     tempFValue=''
-    await setRTableau(tempRTableau)
+    setRTableau(tempRTableau)
     return noMatch;
 }
 
 
 export const checkTableau = async (iTableau, solvedArray, index, dimensions, rTableau, setRTableau, setITableau) => {
+    console.log(dimensions)
     let tempRTableau = rTableau
-    const solvedConstraintEquations = solvedArray[index][0].constraintEquations
-    const solvedBasicVariables = solvedArray[index][0].basicVariables
-    const solvedBasicCoefficients = solvedArray[index][0].basicCoefficients
-    const solvedConstants = solvedArray[index][0].constants
-    const solvedCrow = solvedArray[0][index].cRow
-    const solvedRatio= solvedArray[0][index].ratio
-    const solvedFValue= solvedArray[0][index].fValue
-
-  
-    console.log(solvedFValue)
-    const constraintEquationDidNotMatch = await checkConstraintEquations(tempRTableau, iTableau, setITableau, solvedConstraintEquations, dimensions, setRTableau, preventNewLine, ceIPush)
-    const basicVariablesDidNotMatch = await checkBasicVariables(solvedBasicVariables, dimensions, tempRTableau, setRTableau, iTableau, setITableau, preventNewLine, bIPush)
+    const solvedConstraintEquations = solvedArray[index].constraintEquations
+    const solvedBasicVariables = solvedArray[index].basicVariables
+    const solvedBasicCoefficients = solvedArray[index].basicCoefficients
+    const solvedConstants = solvedArray[index].constants
+    const solvedCrow = solvedArray[index].cRow
+    const solvedRatio= solvedArray[index].ratio
+    const solvedFValue= solvedArray[index].fValue
+    const constraintEquationDidNotMatch = await checkConstraintEquations(tempRTableau, iTableau, setITableau, solvedConstraintEquations, dimensions, setRTableau)
+    const basicVariablesDidNotMatch = await checkBasicVariables(solvedBasicVariables, dimensions, tempRTableau, setRTableau, iTableau, setITableau)
     const constantsDidNotMatch = await checkConstants(solvedConstants, dimensions, tempRTableau, setRTableau, iTableau, setITableau,)
     const basicCoefficientsDidNotMatch = await checkBasicCoefficients(solvedBasicCoefficients, dimensions, tempRTableau, setRTableau, iTableau, setITableau) 
     const ratioDidNotMatch = await checkRatio(solvedRatio, dimensions, tempRTableau, setRTableau, iTableau, setITableau)

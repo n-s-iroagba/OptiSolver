@@ -5,7 +5,7 @@ import createClass from 'create-react-class'
 const WTitle = ()=>{
     var WriteUp =createClass({
         render: function() {
-            return <p >SIMPLEX SOLVER</p>;
+            return <p className='optisolver' >OPTISOLVER</p>;
         }
     });
    

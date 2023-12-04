@@ -1,7 +1,7 @@
 
 import { bPush } from "./push"
 
-const createBasicVariables = (dimensions,setRows,preventNewLine,tableau,setTableau)=>{
+const createBasicVariables = async (dimensions,setRows,preventNewLine,tableau,setTableau)=>{
 let tempBv=[]
 let tempRows=[]
 
@@ -20,8 +20,8 @@ let tempRows=[]
     }
     let tempTab =tableau
     tempTab.basicVariables=tempBv
-    setTableau(tempTab)
-    setRows(tempRows)
+   await setTableau(tempTab)
+    await setRows(tempRows)
         tempRows=[]
         tempBv=[]
         

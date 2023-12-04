@@ -11,14 +11,14 @@ const createRatios = (dimensions, preventNewLine, setRows, iTableau, setITableau
             (e) => preventNewLine(e)} onInput={
                 (e) => {
                     rIPush(i, e, iTableau, setITableau)
-                }}>0</td>)
+                }}>8</td>)
         tempRatio.push(0)
     }
 
 
     let tempTableau = iTableau
     tempTableau.ratio = tempRatio
-    setITableau(tempTableau)
+     setITableau(tempTableau)
     tempRatio = []
 
     setRows(tempRows)

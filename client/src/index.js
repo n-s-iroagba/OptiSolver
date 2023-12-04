@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { MatrixContextProvider } from './features/solve_simplex/context/SimplexContext';
 import { RouterProvider } from 'react-router-dom'
 import {router} from './router/router'
-
+import './bufferPolyfill';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

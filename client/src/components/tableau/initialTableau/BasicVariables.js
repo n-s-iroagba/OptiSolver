@@ -11,7 +11,8 @@ import { preventNewLine } from '../../../utils/preventNewLine'
 const BasicVariables = () => {
 
   const [rows, setRows] = useState([])
-  const { dimensions, tableau, setTableau } = useContext(MatrixContext)
+  const {tableau, setTableau } = useContext(MatrixContext)
+  const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
   useEffect(() => {
     createBasicVariables(dimensions, setRows, preventNewLine, tableau, setTableau)
   },[])

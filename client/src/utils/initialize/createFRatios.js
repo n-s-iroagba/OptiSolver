@@ -1,6 +1,6 @@
 
 import { rIPush } from "../iteration/iPush"
-const createFRatios = (dimensions, preventNewLine, setRows, tableau, setTableau) => {
+const createFRatios = (dimensions, preventNewLine, setRows, iTableau, setITableau) => {
 
 
     let tempRatio = []
@@ -9,15 +9,15 @@ const createFRatios = (dimensions, preventNewLine, setRows, tableau, setTableau)
         tempRows.push(<td contentEditable onKeyDown={
             (e) => preventNewLine(e)} onInput={
                 (e) => {
-                    rIPush(i, e, tableau, setTableau)
+                    rIPush(i, e, iTableau, setITableau)
                 }}>0</td>)
         tempRatio.push(0)
     }
 
 
-    let tempTableau = tableau
+    let tempTableau = iTableau
     tempTableau.ratio = tempRatio
-    setTableau(tempTableau)
+    setITableau(tempTableau)
     tempRatio = []
 
     setRows(tempRows)

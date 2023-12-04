@@ -12,7 +12,7 @@ let tempBv=[]
             (e) =>preventNewLine(e)} onInput={
               (e) => {
                 bIPush(i,e,iTableau,setITableau) }}>0</sub></td>)
-        tempBv.push(i)
+        tempBv.push(0)
     }
     let tempTab = iTableau
     tempTab.basicVariables=tempBv

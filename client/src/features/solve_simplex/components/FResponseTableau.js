@@ -5,7 +5,7 @@ import FConstraintEquations from '../../../components/tableau/firstIResponseTabl
 import FConstants from '../../../components/tableau/firstIResponseTableau/FConstants';
 import FRatio from '../../../components/tableau/firstIResponseTableau/FRatio';
 
-const IterationTableau = () => {
+const FResponseTableau = () => {
 
     return <>
 
@@ -20,4 +20,4 @@ const IterationTableau = () => {
         </div>
     </>
 }
-export default IterationTableau;
+export default FResponseTableau
