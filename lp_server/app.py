@@ -6,7 +6,6 @@ from datetime import datetime
 from datetime import timedelta
 from datetime import timezone
 from utils import utils
-from dotenv import load_dotenv
 import os
 from flask import request,redirect
 from oauthlib.oauth2 import WebApplicationClient
@@ -66,6 +65,7 @@ def hello_world():
 @jwt_required()
 def solve_simplex(student_id):
     unsolved_tableau = json.dumps(request.get_json())
+    solution = {}
     try:
         eng = matlab.engine.start_matlab()
         solution =  eng.simplex(unsolved_tableau)

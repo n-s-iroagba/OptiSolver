@@ -8,23 +8,21 @@ import { useNavigate } from 'react-router-dom'
 
 const FirstSolve = () => {
     const navigate = useNavigate()
-    const { setPage, iTableau, setITableau,tableau, rTableau, setRTableau} = useContext(MatrixContext)
+    const { setPage, iTableau, setITableau,tableau, rTableau, setRTableau,setIteration,solvedArray,setIndexs} = useContext(MatrixContext)
     const tempdimensions=JSON.parse(localStorage.getItem('localDimensions'))
-    const iteration = localStorage.getItem('iteration')
+    const dimensions = {numberOfColumns:parseInt(tempdimensions.numberOfColumns),
+                         numberOfRows:parseInt(tempdimensions.numberOfRows)}
+   
     const id = localStorage.getItem('optiUserId')
     const token = localStorage.getItem('optiUserToken')
-    const solvedArray = JSON.parse(localStorage.getItem('solution'))
+
     const url = `http://localhost:5000/solve/${id}`
     const index = 0
-    const tempCRow = JSON.parse(localStorage.getItem('iCrow'))
-    const tempRatio =JSON.parse(localStorage.getItem('iRatio'))
-    const ratioRows = []
-    const cRowColumns = []
-    const dimensions = {numberOfColumns:parseInt(tempdimensions.numberOfColumns),numberOfRows:parseInt(tempdimensions.numberOfRows)}
+  
+   
 
     useEffect(() => {
 
-        console.log(token)
         if (!token || token === '') {
 
             navigate('/login')
@@ -43,17 +41,14 @@ const FirstSolve = () => {
 
     }, [])
     const firstSolve = async () => {
-        console.log(solvedArray)
-        console.log(iTableau)
-        console.log(dimensions)
+
         const shouldAdvance = await checkTableau(iTableau, solvedArray, index, dimensions, rTableau, setRTableau, setITableau)
         if (!shouldAdvance) {
             setPage(3)
         } else {
-
-            setPage(2)
-            localStorage.setItem('iteration', 2)
-
+            setIndex(1)
+           setIteration(2)
+          setPage(2)
         }
     }
 

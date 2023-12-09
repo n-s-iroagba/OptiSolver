@@ -10,13 +10,14 @@ import axios from 'axios'
 const IterationSolve = ()=>{  
     const navigate = useNavigate()
 
-let { setPage,iTableau,setITableau,solvedArray,rTableau,setRTableau} = useContext(MatrixContext)
-const dimensions = JSON.parse(localStorage.getItem('localDimensions'))
-const iterationNumber = localStorage.getItem('iteration')
+let { setPage,iTableau,setITableau,solvedArray,rTableau,setRTableau,index,setIndex,iteration,setIteration} = useContext(MatrixContext)
+
+const tempdimensions=JSON.parse(localStorage.getItem('localDimensions'))
+const dimensions = {numberOfColumns:parseInt(tempdimensions.numberOfColumns),
+                     numberOfRows:parseInt(tempdimensions.numberOfRows)}
 const id = localStorage.getItem('optiUserId')
 const token = localStorage.getItem('optiUserToken')
-const index = localStorage.getItem('optiUserId')
-const length=localStorage.getItem('length')
+
 const url = `http://localhost:5000/solve/${id}`
 useEffect(()=>{
     console.log(token)
@@ -33,15 +34,12 @@ const iterateSolve = async ()=>{
     if(!shouldAdvance){
         setPage(3)
         }else{
-        alert('issues')
-            }
-          
-           
-
-    
+          setIteration(iteration+1)
+          setIndex(index+1)
+          setPage(2)
         }
     
-   
+    }
 
     
     return(
