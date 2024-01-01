@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useContext } from 'react'
 import { MatrixContext } from '../../features/solve_simplex/context/SimplexContext'
 
-import './tableauComponents.css'
+import './tableau.css'
 
 const ObjectiveCoefficient = ()=>{
     const {tableau,setTableau} = useContext(MatrixContext)

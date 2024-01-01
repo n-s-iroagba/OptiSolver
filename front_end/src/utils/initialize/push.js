@@ -49,3 +49,18 @@ export const rPush=(i,e,tableau,setTableau)=>{
     tempTab.ratio[i]= digit
     setTableau(tempTab)
 }
+export const push = (e, i, variable, tableau, setTableau, j) => {
+    let tempTab = tableau;
+    let digit = Number(e.currentTarget.textContent);
+
+    if (j !== undefined) {
+        tempTab[variable][i][j] = digit;
+    } else {
+        tempTab[variable][i] = digit;
+    }
+
+    setTableau(tempTab);
+    console.log(tempTab);
+};
+
+

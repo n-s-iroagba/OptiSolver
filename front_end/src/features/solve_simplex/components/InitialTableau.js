@@ -3,21 +3,20 @@ import BasicVariables from '../../../components/tableau/initialTableau/BasicVari
 import BasicCoefficients from '../../../components/tableau/initialTableau/BasicCoefficients';
 import ConstraintEquations from '../../../components/tableau/initialTableau/ConstraintEquations';
 import Constants from '../../../components/tableau/initialTableau/Constants';
+import Ratio from '../../../components/tableau/initialTableau/Ratio';
 import '../assets/tableau.css'
 
 const InitialTableau = () => {
     
 
     return <>
-       < div className='wrapper'>
+     
         <div className='tableau'>
         <BasicCoefficients/>
         <BasicVariables/>
-         <ConstraintEquations/>  
-         <Constants/>
-        </div>
-        &nbsp;
-        
+        <ConstraintEquations/>
+        <Constants/>
+        <Ratio/>
         </div>
     
     </>

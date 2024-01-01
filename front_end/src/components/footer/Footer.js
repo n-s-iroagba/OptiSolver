@@ -1,26 +1,24 @@
-import React from 'react'
-import './Footer.css'
+import React from 'react';
+import './Footer.css';
 
 const Footer = () => {
-    return <>
-        <div className='footer-wrapper'>
-        <div className='footer'>
-            <div className='titles'>
-                <div><b>Built By--</b></div>
-                <div><b>Supervisor--</b></div>
-            </div>
-            <div className='names'>
-                <div className='students'>
-                    <div>J. M. Osaronwanji</div>
-                    <div>T. Onajite</div>
-                    <div>N. S. Iroagba</div>
-                </div>
-                <div className='prof'>Professor A. O. Kuye</div>
-            </div>
+  return (
+    <div className='footer'>
+      <div className='supervisor'>
+        <div><b>Supervisor--</b></div>
+        <div  className='name'>Professor A.O. Kuye</div>
+      </div>
 
-        </div>
-        <div className='cp'>© 2023</div>
-        </div>
-    </>
-}
-export default Footer
+      <div className='students'>
+        <div><b>Built By--</b></div>
+        <div className='name'>J. M. Osaronwanji</div>
+        <div className='name'>T. Onajite</div>
+        <div  className='name'>N. S. Iroagba</div>
+      </div>
+
+      <div className='cp'>© 2023</div>
+    </div>
+  );
+};
+
+export default Footer;

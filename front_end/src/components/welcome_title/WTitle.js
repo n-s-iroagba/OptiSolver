@@ -1,6 +1,6 @@
 import React from 'react'
 import './WTitle.css'
-import Logo from '../title/Logo'
+import Logo from '../navbar/Logo'
 import createClass from 'create-react-class'
 const WTitle = ()=>{
     var WriteUp =createClass({

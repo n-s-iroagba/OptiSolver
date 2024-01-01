@@ -43,7 +43,7 @@ export const MatrixContextProvider = ({children}) => {
         fValue:0,
         cRow:[]
     })
-    const tempDetails={username:'*',password:'',email:''}
+    const tempDetails={username:'',password:'',email:''}
     const [details,setDetails] = useState(tempDetails)
     const [page,setPage] = useState(0)
 

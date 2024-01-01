@@ -1,10 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home"
+import Home from "../pages/home/Home"
 import RenderPage from "../pages/RenderPage";
-import Welcome from "../pages/Welcome";
+
 import SolveEntry from "../pages/SolveEntry";
-import Login from "../pages/Login/Login";
-import SignUp from "../pages/Login/SignUp";
+import Login from "../pages/auth/Login";
+import SignUp from "../pages/auth/SignUp";
+
+import Dashboard from "../pages/dashboard/Dashboard";
+
+import BasicCoefficients from "../components/tableau/initialTableau/BasicCoefficients";
+import InitialSolve from "../pages/initial/InitialSolve";
 export const router = createBrowserRouter([
 
 {
@@ -20,8 +25,8 @@ export const router = createBrowserRouter([
     element: <RenderPage/>
 },
 {
-    path:'/welcome',
-    element:<Welcome/>
+    path:'/dashboard',
+    element:<Dashboard/>
 },
 {
     path:'/login',
@@ -31,6 +36,10 @@ export const router = createBrowserRouter([
 {
     path:'/signup',
     element:<SignUp/>
+},
+{
+    path:'/Re',
+    element:<InitialSolve/>
 }
 
 ])

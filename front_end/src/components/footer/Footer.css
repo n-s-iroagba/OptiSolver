@@ -1,54 +1,41 @@
-.titles {
+
+  .students,
+  .supervisor {
+    width: 100%;
+    gap: 1cm;
     display: flex;
-    width: 23vw;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 2.5vw;
-    
-    
-
-}
-
-.names {
-
-    display: flex;
-    
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 12px;
+  }
   
- 
-}
-.students{
-    display:flex;
-    width: 72vw;
-    justify-content: space-between;
-}
-
- div {
-    color: white;
-}
-
-.footer {
-    z-index: 2;
-   display: flex;
-    left: 5vw;
-    border-top: 1px solid grey;
-    padding-top: 0.5cm;
-
-}
-
-.supervisor {
-    display: flex;
-    width: 90vw;
-}
-
-.cp {
-    width: 100vw;
-    text-align: center;
-
-}
-.footer-wrapper{
+  .students div,
+  .supervisor div {
+    width: 3cm;
+  }
+  .students .name,
+  .supervisor .name {
+    width: 4cm;
+  }
+  
+  
+  .footer {
     position: absolute;
-    top:14.5cm;
+    display: flex;
+    flex-direction: column;
+    top: 14.5cm;
     z-index: 2;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    border-top: 1px solid grey;
+    width: 95vw;
+    color: white;
+  }
+
+  @media(max-width:700px){
+
+  .students,
+  .supervisor {
+    width: 100%;
+    gap: 0.4cm;
+  }
 }

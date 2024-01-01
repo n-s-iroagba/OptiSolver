@@ -1,0 +1,17 @@
+
+
+.dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  width: 200px;
+}
+
+.links:hover {
+  font-weight: bolder;
+}
+.links{
+  padding-bottom: 1cm;
+  border-bottom: 2px solid white;
+  color:white
+}

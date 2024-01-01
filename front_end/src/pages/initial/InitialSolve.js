@@ -8,6 +8,7 @@ import { solveSimplex } from '../../utils/api'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { solveServerUrl } from '../../utils/data'
+import BasicCoefficients from '../../components/tableau/initialTableau/BasicCoefficients'
 
 const InitialSolve = ()=>{
     
@@ -23,28 +24,28 @@ const InitialSolve = ()=>{
 
     const url = `http://localhost:5000/solve/${id}`
 
-    useEffect(()=>{
+//     useEffect(()=>{
 
-       if(!token||token===''){
-       alert('kindly login to access optiSolver')
-        navigate('/login')
-       }
+//        if(!token||token===''){
+//        alert('kindly login to access optiSolver')
+//         navigate('/login')
+//        }
 
-    },[])
+//     },[])
     
-   const iterate = async() => {
-        setClassname('not-seen')
-        setLoading('seen')
-        const solutionResponse = await solveSimplex(url,tableau,token)
-        if (solutionResponse){
-            const length = solutionResponse.solution.length
-            setSolvedArray(solutionResponse.solution)
-            setLength(length)
-            setIteration(1)
-            setLoading('not-seen')
-            setPage(1)
-        }
-    }  
+//    const iterate = async() => {
+//         setClassname('not-seen')
+//         setLoading('seen')
+//         const solutionResponse = await solveSimplex(url,tableau,token)
+//         if (solutionResponse){
+//             const length = solutionResponse.solution.length
+//             setSolvedArray(solutionResponse.solution)
+//             setLength(length)
+//             setIteration(1)
+//             setLoading('not-seen')
+//             setPage(1)
+//         }
+//     }  
     
     return(
         <>
@@ -55,8 +56,8 @@ const InitialSolve = ()=>{
         <div className={classname}>
         <div><p style={{width:'100vw',marginTop:'1cm'}}> Fill in the initial Simplex Tableau</p></div>
         <div className='initial-solve'><InitialTableau/></div>
-        <br/>
-        <Button variant='dark' onClick={iterate}>Solve</Button>
+        {/* <br/>
+        <Button variant='dark' onClick={iterate}>Solve</Button> */}
         </div>
         </div>
         </>
