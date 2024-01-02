@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 
 import './auth.css'
-import { MatrixContext } from "../../features/solve_simplex/context/SimplexContext";
+import { MatrixContext } from "../../context/SimplexContext";
 import { signUp } from "../../utils/api";
 import SignupForm from "../../components/forms/SignUpForm";
 
@@ -12,26 +12,6 @@ const SignUp= () => {
   const {details,setDetails} = useContext(MatrixContext)
   const [validated,setValidated] = useState(false)
 
-  useEffect(()=>{
-    // const storedUsername = localStorage.getItem('optiusername');
-    // if(storedUsername!==null){
-    // let tempDetails= {...details}
-    // tempDetails.username = storedUsername
-    // setDetails(tempDetails)
-    // }
-    // const storedUseremail = localStorage.getItem('optiuseremail');
-    // if(storedUseremail!==null){
-    // let tempDetails= {...details}
-    // tempDetails.email = storedUseremail
-    // setDetails(tempDetails)
-    // }
-    // const storedPassword = localStorage.getItem('optiuserpassword');
-    // if(storedPassword!==null){
-    // let tempDetails= {...details}
-    // tempDetails.password = storedPassword
-    // setDetails(tempDetails)
-    // }
-  },[])
   return(
     <div className="signup">
       <div className="header">

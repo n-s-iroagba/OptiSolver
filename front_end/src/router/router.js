@@ -7,9 +7,7 @@ import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
 
 import Dashboard from "../pages/dashboard/Dashboard";
-
-import BasicCoefficients from "../components/tableau/initialTableau/BasicCoefficients";
-import InitialSolve from "../pages/initial/InitialSolve";
+import InitialSolve from "../pages/solve/InitialSolve";
 export const router = createBrowserRouter([
 
 {

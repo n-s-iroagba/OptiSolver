@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import reportWebVitals from './reportWebVitals';
-import { MatrixContextProvider } from './features/solve_simplex/context/SimplexContext';
+import { MatrixContextProvider } from './context/SimplexContext';
 import { RouterProvider } from 'react-router-dom'
 import {router} from './router/router'
 

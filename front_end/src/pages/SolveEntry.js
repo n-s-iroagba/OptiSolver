@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { MatrixContext } from "../features/solve_simplex/context/SimplexContext";
+import { MatrixContext } from "../context/SimplexContext";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import './pages.css'

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 import '../pages.css'
-import { MatrixContext } from "../../features/solve_simplex/context/SimplexContext";
+import { MatrixContext } from "../../context/SimplexContext";
 import { login } from "../../utils/api";
 
 
@@ -14,7 +14,7 @@ const Login = () => {
   const {details,setDetails} = useContext(MatrixContext)
   const [validated,setValidated] = useState(false)
   
-  const move = (event) => {
+  const submit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -42,7 +42,7 @@ const Login = () => {
 
   return (
     <div className='solve-entry-wrapper'>
-      <Form style={{ width: '50vw' }} validated={validated} onSubmit={move} >
+      <Form style={{ width: '50vw' }} validated={validated} onSubmit={submit} >
         <Form.Group
           as={Col}
         >

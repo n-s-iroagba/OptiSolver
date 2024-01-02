@@ -1,0 +1,147 @@
+/* .basis, .ce, .basis {
+    
+    border-top: 3px solid grey;
+    border-left: 3px solid grey;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  
+  }  
+  .constants{
+    
+    border-top: 3px solid grey;
+    border-left: 3px solid grey;
+    border-radius: 1px solid grey;
+    width: 2cm;
+    
+  }
+  .iconstants{
+    
+    border-top: 3px solid grey;
+    border-left: 3px solid grey;
+    border-radius: 1px solid grey;
+    width: 2cm;
+    
+  }
+  td {
+    height:1cm;
+    width:1cm;
+    text-align: center;
+    color:white
+
+  }
+  .bc{
+    border-top: 3px solid grey;
+  }
+  .r{
+    border-top: 3px solid grey;
+    border-left: 3px solid grey;;
+  }
+  .ce-wrapper, .b-wrapper,.ic-wrapper {
+    border-top: 3px solid grey;
+    border-bottom: 3px solid grey;
+  }
+  th{
+    height:1.2cm;
+    width:1cm;
+    text-align: center;
+    color:white
+  }
+  .c-wrapper{
+    border-bottom: 3px solid grey;
+    border-right: 3px solid grey;
+    border-bottom-right-radius: 60px;
+    border-top-right-radius: 60px;
+    border-top: 3px solid grey;
+    
+  }
+  .bc-wrapper{
+    border-bottom: 3px solid grey;
+    border-left: 3px solid grey;
+    border-bottom-left-radius: 60px;
+    border-top-left-radius: 60px;
+    border-top: 3px solid grey;
+  }
+  div{
+    text-align: center;
+  } */
+  .empty {
+    height: 1.5cm;
+    text-align: center;
+    color: white;
+    width:1.5cm;
+    padding-top: 0.4cm;
+  }
+  
+  .left-tableau-wrapper {
+    border-bottom: 3px solid grey;
+    border-left: 3px solid grey;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+    border-top: 3px solid grey;
+  }
+  .right-tableau-wrapper {
+    border-bottom: 3px solid grey;
+    border-right: 3px solid grey;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    border-left:3px solid grey;
+  }
+  .center-tableau-wrapper{
+    border-bottom: 3px solid grey;
+    border-left: 3px solid grey;
+
+  }
+  
+  .tableau-body {
+    border-bottom: 3px solid grey;
+    border-top: 3px solid grey;
+  }
+   
+  .single-column th, .single-column td{
+    height: 1.8cm;
+    text-align: center;
+    color: white;
+    width: 1.5cm;
+    text-align: center;
+  }
+ 
+.bottom{
+  border-bottom: 3px solid grey; 
+}
+
+.inverse-bottom{
+  border-top: 3px solid grey;
+  border-bottom: 3px solid grey;
+  height: 1.55cm;
+}
+.objective-coefficient{
+  border-bottom: 3px solid grey;
+  border-top: 3px solid grey;
+  
+}
+.objective-coefficient th, .objective-coefficient td{
+  height: 1.25cm;
+  text-align: center;
+  color: white;
+  width: 1.5cm;
+  text-align: center;
+}
+.c-row{
+  height: 1.47cm;
+  width: 1.5cm;
+}
+.constants th, .constants td{
+  height: 1.8cm;
+    text-align: center;
+    color: white;
+    width: 2.2cm;
+    text-align: center;
+
+}
+.constant-empty{
+  width:2.2cm
+}
+.right{
+  border-top-right-radius: 40px;
+}
