@@ -1,8 +1,7 @@
 import React from 'react'
-import './WTitle.css'
-import Logo from '../navbar/Logo'
+import Logo from './Logo'
 import createClass from 'create-react-class'
-const WTitle = ()=>{
+const Title = ()=>{
     var WriteUp =createClass({
         render: function() {
             return <p className='optisolver' >OPTISOLVER</p>;
@@ -12,11 +11,11 @@ const WTitle = ()=>{
     
     return<>
    
-     <div className='wtitle-wrapper'>
+     <div className='title-wrapper'>
        <WriteUp/>
        <Logo/>
      </div>    
 
     </>
 }
-export default WTitle
+export default Title
