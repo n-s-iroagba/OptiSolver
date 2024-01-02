@@ -8,6 +8,7 @@ import { solveSimplex } from '../../utils/api'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { solveServerUrl } from '../../utils/data'
+import './solve.css'
 
 
 const InitialSolve = ()=>{
@@ -15,7 +16,7 @@ const InitialSolve = ()=>{
     const{tableau,setPage,setSolvedArray,setLength,setIteration} = useContext(MatrixContext)
 
     const [loading,setLoading] = useState('not-seen')
-    const [classname,setClassname] = useState('is-wrap')
+    const [classname,setClassname] = useState('solve-page-wrapper')
 
     const navigate =  useNavigate()
     
@@ -33,31 +34,32 @@ const InitialSolve = ()=>{
 
 //     },[])
     
-//    const iterate = async() => {
-//         setClassname('not-seen')
-//         setLoading('seen')
-//         const solutionResponse = await solveSimplex(url,tableau,token)
-//         if (solutionResponse){
-//             const length = solutionResponse.solution.length
-//             setSolvedArray(solutionResponse.solution)
-//             setLength(length)
-//             setIteration(1)
-//             setLoading('not-seen')
-//             setPage(1)
-//         }
-//     }  
+   const solve = async() => {
+    console.log(tableau)
+        // setClassname('not-seen')
+        // setLoading('seen')
+        // const solutionResponse = await solveSimplex(solveServerUrl,tableau,token)
+        // if (solutionResponse){
+        //     const length = solutionResponse.solution.length
+        //     setSolvedArray(solutionResponse.solution)
+        //     setLength(length)
+        //     setIteration(1)
+        //     setLoading('not-seen')
+        //     setPage(1)
+        // }
+    }  
     
     return(
         <>
         <div className='solve-wrapper'>
         <div className={loading}><img className='load-icon' src={require('../loading.gif')} alt='loading'/>
-        <p style={{width:'100vw'}}>Solving... Please Be Patient,This May Take A While.</p>
+         <p>Solving... Please Be Patient,This May Take A While.</p>
         </div>
         <div className={classname}>
-        <div><p style={{width:'100vw',marginTop:'1cm'}}> Fill in the initial Simplex Tableau</p></div>
+        <div><p className='solve-writeup' > Fill in the initial Simplex Tableau</p></div>
         <div className='initial-solve'><InitialTableau/></div>
-        {/* <br/>
-        <Button variant='dark' onClick={iterate}>Solve</Button> */}
+        <br/>
+        <div><Button variant='dark' onClick={solve}>Solve</Button></div>
         </div>
         </div>
         </>

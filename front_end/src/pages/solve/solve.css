@@ -1,0 +1,12 @@
+.solve-page-wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(21, 18, 18);
+    height: 19cm;
+    padding-top: 1cm;
+}
+.solve-writeup{
+    width: 100vw;
+    text-align: center;
+}

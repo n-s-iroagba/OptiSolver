@@ -6,7 +6,7 @@ const InitialObjectiveCoefficient = ()=>{
     
     const [columns,setColumns] = useState([])
     const{tableau,setTableau,dimensions} = useContext(MatrixContext)
-    const variable= 'objectiveCoefficient'
+    const variable= 'objectiveCoefficients'
     useEffect(()=>{
         createSingleColumn(dimensions.numberOfColumns, setColumns, tableau, setTableau, variable) 
     },[])
