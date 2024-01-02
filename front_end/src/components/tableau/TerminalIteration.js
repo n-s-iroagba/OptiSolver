@@ -7,7 +7,7 @@ I
 import { useContext } from 'react';
 import { MatrixContext } from '../../context/SimplexContext';
 import './Tableau.css'
-import Ratio from '../tableau_components/input/Ratio';
+
 
 const InitialTableau = () => {
     const {iTableau, setITableau} = useContext(MatrixContext)
@@ -20,7 +20,6 @@ const InitialTableau = () => {
         <BasicVariables setTableau={setITableau} tableau={iTableau}/>
         <ConstraintEquations setTableau={setITableau} tableau={iTableau}/>
         <Constants setTableau={setITableau} tableau={iTableau} rightEnd ={true} />
-    
         </div>
     
     </>

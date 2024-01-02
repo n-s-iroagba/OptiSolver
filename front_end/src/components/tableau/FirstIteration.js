@@ -6,11 +6,7 @@ import FConstraintEquations from "./first/FConstraintEquations";
 import FConstants from "./first/FConstants";
 
 
-
-
-
 const FirstIteration = () => {
-
     return (
         <div>
             <FBasicCoefficients/>

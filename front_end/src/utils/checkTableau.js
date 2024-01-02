@@ -1,5 +1,5 @@
-import { bIPush,cIPush,ceIPush,rIPush,bcIPush,fIPush,cRowIPush } from "./iPush"
-import { preventNewLine } from "../preventNewLine"
+import { bIPush,cIPush,ceIPush,rIPush,bcIPush,fIPush,cRowIPush } from "./iteration/iPush"
+import { preventNewLine } from "./preventNewLine"
 
 
 const checkConstraintEquations = async (tempRTableau, iTableau, setITableau, solvedConstraintEquations, dimensions, setRTableau) => {

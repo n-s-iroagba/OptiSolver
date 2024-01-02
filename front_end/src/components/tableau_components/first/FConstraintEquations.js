@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { MatrixContext } from '../../../context/SimplexContext';
 import { useContext } from 'react';
 import '../tableau.css'
-import InitialObjectiveCoefficient from './InitialObjectiveCoefficient';
+import ObjectiveCoefficient from '../ObjectiveCoefficient';
 import { createMultipleColumn } from '../../../utils/createTableauHelper';
 
 
@@ -14,17 +14,17 @@ const dimensions = {
   numberOfColumns: 2
 }
 const ConstraintEquations = (props) => {
-  let { responseTableau, header } = useContext(MatrixContext)
+  let { tableau, header } = useContext(MatrixContext)
   
   return (<>
 
     <div className='center-tableau-wrapper'>
-      <InitialObjectiveCoefficient />
+      <ObjectiveCoefficient />
       <table className='single-column'>
         <thead >
           <tr >{
             header.map((variable, index) => {
-              return (<th key={index}>{index}</th>)
+              return (<th key={index}>{variable}</th>)
             })}
           </tr>
         </thead>
@@ -38,7 +38,7 @@ const ConstraintEquations = (props) => {
       </table >
       <tr className='c-row'>{
         
-        responseTableau.cRrow.map((cell, index) => (
+        tableau.crow.map((cell, index) => (
             <th contentEditable key={index}>
               {cell}
             </th>))
