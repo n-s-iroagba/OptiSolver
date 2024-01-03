@@ -1,11 +1,11 @@
 import React from 'react'
-import BasicVariables from '../tableau_components/input/BasicVariables';
-import BasicCoefficients from '../tableau_components/input/BasicCoefficients';
-import ConstraintEquations from '../tableau_components/input/ConstraintEquations';
-import Constants from '../tableau_components/input/Constants';
+import BasicVariables from '../../tableau_components/input/BasicVariables';
+import BasicCoefficients from '../../tableau_components/input/BasicCoefficients';
+import ConstraintEquations from '../../tableau_components/input/ConstraintEquations';
+import Constants from '../../tableau_components/input/Constants';
 import { useContext } from 'react';
-import { MatrixContext } from '../../context/SimplexContext';
-import './Tableau.css'
+import { MatrixContext } from '../../../context/SimplexContext';
+import '../Tableau.css'
 
 const InitialTableau = () => {
     const {tableau, setTableau} = useContext(MatrixContext)
