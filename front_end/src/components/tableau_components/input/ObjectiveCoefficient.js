@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { MatrixContext } from '../../../context/SimplexContext'
 import { createSingleColumn } from '../../../utils/createTableauHelper'
-const InitialObjectiveCoefficient = ()=>{
+const ObjectiveCoefficients = ()=>{
     
     const [columns,setColumns] = useState([])
     const{tableau,setTableau,dimensions} = useContext(MatrixContext)
@@ -24,4 +24,4 @@ const InitialObjectiveCoefficient = ()=>{
    
     </>
 }
-export default InitialObjectiveCoefficient;
+export default ObjectiveCoefficients;
