@@ -1,3 +1,11 @@
 .nav-text:hover{
     font-weight: bolder;
 }
+.nav-brand{
+    width:50vw;
+    padding-left: 1cm;
+}
+.navbar-custom{
+    height:2cm;
+    color: blue;
+}

@@ -6,6 +6,9 @@ import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Title from "../components/title/Title";
+import Navbar from "../components/navbar/NavBar";
+
+
 
 export const router = createBrowserRouter([
 
@@ -36,7 +39,7 @@ export const router = createBrowserRouter([
 },
 {
     path:'/Re',
-    element:<Title/>
+    element:<Navbar/>
 }
 
 ])

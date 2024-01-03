@@ -12,7 +12,9 @@
     display: flex;
     width:100%;
     justify-content: space-between;
+    background-color: aqua;
+    align-items: center;
 }
-.test{
-    width: 100vw;
+.optisolver{
+    padding-top: 0.5cm;
 }
