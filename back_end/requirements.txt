@@ -1,0 +1,12 @@
+requests
+Flask
+flask-sqlalchemy
+Werkzeug
+CORS
+utils
+Flask-JWT-Extended
+Flask-Bcrypt
+flask_cors
+pymysql
+matlabengine
+python-dotenv
