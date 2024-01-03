@@ -1,0 +1,12 @@
+.write-up{
+    height: 40vh;
+    margin-top:10vh;
+    width:100vw;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.write-up p{
+    color: white;
+    text-align: center;
+}

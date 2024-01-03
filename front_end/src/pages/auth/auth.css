@@ -1,11 +1,12 @@
 .signup{
     width: 100vw;
     height: 20cm;
-    background-color: rgb(39, 36, 36);
-    position: absolute;
+    display: flex;
+    flex-direction: column;;
     top: 0;
 }
 .header{
     color: white;
     margin-top: 1cm;
+    text-align: center;
 }

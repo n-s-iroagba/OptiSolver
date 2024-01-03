@@ -1,20 +1,29 @@
+/* Default styles for smaller screens */
+.logo img {
+    width: 0.7cm;
+}
+
+.title-wrapper {
+    display: flex;
+    width: 55vw;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+
+.optisolver {
+    padding-top: 0.5cm;
+}
+
+/* Media query for larger screens */
 @media only screen and (min-width: 768px) {
     .logo img {
-       
         width: 1.5cm;
         height: 1.5cm;
     }
+
+    .title-wrapper {
+        width: 50vw;
+    }
 }
-.logo img{
- display: flexbox;
-}
-.title-wrapper{
-    display: flex;
-    width:100%;
-    justify-content: space-between;
-    background-color: aqua;
-    align-items: center;
-}
-.optisolver{
-    padding-top: 0.5cm;
-}
+

@@ -1,19 +1,14 @@
 
-  .students,
-  .supervisor {
+  .students,.supervisor{
     width: 100%;
-    gap: 1cm;
     display: flex;
-    justify-content: flex-start;
-    font-size: 12px;
+    gap:1cm;
   }
   
-  .students div,
-  .supervisor div {
+  .footer-title{
     width: 3cm;
   }
-  .students .name,
-  .supervisor .name {
+  .name {
     width: 4cm;
   }
   
@@ -22,8 +17,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 14.5cm;
-    z-index: 2;
+    bottom: 0%;
     margin-left: 2.5vw;
     margin-right: 2.5vw;
     border-top: 1px solid grey;
@@ -31,11 +25,21 @@
     color: white;
   }
 
-  @media(max-width:700px){
-
-  .students,
-  .supervisor {
-    width: 100%;
-    gap: 0.4cm;
+ .cp{
+  width: 100vw;
+  text-align: center;
+ }
+ @media only screen and (max-width: 768px) {
+  .footer-title{
+    width: 1.5cm;
+    font-size: 7px;
   }
-}
+  .name {
+    width: 2cm;
+    font-size: 7px;
+  }
+  .students,.supervisor{
+    gap:0.3cm;
+  }
+  
+ }

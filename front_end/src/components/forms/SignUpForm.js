@@ -39,21 +39,15 @@ const SignupForm = () => {
       alert('Please fill in all fields');
     } else {
         console.log(signUpDetails)
-
- 
-      //const response = await signUp(signUpDetails)
-      // console.log(response)
-      // if (response.status === 200) {
-      //     navigate('/welcome')
-      // }
+        localStorage.setItem('optiUsername', signUpDetails.username)
     }
   };
   
   
 
   return (
-    <Container className="signup-container">
-      <Form noValidat onSubmit={handleSubmit}>
+    <div className="signup-container">
+      <Form noValidate onSubmit={handleSubmit}>
         <Form.Group controlId="formUsername" as={Col} lg={6} className="mx-auto" >
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -97,12 +91,15 @@ const SignupForm = () => {
             onChange={handleOnChange}
           />
         </Form.Group>
-        <br />
-        <Button variant="primary" type="submit">
-          Sign Up
-        </Button>
-      </Form>
-    </Container>
+        <br/>
+        <div className="signup-button-wrapper">
+          <Button className="signup-button" variant="dark" type="submit">
+            Sign Up
+          </Button>
+          </div>
+        </Form>
+      
+    </div>
   );
 };
 

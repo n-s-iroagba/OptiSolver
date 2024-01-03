@@ -1,12 +1,12 @@
 import React,{useEffect} from 'react'
 import './Dashboard.css'
-
-// import createClass from 'create-react-class'
+import Title from '../../components/title/Title'
 // import { useNavigate } from 'react-router-dom'
 // import { isAuthorized } from '../../utils/auth'
 import DashboardNav from '../../components/dashboardnav/DashboardNav'
+import Footer from '../../components/footer/Footer'
 const Dashboard = () => {
-    const name = localStorage.getItem('optiusername')
+    const name = localStorage.getItem('optiUsername')
 // useEffect(()=>{
 //     const authorised =isAuthorized()
 //     console.log(authorised)
@@ -16,7 +16,10 @@ const Dashboard = () => {
 // },[])
 return <> 
     <div className='dashboard-page'>
+    <Title/>
+    <h1 style={{color:'white'}}>Welcome {name}</h1>
     <DashboardNav/>
+    <Footer/>
     </div> 
     </>
 }
