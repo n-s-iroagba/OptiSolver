@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { MatrixContext } from '../../../context/SimplexContext';
 import { useContext } from 'react';
 import '../tableau.css';
-import InitialObjectiveCoefficient from './InitialObjectiveCoefficient';
+import ObjectiveCoefficient from './ObjectiveCoefficient';
 import { createMultipleColumns } from '../../../utils/createTableauHelper';
 import Empty from './Empty';
 import Crow from './Crow'; 
@@ -27,7 +27,7 @@ const ConstraintEquations = (props) => {
   return (
     <>
       <div className='center-tableau-wrapper'>
-        <InitialObjectiveCoefficient />
+        <ObjectiveCoefficient />
         <table className='single-column'>
           <thead>
             <tr>

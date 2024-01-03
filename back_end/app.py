@@ -19,6 +19,7 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 CORS(app)
 
+
 # Models
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,6 +27,7 @@ class Student(db.Model):
     email= db.Column(db.String(80), unique=True, nullable=False)
     password= db.Column(db.String(80), unique=True, nullable=False)
     solutions=db.relationship('Solution', cascade="all",backref = 'student' )
+
 class Solution(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     iteration= db.Column(db.Integer)
