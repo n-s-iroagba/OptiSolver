@@ -2,32 +2,24 @@ from flask import Flask,request,session,jsonify
 from flask_cors import CORS, cross_origin
 import matlab.engine
 import json
-from datetime import datetime
-from datetime import timedelta
-from datetime import timezone
-from utils import utils
-import os
-from flask import request,redirect
-from oauthlib.oauth2 import WebApplicationClient
-import requests,json,os
+from datetime import datetime,timedelta
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity,set_access_cookies,get_jwt
-from datetime import timedelta
 
+# Application configuration
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:97chocho@localhost/optisolver'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'your_secret_key'  # Change this to a secure random key
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=100)  # Set the expiration time for access token
-jwt = JWTManager(app)
 
+jwt = JWTManager(app)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 CORS(app)
 
-
-
+# Models
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -41,26 +33,16 @@ class Solution(db.Model):
     solution = db.Column(db.JSON)
     student_id = db.Column(db.Integer,db.ForeignKey('student.id'))
 
-    def __repr__(self):
-        return f'<User {self.username}>'
 
-
-def names():
-    names_list = []
-    try:
-        students = Student.query.all()
-    except:
-        return jsonify('error with username server')
-    for user in students:
-        names_list.append(user.username)
-    return json.dumps(names_list)
-
+#route handlers
 @app.route("/")
 def hello_world():
     with app.app_context():
         db.drop_all()
         db.create_all()
         return 'All tables dropped successfully.'
+
+
 @app.route('/solve/<int:student_id>',methods = ['POST'])
 @jwt_required()
 def solve_simplex(student_id):
@@ -157,8 +139,15 @@ def retrieve_history(student_id):
 
 
 @app.route('/names')
-def handle_names():
-    return names()
+def names():
+    names_list = []
+    try:
+        students = Student.query.all()
+    except:
+        return jsonify('error with username server')
+    for user in students:
+        names_list.append(user.username)
+    return json.dumps(names_list)
 @app.route('/continue/<int:student_id>')
 def retrieve_continuation(student_id):
     try:
