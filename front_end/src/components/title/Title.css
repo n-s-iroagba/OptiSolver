@@ -1,0 +1,18 @@
+@media only screen and (min-width: 768px) {
+    .logo img {
+       
+        width: 1.5cm;
+        height: 1.5cm;
+    }
+}
+.logo img{
+ display: flexbox;
+}
+.title-wrapper{
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+}
+.test{
+    width: 100vw;
+}

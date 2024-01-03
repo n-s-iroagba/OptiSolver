@@ -1,13 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home/Home"
 import RenderPage from "../pages/RenderPage";
-
 import SolveEntry from "../pages/SolveEntry";
 import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
-
 import Dashboard from "../pages/dashboard/Dashboard";
-import InitialSolve from "../pages/solve/InitialSolve";
+import Title from "../components/title/Title";
+
 export const router = createBrowserRouter([
 
 {
@@ -37,7 +36,7 @@ export const router = createBrowserRouter([
 },
 {
     path:'/Re',
-    element:<InitialSolve/>
+    element:<Title/>
 }
 
 ])
