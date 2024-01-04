@@ -4,6 +4,7 @@ import Entry from './entry/Entry';
 import InitialSolve from './solve/InitialSolve'
 import IterationSolve from './solve/IterationSolve';
 import FirstSolve from './solve/FirstSolve';
+import FResponseSolve from './solve/FResponseSolve';
 
 
 
@@ -17,8 +18,10 @@ window.onbeforeunload = function() {
         switch (page){
             case 0 : return <Entry/>
             case 1 : return <InitialSolve/>
-            case 2 : return <FirstSolve/> 
-            case 3 : return <IterationSolve/>
+            case 2 : return <FirstSolve/>
+            case 3 : return <FResponseSolve/>
+            case 4 : return <IterationSolve/>
+          
          
         
            

@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react'
-
 import { MatrixContext } from '../../context/SimplexContext'
 import { useContext} from 'react'
-import IterationTableau from '../../components/tableau/input/InitialTableau'
 import { solveSimplex } from '../../utils/api'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
 import './solve.css'
-import FirstIterationTableau from '../../components/tableau/input/FirstIterationTableau'
-
-
-const FirstResponseSolve= ()=>{
+import FResponseTableau from '../../components/tableau/Response/FResponseTableau'
+const FResponseSolve= ()=>{
     
     const{tableau,setPage,setSolvedArray,setLength,setIteration,iteration} = useContext(MatrixContext)
 
@@ -51,11 +47,11 @@ const FirstResponseSolve= ()=>{
     
         <div className='solve-page-wrapper'>
         <div><p className='solve-writeup' > Fill in the values for iteration number {iteration}</p></div>
-        <div className='initial-solve'><FirstIterationTableau/></div>
+        <div className='initial-solve'><FResponseTableau/></div>
         <br/>
         <div><Button variant='dark' onClick={solve}>Solve</Button></div>
         </div>
         </>
     )
 }
-export default FirstResponseSolve
+export default FResponseSolve

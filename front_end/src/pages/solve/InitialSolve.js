@@ -41,7 +41,7 @@ const InitialSolve = ()=>{
           setSolvedArray(solutionResponse.solution)
           setLength(length)
           setLoading('not-seen')
-           setPage(1)
+           setPage(2)
           }
         }
     
