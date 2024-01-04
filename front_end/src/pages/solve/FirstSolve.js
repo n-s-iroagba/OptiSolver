@@ -6,14 +6,14 @@ import FirstIterationTableau from '../../components/tableau/input/FirstIteration
 import { solveSimplex } from '../../utils/api'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-import { checkTableau } from '../../utils/checkTableau'
+import { checkFirstTableau } from '../../utils/checkTableau'
 
 import './solve.css'
 
 
 const FirstSolve = ()=>{
     
-    const{tableau,setPage,setSolvedArray,setLength,setIteration,iteration,solvedArray,responseTableau, setResponseTableau, setITableau,iTableau} = useContext(MatrixContext)
+    const{tableau,setPage,setSolvedArray,setLength,setIteration,iteration,solvedArray,responseTableau, setResponseTableau, setITableau,iTableau,dimensions} = useContext(MatrixContext)
 
 
     const navigate =  useNavigate()
@@ -33,7 +33,7 @@ const FirstSolve = ()=>{
 //     },[])
     
    const iterate = async() => {
-    const shouldAdvance= await checkTableau(iTableau, solvedArray, 0, dimensions, responseTableau, setResponseTableau, setITableau)
+    const shouldAdvance= await checkFirstTableau(iTableau, solvedArray, 0, dimensions, responseTableau, setResponseTableau, setITableau)
     if(shouldAdvance){ 
         setPage(3)
     }
