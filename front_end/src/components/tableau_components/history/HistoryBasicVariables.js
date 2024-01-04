@@ -3,7 +3,7 @@ import '../tableau.css'
 
 import Empty from '../Empty'
 
-const BasicVariables = (props) => {
+const HistoryBasicVariables = (props) => {
 
 return <>
     <div className='center-tableau-wrapper'>
@@ -26,4 +26,4 @@ return <>
     </div>
   </>
 }
-export default BasicVariables;
+export default HistoryBasicVariables;

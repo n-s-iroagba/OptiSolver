@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import '../tableau.css'
 import Empty from '../Empty'
 
+
 const HistoryConstants = (props) => {
 
 
@@ -22,7 +23,7 @@ const HistoryConstants = (props) => {
           }
         </tbody>
       </table>
-      <Empty/>
+      <Empty fValue = {props.fValue}/>
     </div>
   </>
 }

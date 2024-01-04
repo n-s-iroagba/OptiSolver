@@ -11,7 +11,7 @@ export const MatrixContextProvider = ({children}) => {
         basicVariables:[],
         constants:[],
         fValue:0,
-        crow:[],
+        crow:[0,0,0],
         date:null
     }
     const iTempTab = {

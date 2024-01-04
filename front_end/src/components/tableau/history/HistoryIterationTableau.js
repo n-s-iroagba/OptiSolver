@@ -9,7 +9,7 @@ import HistoryRatio from "../../tableau_components/history/HistoryRatio";
 
 const HistoryIterationTableau = () => {
     return (
-        <div>
+        <div className='tableau'>
             <HistoryBasicCoefficients/>
             <HistoryBasicVariables/>
             <HistoryConstraintEquations/>

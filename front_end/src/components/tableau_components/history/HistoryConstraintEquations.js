@@ -14,7 +14,7 @@ const dimensions = {
   numberOfColumns: 2
 }
 const ConstraintEquations = (props) => {
-  let { tableau, header,responseTableau } = useContext(MatrixContext)
+  let { tableau, header} = useContext(MatrixContext)
   
   return (<>
 
@@ -29,18 +29,24 @@ const ConstraintEquations = (props) => {
           </tr>
         </thead>
         <tbody className='tableau-body' >
-          {
-            responseTableau.constraintEquations.map((row, index) => {
-              return (<tr key={index}>{row}</tr>)
-            })
-          }
+         {
+  props.constraintEquations.map((rows, index) => {
+    return (
+      <tr key={index}>
+        {rows.map((row, i) => {
+          return <td key={i}>{row}</td>;
+        })}
+      </tr>
+    );
+  })
+}
         </tbody>
       </table >
-      <tr className='c-row'>{
+      <tr className='crow'>{
         
-        tableau.crow.map((cell, index) => (
-            <th contentEditable key={index}>
-              {cell}
+        props.crow.map((cell, index) => (
+            <th key={index}>
+             <td contentEditable>{cell}</td> 
             </th>))
 
       }</tr>

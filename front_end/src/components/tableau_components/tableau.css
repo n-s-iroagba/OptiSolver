@@ -145,3 +145,13 @@
 .right{
   border-top-right-radius: 40px;
 }
+.crow th, .crow td{
+  height: 1.5cm;
+  text-align: center;
+  color: white;
+  width: 1.5cm;
+  text-align: center;
+}
+.crow td{
+  padding-top: 0.4cm;
+}

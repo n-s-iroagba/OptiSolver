@@ -8,7 +8,7 @@ import '../Tableau.css'
 
 const HistoryTerminalTableau = () => {
     return (
-        <div>
+        <div  className='tableau'>
             <HistoryBasicCoefficients/>
             <HistoryBasicVariables/>
             <HistoryConstraintEquations/>

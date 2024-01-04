@@ -17,11 +17,11 @@ export const push = (e, i, variable, tableau, setTableau, j) => {
     setTableau(tempTab);
     console.log(tempTab);
 };
-export const fIpush = ( e,tableau, setTableau) => {
-    let tempTab = tableau;
+export const fIpush = ( e,iTableau, setITableau) => {
+    let tempTab = iTableau;
     let digit = Number(e.currentTarget.textContent);
     tempTab.fValue = digit
-    setTableau(tempTab);
+    setITableau(tempTab);
     console.log(tempTab);
 };
 export const createBasicVariables = (dimensions,setRows,tableau,setTableau)=>{
