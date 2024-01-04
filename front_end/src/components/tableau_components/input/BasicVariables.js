@@ -3,7 +3,7 @@ import '../tableau.css'
 import { useState } from 'react'
 import { MatrixContext } from '../../../context/SimplexContext'
 import { createBasicVariables } from '../../../utils/createTableauHelper'
-import Empty from './Empty'
+import Empty from '../Empty'
 
 const BasicVariables = (props) => {
 

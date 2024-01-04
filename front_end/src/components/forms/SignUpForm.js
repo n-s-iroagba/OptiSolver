@@ -3,22 +3,26 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Col } from 'react-bootstrap';
 import './forms.css';
 import { signUp } from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
+  const navigate = useNavigate();
   const [signUpDetails, setSignUpDetails] = useState({
     username: null,
     email: '',
     password: '',
-    confirmPassword: '', 
+    confirmPassword: '',
   });
+
   const isSignUpDetailsEmpty = () => {
     for (const key in signUpDetails) {
       if (signUpDetails.hasOwnProperty(key) && signUpDetails[key] === null) {
-        return true; 
+        return true;
       }
     }
-    return false; 
+    return false;
   };
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setSignUpDetails((prevDetails) => ({
@@ -26,6 +30,7 @@ const SignupForm = () => {
       [name]: value,
     }));
   };
+
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
@@ -34,20 +39,19 @@ const SignupForm = () => {
       return;
     }
     if (isSignUpDetailsEmpty()) {
-      event.preventDefault();
-      event.stopPropagation();
       alert('Please fill in all fields');
     } else {
-        console.log(signUpDetails)
-        localStorage.setItem('optiUsername', signUpDetails.username)
+      const signupResponse = await signUp(signUpDetails);
+      if (signupResponse) {
+        navigate('/dashboard');
+      }
     }
   };
   
-  
 
-  return (
+  return (    <>
     <div className="signup-container">
-      <Form noValidate onSubmit={handleSubmit}>
+      <Form  onSubmit={handleSubmit}>
         <Form.Group controlId="formUsername" as={Col} lg={6} className="mx-auto" >
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -93,14 +97,13 @@ const SignupForm = () => {
         </Form.Group>
         <br/>
         <div className="signup-button-wrapper">
-          <Button className="signup-button" variant="dark" type="submit">
-            Sign Up
-          </Button>
+            <Button className="signup-button" variant="dark" type="submit">
+              Sign Up
+            </Button>
           </div>
         </Form>
-      
-    </div>
+      </div>
+    </>
   );
 };
-
 export default SignupForm;

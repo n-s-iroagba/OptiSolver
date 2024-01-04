@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 
-import '../pages.css'
 import { MatrixContext } from '../../context/SimplexContext'
 import { useContext} from 'react'
 import InitialTableau from '../../components/tableau/solution/InitialTableau'
@@ -17,8 +16,6 @@ const InitialSolve = ()=>{
 
     const [loading,setLoading] = useState('not-seen')
     const [classname,setClassname] = useState('solve-page-wrapper')
-
-    const navigate =  useNavigate()
     
     const id = localStorage.getItem('optiUserId');
     const token = localStorage.getItem('optiUserToken')
@@ -35,19 +32,19 @@ const InitialSolve = ()=>{
 //     },[])
     
    const solve = async() => {
-    console.log(tableau)
-        // setClassname('not-seen')
-        // setLoading('seen')
-        // const solutionResponse = await solveSimplex(solveServerUrl,tableau,token)
-        // if (solutionResponse){
-        //     const length = solutionResponse.solution.length
-        //     setSolvedArray(solutionResponse.solution)
-        //     setLength(length)
-        //     setIteration(1)
-        //     setLoading('not-seen')
-        //     setPage(1)
-        // }
-    }  
+         setClassname('not-seen')
+        setLoading('seen')
+        const solutionResponse = await solveSimplex(url,tableau,token)
+         if (solutionResponse){
+           const length = solutionResponse.solution.length
+           const savedSolution = JSON.stringify(solutionResponse)
+          setSolvedArray(solutionResponse.solution)
+          setLength(length)
+          setLoading('not-seen')
+           setPage(1)
+          }
+        }
+    
     
     return(
         <>

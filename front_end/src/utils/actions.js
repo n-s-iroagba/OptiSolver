@@ -5,4 +5,11 @@ export const loadUserName =  (details,setDetails)=>{
   setDetails(tempDetails)
 }
 
+export function isValidMatrix(matrix) {
 
+  if ('numberOfRows' in matrix && 'numberOfColumns' in matrix) {
+    const isValidRows = matrix.numberOfRows > 1;
+    const isValidColumns = matrix.numberOfColumns > matrix.numberOfRows + 1;
+    return isValidRows && isValidColumns;
+  }
+}

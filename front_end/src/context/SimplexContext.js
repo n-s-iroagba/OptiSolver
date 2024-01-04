@@ -27,14 +27,14 @@ export const MatrixContextProvider = ({children}) => {
     const [header, setHeader] = useState([])
     const [dimensions, setDimensions] = useState( {
         numberOfRows:2,
-        numberOfColumns:4
+        numberOfColumns:3
     })
     const[iteration, setIteration]= useState(1)
     const [change,setChange] = useState(true)
     const [index, setIndex] = useState(0)
     const [tableau, setTableau] = useState(tempTab)
     const [iTableau,setITableau] = useState(iTempTab)
-    const [rTableau,setRTableau] = useState ({
+    const [responseTableau,setResponseTableau] = useState ({
         basicCoefficients:[],
         constraintEquations:[],
         basicVariables:[],
@@ -53,7 +53,7 @@ export const MatrixContextProvider = ({children}) => {
     
     
         return<MatrixContext.Provider 
-        value={{details,setDetails,iteration, setIteration,length,setLength,rTableau,setRTableau,page,setPage,index, setIndex,solvedArray, setSolvedArray,dimensions,setDimensions,tableau,setTableau,iTableau,setITableau,header, setHeader,change,setChange}}>
+        value={{details,setDetails,iteration, setIteration,length,setLength,responseTableau,setResponseTableau,page,setPage,index, setIndex,solvedArray, setSolvedArray,dimensions,setDimensions,tableau,setTableau,iTableau,setITableau,header, setHeader,change,setChange}}>
             {children}
         </MatrixContext.Provider>
 }

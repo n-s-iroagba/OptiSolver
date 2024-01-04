@@ -1,5 +1,5 @@
 import React from "react";
-import '../tableau.css'
+import './tableau.css'
 
 
 const Empty = (props) => {

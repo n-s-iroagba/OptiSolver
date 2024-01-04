@@ -22,9 +22,48 @@ export const solveSimplex = async(url,data,token)=>{
 export const getNames = async ()=>{
     return await axios.get(getNamesUrl)
 }
-export const login = async(details)=>{
-    return await axios.post(loginUrl,details)
-}
-export const signUp = async(details)=>{
-    return await axios.post(registerUrl,details)
-}
+
+export const login = async (userData) => {
+  try {
+    const response = await axios.post('http://localhost:5000/login', userData);
+
+    if (response.status === 200 || response.status === 201) {
+      const authToken = response.data.token;
+      const id = response.data.id;
+     console.log(response)
+
+      localStorage.setItem('optiAuthToken', authToken);
+      localStorage.setItem('optiUserName', JSON.parse(response.data.username));
+      localStorage.setItem('optiUserId', id);
+
+      return true;
+    } else {
+      console.error('Failed to login user. Server responded with:', response.status);
+      return false;
+    }
+  } catch (error) {
+    console.error('Error during user login:', error.message);
+    return false;
+  }
+};
+
+
+export const signUp = async (userData) => {
+  try {
+    const response = await axios.post(registerUrl, userData);
+    if (response.status === 200 || response.status === 201) {
+      const authToken = response.data.token;
+      const id = response.data.id;
+      localStorage.setItem('optiAuthToken', authToken)
+      localStorage.setItem('optiUserName', userData.username)
+      localStorage.setItem('optiUserId', id)
+      return true;
+    } else {
+      alert('Failed to register user. Server responded with:', response.status);
+      return false;
+    }
+  } catch (error) {
+    console.error('Error during user registration:', error.message);
+  
+  }
+};

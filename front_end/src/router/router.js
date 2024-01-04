@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home/Home"
 import RenderPage from "../pages/RenderPage";
-import SolveEntry from "../pages/SolveEntry";
 import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
 import Dashboard from "../pages/dashboard/Dashboard";
+
+import IterationSolve from "../pages/solve/IterationSolve";
 
 
 
@@ -16,12 +17,12 @@ export const router = createBrowserRouter([
     element: <Home/>,
 },
 {
-    path:'/solve-entry',
-    element: <SolveEntry/>
+    path:'/practice',
+    element:<RenderPage/>
 },
 {
-    path:'/solve',
-    element: <RenderPage/>
+    path:'/re',
+    element: <IterationSolve/>
 },
 {
     path:'/dashboard',
@@ -44,5 +45,9 @@ export const router = createBrowserRouter([
 path:'/dashboard',
 element:<Dashboard/>
 },
+// {
+//     path:'/practice',
+//     element:<SignUp/>
+// },
 
 ])

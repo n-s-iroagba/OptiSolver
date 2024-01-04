@@ -1,7 +1,7 @@
 import React from 'react'
 import '../tableau.css'
 
-import Empty from './Empty'
+import Empty from '../Empty'
 
 const BasicVariables = (props) => {
 

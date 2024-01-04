@@ -1,11 +1,11 @@
 
 
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { MatrixContext } from '../../../context/SimplexContext';
 import { useContext } from 'react';
 import '../tableau.css'
-import ObjectiveCoefficient from '../ObjectiveCoefficient';
-import { createMultipleColumn } from '../../../utils/createTableauHelper';
+import HistoryObjectiveCoefficient from './HistoryObjectiveCoefficient';
+
 
 
 
@@ -14,12 +14,12 @@ const dimensions = {
   numberOfColumns: 2
 }
 const ConstraintEquations = (props) => {
-  let { tableau, header } = useContext(MatrixContext)
+  let { tableau, header,responseTableau } = useContext(MatrixContext)
   
   return (<>
 
     <div className='center-tableau-wrapper'>
-      <ObjectiveCoefficient />
+      <HistoryObjectiveCoefficient />
       <table className='single-column'>
         <thead >
           <tr >{

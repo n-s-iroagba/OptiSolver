@@ -3,16 +3,18 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { MatrixContext } from "../../context/SimplexContext";
 import { login } from "../../utils/api";
 import './forms.css'
 
 const LoginForm = () => {
   const navigate = useNavigate()
-  const {details,setDetails} = useContext(MatrixContext)
+  const [signInDetails, setSignInDetails] = useState({
+    email: '',
+    password: ''
+  })
   const [validated,setValidated] = useState(false)
   
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -20,22 +22,23 @@ const LoginForm = () => {
       event.stopPropagation();
     }
     setValidated(true);
-    login(details)
-    navigate('/welcome')
+   const loginResponse = await login(signInDetails)
+    if (loginResponse) {
+      navigate('/dashboard');
+    }else{
+    alert('invalid login email or password')
+    }
   };
 
 
 
-  const handleChangeName = async (e) => {
-    let tempDetails= { ...details}
-    tempDetails.username = e.target.value
-    await setDetails(tempDetails)
-  }
-  const handleChangePassword= async (e) => {
-    let tempDetails= { ...details}
-    tempDetails.password = e.target.value
-    await setDetails(tempDetails)
-  }
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setSignInDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
  
 
   return (
@@ -43,13 +46,13 @@ const LoginForm = () => {
     <div className='signup-container'>
       <Form validated={validated} onSubmit={submit}>
         <Form.Group as={Col} lg={6} className="mx-auto">
-          <Form.Label className="text-light">Username</Form.Label>
+          <Form.Label className="text-light">email</Form.Label>
           <Form.Control
             type="text"
-            placeholder="username"
-            value={details.name}
-            onChange={(e) => handleChangeName(e)}
-            name="name"
+            placeholder="email"
+            value={signInDetails.name}
+            onChange={(e) => handleOnChange(e)}
+            name="email"
             required />
         </Form.Group>
         <br />
@@ -57,15 +60,16 @@ const LoginForm = () => {
           <Form.Label className="text-light">Password</Form.Label>
           <Form.Control
             required
+            name='password'
             type="password"
             placeholder='password'
-            value={details.password}
-            onChange={(e) => handleChangePassword(e)} />
+            value={signInDetails.password}
+            onChange={(e) =>  handleOnChange(e)} />
         </Form.Group>
       </Form>
       </div>
     <div className="signup-button-wrapper">
-          <Button className="signup-button" variant="dark" type="submit">
+          <Button className="signup-button" variant="dark" onClick={submit}>
             Login
           </Button>
           </div>

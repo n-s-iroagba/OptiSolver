@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useContext } from 'react'
-import { MatrixContext } from '../../features/solve_simplex/context/SimplexContext'
+import { MatrixContext } from '../../../context/SimplexContext'
 
-import './tableau.css'
+import '../tableau.css'
 
 const ObjectiveCoefficient = ()=>{
     const {tableau,setTableau} = useContext(MatrixContext)

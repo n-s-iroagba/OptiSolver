@@ -10,7 +10,7 @@ const verifyToken =  (token) => {
 };
 
 export const isAuthorized = ()=>{
-    const token = localStorage.getItem('optiUserToken')
+    const token = localStorage.getItem('optiAuthToken')
    
     return  verifyToken(token)
     

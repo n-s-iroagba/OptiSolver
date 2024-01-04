@@ -3,7 +3,7 @@ import '../tableau.css'
 import { useState } from 'react'
 import { createSingleColumn } from '../../../utils/createTableauHelper'
 import { MatrixContext } from '../../../context/SimplexContext'
-import Empty from './Empty'
+import Empty from '../Empty'
 
 const Constants = (props) => {
 

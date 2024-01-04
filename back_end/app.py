@@ -46,7 +46,6 @@ def hello_world():
 
 
 @app.route('/solve/<int:student_id>',methods = ['POST'])
-@jwt_required()
 def solve_simplex(student_id):
     unsolved_tableau = json.dumps(request.get_json())
     solution = {}
@@ -63,7 +62,7 @@ def solve_simplex(student_id):
     finally:
         db.session.close()
         response_data = {
-            'problem': unsolved_tableau,
+            'problem': json.loads(unsolved_tableau),
             'solution': json.loads(solution),
             'iteration': 0,
             'student_id': student_id
@@ -71,9 +70,8 @@ def solve_simplex(student_id):
 
     return jsonify(response_data)
 
-@app.route('/student',methods = ['POST'])
+@app.route('/register',methods = ['POST'])
 def register():
-    print(request.json.get('username'))
     username = json.dumps(request.json.get('username'))
     password = json.dumps(request.json.get('password'))
     email = json.dumps(request.json.get('email'))
@@ -97,23 +95,24 @@ def register():
     return response, 200
 
        
-
-@app.route("/login",methods = ['POST'])
+@app.route("/login", methods=['POST'])
 def login():
-    email = json.dumps(request.json.get('username'))
+    email = json.dumps(request.json.get('email'))
     password = json.dumps(request.json.get('password'))
+    print(email)
     try:
         student = Student.query.filter_by(email=email).first()
     except:
         return jsonify({"msg": "Error logging in"}), 400
     if student is None:
-        return jsonify({"msg": "no user with this email found"}), 400
+        return jsonify({"msg": "No user with this username found"}), 400
     entered_password = password.encode('utf-8')
-    if bcrypt.checkpw(entered_password, student.password):
+    if bcrypt.check_password_hash( student.password,entered_password):
         access_token = create_access_token(identity=student.username)
-        return jsonify(access_token=access_token), 200
+        return json.dumps({"token": access_token, "id": student.id,"username":str(student.username)})
     else:
-        return jsonify({"msg": "Invalid credentials"}), 401
+        return json.dumps({"msg": "Invalid login credentials"})
+
 
 
 @app.after_request

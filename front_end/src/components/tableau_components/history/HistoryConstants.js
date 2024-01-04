@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import '../tableau.css'
-import Empty from './Empty'
+import Empty from '../Empty'
 
 const HistoryConstants = (props) => {
 

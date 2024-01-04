@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import '../tableau.css';
 import ObjectiveCoefficient from './ObjectiveCoefficient';
 import { createMultipleColumns } from '../../../utils/createTableauHelper';
-import Empty from './Empty';
+import Empty from '../Empty';
 import Crow from './Crow'; 
 
 const ConstraintEquations = (props) => {
