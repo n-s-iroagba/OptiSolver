@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { MatrixContext } from '../../context/SimplexContext'
 import { useContext} from 'react'
-import InitialTableau from '../../components/tableau/solution/InitialTableau'
+import InitialTableau from '../../components/tableau/input/InitialTableau'
 import { solveSimplex } from '../../utils/api'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
