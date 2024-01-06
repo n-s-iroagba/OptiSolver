@@ -4,8 +4,8 @@ import { MatrixContext } from '../../../context/SimplexContext'
 
 import '../tableau.css'
 
-const ObjectiveCoefficient = ()=>{
-    const {tableau,setTableau} = useContext(MatrixContext)
+const HistoryObjectiveCoefficient = ()=>{
+    const {tableau} = useContext(MatrixContext)
     return<>
    
    <table >
@@ -20,4 +20,4 @@ const ObjectiveCoefficient = ()=>{
    
     </>
 }
-export default ObjectiveCoefficient;
+export default HistoryObjectiveCoefficient;

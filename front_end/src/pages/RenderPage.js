@@ -21,12 +21,7 @@ window.onbeforeunload = function() {
             case 2 : return <FirstSolve/>
             case 3 : return <FResponseSolve/>
             case 4 : return <IterationSolve/>
-          
-         
-        
-           
-           
-
+            case 5 : return <FResponseSolve/>
             default : return  <Entry/>
         }
     }

@@ -11,7 +11,7 @@ export const MatrixContextProvider = ({children}) => {
         basicVariables:[],
         constants:[],
         fValue:0,
-        crow:[0,0,0],
+        crow:[],
         date:null
     }
     const iTempTab = {
@@ -40,7 +40,7 @@ export const MatrixContextProvider = ({children}) => {
         basicVariables:[],
         constants:[],
         ratio:[],
-        fValue:0,
+        fValue:null,
         crow:[]
     })
     const tempDetails={username:'',password:'',email:''}

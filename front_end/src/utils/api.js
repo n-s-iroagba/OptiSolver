@@ -30,7 +30,7 @@ export const login = async (userData) => {
     if (response.status === 200 || response.status === 201) {
       const authToken = response.data.token;
       const id = response.data.id;
-     console.log(response)
+    
 
       localStorage.setItem('optiAuthToken', authToken);
       localStorage.setItem('optiUserName', JSON.parse(response.data.username));

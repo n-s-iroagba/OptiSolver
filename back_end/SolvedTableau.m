@@ -3,7 +3,7 @@ classdef SolvedTableau
   basicCoefficients
   constraintEquations 
   constants
-  cRow
+  crow
   basicVariables
   ratio
   fValue
@@ -14,7 +14,7 @@ classdef SolvedTableau
          object.basicCoefficients =basic_coefficient_matrix
          object.constraintEquations =constraint_equation_matrix
          object.constants = constant_matrix
-         object.cRow= c_row
+         object.crow= c_row
          object.ratio=ratio_matrix
          object.basicVariables = basic_variable
          object.fValue = fValue

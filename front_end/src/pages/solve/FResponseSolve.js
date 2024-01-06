@@ -7,13 +7,10 @@ import { useNavigate } from 'react-router-dom'
 
 import './solve.css'
 import FResponseTableau from '../../components/tableau/Response/FResponseTableau'
+import { checkFirstTableau } from '../../utils/checkTableau'
 const FResponseSolve= ()=>{
     
-    const{tableau,setPage,setSolvedArray,setLength,setIteration,iteration} = useContext(MatrixContext)
-
-
-    const navigate =  useNavigate()
-    
+    const{setIndex,iTableau,setPage, dimensions,solvedArray,responseTableau,iteration,setResponseTableau,setIteration,setITableau,page} = useContext(MatrixContext)    
     const id = localStorage.getItem('optiUserId');
     const token = localStorage.getItem('optiUserToken')
 
@@ -29,17 +26,20 @@ const FResponseSolve= ()=>{
 //     },[])
     
    const solve = async() => {
-    console.log(tableau)
-        const solutionResponse = await solveSimplex(url,tableau,token)
-         if (solutionResponse){
-           const length = solutionResponse.solution.length
-           console.log(solutionResponse)
-        setSolvedArray(solutionResponse.solution)
-        //     setLength(length)
-        //     setIteration(1)
-        //     setLoading('not-seen')
-        //     setPage(1)
-          } // }
+ 
+        const shouldAdvance = await checkFirstTableau(iTableau, solvedArray, 0, dimensions, responseTableau, setResponseTableau, setITableau)
+         if (shouldAdvance){
+           setPage(4)
+           setIteration(2)
+           setIndex(1)
+       
+        }else{
+            console.log(page)
+            if(page===5){
+                setPage(3)
+            }else{ setPage(5)}
+            
+        }
     }  
     
     return(

@@ -15,14 +15,12 @@ export const push = (e, i, variable, tableau, setTableau, j) => {
         tempTab[variable][i] = digit;
     }
     setTableau(tempTab);
-    console.log(tempTab);
-};
+}
 export const fIpush = ( e,iTableau, setITableau) => {
     let tempTab = iTableau;
     let digit = Number(e.currentTarget.textContent);
     tempTab.fValue = digit
     setITableau(tempTab);
-    console.log(tempTab);
 };
 export const createBasicVariables = (dimensions,setRows,tableau,setTableau)=>{
     let tempBv=[]

@@ -1,60 +1,55 @@
-
-
 import React from 'react';
-import { MatrixContext } from '../../../context/SimplexContext';
 import { useContext } from 'react';
-import '../tableau.css'
+import { MatrixContext } from '../../../context/SimplexContext';
+import '../tableau.css';
 import HistoryObjectiveCoefficient from './HistoryObjectiveCoefficient';
-
-
-
+import Crow from '../input/Crow';
+import Empty from '../Empty';
+import RCrow from '../response/RCrow'
 
 const dimensions = {
   numberOfRows: 2,
   numberOfColumns: 2
-}
-const ConstraintEquations = (props) => {
-  let { tableau, header} = useContext(MatrixContext)
-  
-  return (<>
+};
 
-    <div className='center-tableau-wrapper'>
-      <HistoryObjectiveCoefficient />
-      <table className='single-column'>
-        <thead >
-          <tr >{
-            header.map((variable, index) => {
-              return (<th key={index}>{variable}</th>)
+const HistoryConstraintEquations = (props) => {
+  let { header } = useContext(MatrixContext);
+
+  return (
+    <>
+      <div className='center-tableau-wrapper'>
+        <HistoryObjectiveCoefficient />
+        <table className='single-column'>
+          <thead>
+            <tr>
+              {header.map((variable, index) => {
+                return <th key={index}>{variable}</th>;
+              })}
+            </tr>
+          </thead>
+          <tbody className='tableau-body'>
+            {props.constraintEquations.map((rows, index) => {
+              return (
+                <tr key={index}>
+                  {rows.map((row, i) => {
+                    return <td key={i}>{row}</td>;
+                  })}
+                </tr>
+              );
             })}
-          </tr>
-        </thead>
-        <tbody className='tableau-body' >
-         {
-  props.constraintEquations.map((rows, index) => {
-    return (
-      <tr key={index}>
-        {rows.map((row, i) => {
-          return <td key={i}>{row}</td>;
-        })}
-      </tr>
-    );
-  })
-}
-        </tbody>
-      </table >
-      <tr className='crow'>{
-        
-        props.crow.map((cell, index) => (
-            <th key={index}>
-             <td contentEditable>{cell}</td> 
-            </th>))
+          </tbody>
+        </table>
 
-      }</tr>
-
-    </div>
+        {props.crow === 'response' ? (
+          <RCrow />
+        ) : props.crow === 'iteration' ? (
+          <Crow />
+        ) : (
+          <Empty />
+        )}
+      </div>
     </>
-    )
-}
+  );
+};
 
-
-export default ConstraintEquations;
+export default HistoryConstraintEquations;

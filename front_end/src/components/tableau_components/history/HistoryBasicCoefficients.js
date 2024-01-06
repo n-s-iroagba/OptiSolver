@@ -3,6 +3,7 @@ import '../tableau.css';
 import Empty from '../Empty';
 
 const HistoryBasicCoefficients = (props) => {
+
   return (
     <>
       <div className='left-tableau-wrapper'>
@@ -14,12 +15,12 @@ const HistoryBasicCoefficients = (props) => {
             </tr>
           </thead>
           <tbody className='tableau-body'>
-          {
-            props.basicCoefficients.map((value, index) => {
-              return (<tr key={index}><td>{value}</td></tr>)
-            })
-          }
-        </tbody>
+            {
+              props.basicCoefficients?.map((value, index) => (
+                <tr key={index}><td>{value}</td></tr>
+              ))
+            }
+          </tbody>
         </table>
         <Empty />
       </div>
@@ -28,3 +29,4 @@ const HistoryBasicCoefficients = (props) => {
 };
 
 export default HistoryBasicCoefficients;
+

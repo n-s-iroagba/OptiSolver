@@ -5,18 +5,19 @@ import { MatrixContext } from '../../../context/SimplexContext'
 import '../tableau.css'
 
 
-const Crow = (props) => {
+const Crow = () => {
 
   const [rows, setRows] = useState([])
-const { dimensions } = useContext(MatrixContext)
+const { dimensions,setITableau,iTableau} = useContext(MatrixContext)
 
   useEffect(()=>{
   let variable= 'crow'
-  createSingleColumn(dimensions.numberOfRows,setRows,props.tableau,props.setTableau,variable)
+  createSingleColumn(dimensions.numberOfColumns,setRows,iTableau,setITableau,variable)
+
 },[])
 return (
     <>
-    <table>
+    <table  className='crow'>
         <tbody>
           <tr>{
             rows.map((row, index) => {

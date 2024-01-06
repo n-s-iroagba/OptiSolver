@@ -1,10 +1,9 @@
 import React from 'react'
 import '../tableau.css'
-
 import Empty from '../Empty'
 
 const HistoryBasicVariables = (props) => {
-
+ 
 return <>
     <div className='center-tableau-wrapper'>
      <Empty text='Ci' position='inverse-bottom'/>

@@ -8,7 +8,7 @@ const RRatio = () => {
 
     return <>
            <div className='right-tableau-wrapper'>
-     <Empty position='inverse-bottom'/>
+     <Empty position='inverse-bottom' type={"right"}/>
       <table className='single-column' >
         <thead>
           <tr>

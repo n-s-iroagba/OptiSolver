@@ -14,7 +14,7 @@ const Ratio = (props) => {
 }
 
   useEffect(()=>{
-  let variable= iTableau.ratio
+  let variable= 'ratio'
   createSingleColumn(dimensions.numberOfRows,setRows,iTableau,setITableau,variable)
 },[])
   return <>

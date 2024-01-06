@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { MatrixContext } from '../../context/SimplexContext'
 import { useContext} from 'react'
-import IterationTableau from '../../components/tableau/input/InitialTableau'
+import IterationTableau from '../../components/tableau/input/IterationTableau'
 import { solveSimplex } from '../../utils/api'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
@@ -32,11 +32,11 @@ const IterationSolve = ()=>{
 //     },[])
     
    const solve = async() => {
-    console.log(tableau)
+   
         const solutionResponse = await solveSimplex(url,tableau,token)
          if (solutionResponse){
            const length = solutionResponse.solution.length
-           console.log(solutionResponse)
+           
         setSolvedArray(solutionResponse.solution)
         //     setLength(length)
         //     setIteration(1)

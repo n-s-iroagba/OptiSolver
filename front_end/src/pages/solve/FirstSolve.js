@@ -35,14 +35,14 @@ const FirstSolve = ()=>{
    const iterate = async() => {
     console.log(tableau)
     const shouldAdvance= await checkFirstTableau(iTableau, solvedArray, 0, dimensions, responseTableau, setResponseTableau, setITableau)
-    if(shouldAdvance){ 
+    console.log(solvedArray)
+    if(!shouldAdvance){ 
         setPage(3)
     }
 }
     
     return(
         <>
-    
         <div className='solve-page-wrapper'>
         <div><p className='solve-writeup' > Fill in the values for iteration number {iteration}</p></div>
         <div className='initial-solve'><FirstIterationTableau/></div>
