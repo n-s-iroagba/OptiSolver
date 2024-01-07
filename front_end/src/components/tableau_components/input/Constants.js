@@ -41,7 +41,11 @@ else{
           }
         </tbody>
       </table>
-      <Empty/>
+      {props.fValue === 'iteration' ? (
+          <FValue />
+        ) : (
+          <Empty />
+        )}
     </div>
   </>
 })

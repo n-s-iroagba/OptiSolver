@@ -1,26 +1,38 @@
 import React from 'react'
 import { useContext } from 'react'
+import Empty from '../Empty'
 import { MatrixContext } from '../../../context/SimplexContext'
 import '../tableau.css'
 
-const RConstants = () => {
+const RConstants = (props) => {
     const { responseTableau } = useContext(MatrixContext)
+    let className = ''
+let emptyName = ''
+if(props.rightEnd){
+   className = 'right-tableau-wrapper'
+   emptyName= 'right'
+}
+else{
+  className = 'center-tableau-wrapper'
+}
+
     
     return <>
-        <div className='ic-wrapper'>
-            <div style={{ height: '1.2cm', borderLeft: '3px solid grey' }}></div>
-            <table className='iconstants'>
-            <thead>
-                    <tr><th><td>Constants</td></th>     
-                    </tr>
-                </thead>
-                <tbody>
+        <div className={className}>
+     <Empty  type ={emptyName} constant = {true} position='inverse-bottom'/>
+      <table className='constants' >
+        <thead>
+          <tr>
+            <th>Constants</th>
+          </tr>
+        </thead>
+        <tbody className='tableau-body'>
                     {
                         responseTableau.constants.map((row, index) => {
                             return (<tr key={index}>{row}</tr>)
                         })
                     }
-                    <tr className='f-box' >{rTableau.fValue}</tr>
+                    <tr className='f-box' >{responseTableau.fValue}</tr>
                 </tbody>
             </table>
         </div>

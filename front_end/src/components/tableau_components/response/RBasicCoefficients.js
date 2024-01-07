@@ -6,7 +6,7 @@ import    Empty from '../Empty'
 const RBasicCoefficients = () => {
   const {responseTableau} = useContext(MatrixContext)
   return <>
-    <div className='right-tableau-wrapper'>
+    <div className='left-tableau-wrapper'>
     <Empty position='bottom'/>
       <table className='single-column'>
         <thead>

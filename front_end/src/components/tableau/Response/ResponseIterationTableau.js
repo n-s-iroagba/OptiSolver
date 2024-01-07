@@ -8,7 +8,7 @@ import '../Tableau.css'
 
 const ResponseIterationTableau = () => {
     return (
-        <div>
+        <div className='tableau'>
             <RBasicCoefficients/>
             <RBasicVariables/>
             <RConstraintEquations/>

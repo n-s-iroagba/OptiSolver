@@ -4,31 +4,32 @@ import { MatrixContext } from '../../../context/SimplexContext'
 import React , { useContext, useEffect } from 'react';
 import '../tableau.css'
 import HistoryObjectiveCoefficient from '../history/HistoryObjectiveCoefficient';
+import RFValue from './RFValue';
 
 const RConstraintEquations=React.memo(()=>{
   const {header,responseTableau} = useContext(MatrixContext)
  
  
   
-  return (<>
+  return (<> 
 
-    <div className='ce-wrapper'>
+    <div  className='center-tableau-wrapper'>
     <HistoryObjectiveCoefficient />
-      <table className='ce'>
+      <table className='single-column'>
       <tr >{
             header.map((variable, index) => {
-              return (<th key={index}>{variable}</th>)
+              return (<th style={{ height: '1.6cm' }}  key={index}>{variable}</th>)
             })}
           </tr>
         <tbody >
           {
-             rTableau.constraintEquations.map((row, index) => {
+             responseTableau.constraintEquations.map((row, index) => {
               return (<tr key={index}>{row}</tr>)
             })
           }
           
           {
-            responseTableau.cRow.map((coefficient, index) => {
+            responseTableau.crow.map((coefficient, index) => {
               return (<th className='last-row' style={{borderTop:'2px solid grey',height:'1.5cm'}} key={index}>{coefficient}</th>)
             })
           }
@@ -37,6 +38,7 @@ const RConstraintEquations=React.memo(()=>{
         </tbody>
 
       </table >
+      <RFValue/>
     </div></>)
 })
 
