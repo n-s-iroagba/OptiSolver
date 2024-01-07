@@ -6,8 +6,6 @@ import HistoryConstraintEquations from  "../../tableau_components/history/Histor
 import HistoryConstants from  "../../tableau_components/history/HistoryConstants";
 import '../Tableau.css'
 import { MatrixContext } from "../../../context/SimplexContext";
-import { preventNewLine } from "../../../utils/createTableauHelper";
-import { fIpush } from "../../../utils/createTableauHelper";
 
 const FirstIterationTableau = () => {
 const {tableau,iTableau, setITableau} = useContext(MatrixContext)
@@ -16,11 +14,6 @@ useEffect(() => {
     tempTab.crow = tableau.crow
     setITableau(tempTab)
 })
-const fValue =<td style={{paddingLeft:'1cm'}}contentEditable onKeyDown={
-    (e) => preventNewLine(e)} onInput={
-        (e) => {
-            fIpush(e, iTableau, setITableau)
-        }}>0</td>
 
 
     return (

@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
-import '../tableauComponents.css'
+import '../tableau.css'
 import { MatrixContext } from '../../../context/SimplexContext'
+import Empty from '../Empty'
 
 const RBasicVariables = () => {
- const {rTableau} = useContext(MatrixContext)
+ const {responseTableau} = useContext(MatrixContext)
   return <>
     <div className='center-tableau-wrapper'>
      <Empty text='Ci' position='inverse-bottom'/>

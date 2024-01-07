@@ -22,7 +22,7 @@ const ConstraintEquations = (props) => {
       variable,
       setHeader
     );
-  }, []);
+  });
 
   return (
     <>

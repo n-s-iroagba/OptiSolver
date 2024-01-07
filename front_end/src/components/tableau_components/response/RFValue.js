@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { MatrixContext } from "../../../context/SimplexContext";
-import { useEffect } from "react";
 import { preventNewLine } from "../../../utils/createTableauHelper";
 import { fIpush } from "../../../utils/createTableauHelper";
 
@@ -10,7 +9,7 @@ const RFValue =()=>{
 const {responseTableau,iTableau,setITableau} = useContext(MatrixContext)
 let tempFValue;
 
-if (responseTableau.fvalue==true){
+if (responseTableau.fvalue===true){
     const content = (
         <span
             onKeyDown={(e) => preventNewLine(e)}

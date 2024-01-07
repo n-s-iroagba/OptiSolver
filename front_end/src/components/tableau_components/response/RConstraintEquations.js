@@ -1,9 +1,9 @@
 
-import { MatrixContext } from '../../../features/solve_simplex/context/SimplexContext';
+
+import { MatrixContext } from '../../../context/SimplexContext'
 import { useContext, useEffect } from 'react';
-import '../tableauComponents.css'
-import { useState } from 'react';
-import ObjectiveCoefficient from '../ObjectiveCoefficient';
+import '../tableau.css'
+import HistoryObjectiveCoefficient from '../history/HistoryObjectiveCoefficient';
 
 const RConstraintEquations=()=>{
   const {header,rTableau} = useContext(MatrixContext)
@@ -16,7 +16,7 @@ const RConstraintEquations=()=>{
   return (<>
 
     <div className='ce-wrapper'>
-    <ObjectiveCoefficient />
+    <HistoryObjectiveCoefficient />
       <table className='ce'>
       <tr >{
             header.map((variable, index) => {

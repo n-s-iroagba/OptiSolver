@@ -7,10 +7,6 @@ import Crow from '../input/Crow';
 import Empty from '../Empty';
 import RCrow from '../response/RCrow'
 
-const dimensions = {
-  numberOfRows: 2,
-  numberOfColumns: 2
-};
 
 const HistoryConstraintEquations = (props) => {
   let { header } = useContext(MatrixContext);

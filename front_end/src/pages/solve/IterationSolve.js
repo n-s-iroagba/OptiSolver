@@ -1,59 +1,45 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect} from 'react'
 import { MatrixContext } from '../../context/SimplexContext'
-import { useContext} from 'react'
+import { useContext } from 'react'
 import IterationTableau from '../../components/tableau/input/IterationTableau'
-import { solveSimplex } from '../../utils/api'
+import { checkTableau } from '../../utils/checkTableau'
 import { Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
-
 import './solve.css'
 
 
-const IterationSolve = ()=>{
-    
-    const{tableau,setPage,setSolvedArray,setLength,setIteration,iteration} = useContext(MatrixContext)
+const IterationSolve = () => {
+    const { setPage, length, setIteration, iteration, solvedArray, iTableau, setITableau, responseTableau, setResponseTableau, dimensions, } = useContext(MatrixContext)
 
+    useEffect(() => {
 
-    const navigate =  useNavigate()
-    
-    const id = localStorage.getItem('optiUserId');
-    const token = localStorage.getItem('optiUserToken')
+        if (iteration === length) {
+            setPage(8)
 
-    const url = `http://localhost:5000/solve/${id}`
+        }
+    }, [iteration,length,setPage])
 
-//     useEffect(()=>{
+    const check = async () => {
 
-//        if(!token||token===''){
-//        alert('kindly login to access optiSolver')
-//         navigate('/login')
-//        }
+        const shouldAdvance = await checkTableau(iTableau, solvedArray, iteration - 1, dimensions, responseTableau, setResponseTableau, setITableau)
 
-//     },[])
-    
-   const solve = async() => {
-   
-        const solutionResponse = await solveSimplex(url,tableau,token)
-         if (solutionResponse){
-           const length = solutionResponse.solution.length
-           
-        setSolvedArray(solutionResponse.solution)
-        //     setLength(length)
-        //     setIteration(1)
-        //     setLoading('not-seen')
-        //     setPage(1)
-          } // }
-    }  
-    
-    return(
+        if (shouldAdvance) {
+            setPage(6)
+            setIteration(iteration + 1)
+        }
+        else {
+            setPage(4)
+            setIteration(2)
+        }
+    }
+
+    return (
         <>
-    
-        <div className='solve-page-wrapper'>
-        <div><p className='solve-writeup' > Fill in the values for iteration number {iteration}</p></div>
-        <div className='initial-solve'><IterationTableau/></div>
-        <br/>
-        <div><Button variant='dark' onClick={solve}>Solve</Button></div>
-        </div>
+         <div className='solve-page-wrapper'>
+                <div><p className='solve-writeup' > Fill in the values for iteration number {iteration}</p></div>
+                <div className='initial-solve'><IterationTableau /></div>
+                <br />
+                <div><Button variant='dark' onClick={check}>check for iteration {iteration}</Button></div>
+            </div>
         </>
     )
 }

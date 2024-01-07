@@ -13,7 +13,7 @@ import '../Tableau.css'
 const FResponseTableau = () => {
   
      
-const {tableau,iTableau, setITableau,responseTableau} = useContext(MatrixContext)
+const {tableau} = useContext(MatrixContext)
     return (
         <div  className='tableau'>
             <HistoryBasicCoefficients basicCoefficients ={tableau.basicCoefficients}/>

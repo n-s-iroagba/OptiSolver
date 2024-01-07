@@ -1,7 +1,6 @@
 
 import { preventNewLine } from "./createTableauHelper"
 import { push } from "./createTableauHelper"
-import { fIpush } from "./createTableauHelper"
 
 
 const checkMultipleColumns = async (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau) => {
@@ -36,7 +35,7 @@ const checkFValue = (solution, responseTableau, setResponseTableau, iTableau, se
     const inputFValue = iTableau.fValue;
 
     if (parseFloat(inputFValue.toFixed(2)) !== parseFloat(solvedFValue.toFixed(2))) {
-        noMatch = true;
+        noMatch = false;
     } 
     let tempRTableau = responseTableau;
     tempRTableau.fValue = noMatch;

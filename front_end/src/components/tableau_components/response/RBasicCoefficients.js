@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-import '../tableauComponents.css'
-import { MatrixContext } from '../../../features/solve_simplex/context/SimplexContext'
+import '../tableau.css'
+import { MatrixContext } from '../../../context/SimplexContext'
+import    Empty from '../Empty'
 
 const RBasicCoefficients = () => {
   const {responseTableau} = useContext(MatrixContext)

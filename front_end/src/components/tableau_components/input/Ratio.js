@@ -16,7 +16,7 @@ const Ratio = (props) => {
   useEffect(()=>{
   let variable= 'ratio'
   createSingleColumn(dimensions.numberOfRows,setRows,iTableau,setITableau,variable)
-},[])
+})
   return <>
     <div className='right-tableau-wrapper'>
      <Empty position='inverse-bottom' type={"right"}/>
