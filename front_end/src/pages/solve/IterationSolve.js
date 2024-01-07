@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap'
 import './solve.css'
 
 
-const IterationSolve = () => {
+const IterationSolve = React.memo(() => {
     const { setPage, length, setIteration, iteration, solvedArray, iTableau, setITableau, responseTableau, setResponseTableau, dimensions, } = useContext(MatrixContext)
 
     useEffect(() => {
@@ -16,19 +16,21 @@ const IterationSolve = () => {
             setPage(8)
 
         }
-    }, [iteration,length,setPage])
+        alert(JSON.stringify(solvedArray))
+    }, [])
 
     const check = async () => {
 
         const shouldAdvance = await checkTableau(iTableau, solvedArray, iteration - 1, dimensions, responseTableau, setResponseTableau, setITableau)
-
-        if (shouldAdvance) {
-            setPage(6)
-            setIteration(iteration + 1)
+        alert(JSON.stringify(iTableau))
+        if (!shouldAdvance) {
+            setPage(7)
+    
         }
         else {
             setPage(4)
             setIteration(2)
+            setIteration(iteration + 1)
         }
     }
 
@@ -42,5 +44,5 @@ const IterationSolve = () => {
             </div>
         </>
     )
-}
+})
 export default IterationSolve

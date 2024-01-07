@@ -8,7 +8,7 @@ import { Button } from "react-bootstrap";
 import { getNames } from "../../utils/api";
 import './forms.css'
 import { isValidMatrix } from "../../utils/actions";
-const EntryForm = () => {
+const EntryForm = React.memo(() => {
   const navigate = useNavigate()
   const { dimensions, tableau, setTableau, setDimensions, setPage } = useContext(MatrixContext)
   const [validated, setValidated] = useState(false)
@@ -82,7 +82,7 @@ const EntryForm = () => {
         <Form.Label>Number of Coefficients in the Objective function in <b>CANONICAL*</b> form</Form.Label>
         <Form.Control
           type="number"
-          name="objective function"
+          name="objectivefunction"
           value={dimensions.numberOfColumns}
           onChange={handleChangeColumns}
         />
@@ -92,7 +92,7 @@ const EntryForm = () => {
         <Form.Label>Number of Constraint Equations</Form.Label>
         <Form.Control
           type="number"
-          name="constraint equation"
+          name="constraintequation"
           value={dimensions.numberOfRows}
           onChange={handleChangeRows}
         />
@@ -106,5 +106,5 @@ const EntryForm = () => {
       </div>
   </div>
   )
-};
+});
 export default EntryForm;

@@ -1,17 +1,14 @@
 
 
 import { MatrixContext } from '../../../context/SimplexContext'
-import { useContext, useEffect } from 'react';
+import React , { useContext, useEffect } from 'react';
 import '../tableau.css'
 import HistoryObjectiveCoefficient from '../history/HistoryObjectiveCoefficient';
 
-const RConstraintEquations=()=>{
+const RConstraintEquations=React.memo(()=>{
   const {header,rTableau} = useContext(MatrixContext)
  
-  
-  useEffect(()=>{
-
-  },[])
+ 
   
   return (<>
 
@@ -41,7 +38,7 @@ const RConstraintEquations=()=>{
 
       </table >
     </div></>)
-}
+})
 
 
 export default RConstraintEquations;

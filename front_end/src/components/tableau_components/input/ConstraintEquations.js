@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MatrixContext } from '../../../context/SimplexContext';
 import { useContext } from 'react';
 import '../tableau.css';
 import ObjectiveCoefficient from './ObjectiveCoefficient';
+import HistoryObjectiveCoefficient from '../history/HistoryObjectiveCoefficient';
 import { createMultipleColumns } from '../../../utils/createTableauHelper';
 import Empty from '../Empty';
-import Crow from './Crow'; 
+import Crow from './Crow';
 
-const ConstraintEquations = (props) => {
+const ConstraintEquations = React.memo((props) => {
   const [rows, setRows] = useState([]);
-  const { header, setHeader, dimensions } = useContext(MatrixContext);
+  const { header, setHeader, dimensions,tableau} = useContext(MatrixContext);
+  let variable = 'constraintEquations';
 
   useEffect(() => {
-    let variable = 'constraintEquations';
     createMultipleColumns(
       dimensions.numberOfRows,
       dimensions.numberOfColumns,
@@ -22,17 +23,27 @@ const ConstraintEquations = (props) => {
       variable,
       setHeader
     );
-  });
+alert(tableau)
+  }, []);
 
   return (
     <>
       <div className='center-tableau-wrapper'>
-        <ObjectiveCoefficient />
+        {props.objectiveCoefficients==='iteration'? (
+          <HistoryObjectiveCoefficient />
+        ) : (
+          <ObjectiveCoefficient />
+        )}
+
         <table className='single-column'>
           <thead>
             <tr>
               {header.map((variable, index) => {
-                return <td style={{ height: '1.6cm' }} key={index}>{variable}</td>;
+                return (
+                  <td style={{ height: '1.6cm' }} key={index}>
+                    {variable}
+                  </td>
+                );
               })}
             </tr>
           </thead>
@@ -47,6 +58,6 @@ const ConstraintEquations = (props) => {
       </div>
     </>
   );
-};
+});
 
 export default ConstraintEquations;

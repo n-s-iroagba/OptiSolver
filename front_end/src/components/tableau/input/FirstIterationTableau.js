@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import HistoryBasicCoefficients from "../../tableau_components/history/HistoryBasicCoefficients";
 import Ratio from "../../tableau_components/input/Ratio";
 import HistoryBasicVariables from  "../../tableau_components/history/HistoryBasicVariables";
@@ -8,13 +8,7 @@ import '../Tableau.css'
 import { MatrixContext } from "../../../context/SimplexContext";
 
 const FirstIterationTableau = () => {
-const {tableau,iTableau, setITableau} = useContext(MatrixContext)
-useEffect(() => {
-    let tempTab = iTableau
-    tempTab.crow = tableau.crow
-    setITableau(tempTab)
-})
-
+const {tableau} = useContext(MatrixContext)
 
     return (
         <div  className='tableau'>

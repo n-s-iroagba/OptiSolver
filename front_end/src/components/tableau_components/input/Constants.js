@@ -5,7 +5,7 @@ import { createSingleColumn } from '../../../utils/createTableauHelper'
 import { MatrixContext } from '../../../context/SimplexContext'
 import Empty from '../Empty'
 
-const Constants = (props) => {
+const Constants = React.memo((props) => {
 
   const [rows, setRows] = useState([])
   const { dimensions } = useContext(MatrixContext)
@@ -21,7 +21,7 @@ else{
 }
 
   useEffect(()=>{
-    let variable= 'constants'
+    const variable= 'constants'
     createSingleColumn(dimensions.numberOfRows,setRows,props.tableau,props.setTableau,variable)
   },[])
   return <>
@@ -44,5 +44,5 @@ else{
       <Empty/>
     </div>
   </>
-}
+})
 export default Constants;

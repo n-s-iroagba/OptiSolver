@@ -6,6 +6,7 @@ import '../tableau.css'
 
 const HistoryObjectiveCoefficient = ()=>{
     const {tableau} = useContext(MatrixContext)
+    alert(JSON.stringify(tableau))
     return<>
    
    <table >

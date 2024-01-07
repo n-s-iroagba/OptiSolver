@@ -5,7 +5,7 @@ import { MatrixContext } from '../../../context/SimplexContext'
 import { createBasicVariables } from '../../../utils/createTableauHelper'
 import Empty from '../Empty'
 
-const BasicVariables = (props) => {
+const BasicVariables = React.memo((props) => {
 
   const [rows, setRows] = useState([])
   const { dimensions } = useContext(MatrixContext)
@@ -14,7 +14,7 @@ const BasicVariables = (props) => {
 
   useEffect(()=>{
   
-   createBasicVariables(dimensions,setRows,props.tableau,props.setTableau)
+   createBasicVariables(dimensions,setRows,props.tableau,props.setTableau, props.type)
 },[])
   return <>
     <div className='center-tableau-wrapper'>
@@ -36,5 +36,5 @@ const BasicVariables = (props) => {
       <Empty text = {props.text||''} />
     </div>
   </>
-}
+})
 export default BasicVariables;

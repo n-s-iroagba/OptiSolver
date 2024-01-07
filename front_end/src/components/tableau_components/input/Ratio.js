@@ -5,7 +5,7 @@ import { MatrixContext } from '../../../context/SimplexContext'
 import { createSingleColumn } from '../../../utils/createTableauHelper'
 import Empty from '../Empty'
 
-const Ratio = (props) => {
+const Ratio = React.memo((props) => {
 
   const [rows, setRows] = useState([])
   const {iTableau, setITableau } = useContext(MatrixContext)
@@ -16,7 +16,7 @@ const Ratio = (props) => {
   useEffect(()=>{
   let variable= 'ratio'
   createSingleColumn(dimensions.numberOfRows,setRows,iTableau,setITableau,variable)
-})
+},[])
   return <>
     <div className='right-tableau-wrapper'>
      <Empty position='inverse-bottom' type={"right"}/>
@@ -37,5 +37,5 @@ const Ratio = (props) => {
       <Empty/>
     </div>
   </>
-}
+})
 export default Ratio;

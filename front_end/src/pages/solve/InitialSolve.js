@@ -10,9 +10,9 @@ import { solveServerUrl } from '../../utils/data'
 import './solve.css'
 
 
-const InitialSolve = ()=>{
+const InitialSolve = React.memo(()=>{
     
-    const{tableau,setPage,setSolvedArray,setLength,setIteration} = useContext(MatrixContext)
+    const{tableau,setPage,setSolvedArray,setLength,setIteration,iTableau,setITableau} = useContext(MatrixContext)
 
     const [loading,setLoading] = useState('not-seen')
     const [classname,setClassname] = useState('solve-page-wrapper')
@@ -32,17 +32,25 @@ const InitialSolve = ()=>{
 //     },[])
     
    const solve = async() => {
+    alert(JSON.stringify(tableau))
          setClassname('not-seen')
         setLoading('seen')
+       
         const solutionResponse = await solveSimplex(url,tableau,token)
+       
          if (solutionResponse){
            const length = solutionResponse.solution.length
            const savedSolution = JSON.stringify(solutionResponse)
+           console.log(solutionResponse.solution)
+           let tempTab = iTableau
+           tempTab.crow = tableau.crow
+           setITableau(tempTab)
           setSolvedArray(solutionResponse.solution)
           setLength(length)
           setLoading('not-seen')
            setPage(2)
           }
+
         }
     
     
@@ -61,5 +69,5 @@ const InitialSolve = ()=>{
         </div>
         </>
     )
-}
+})
 export default InitialSolve

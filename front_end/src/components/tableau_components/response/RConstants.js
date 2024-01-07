@@ -4,7 +4,7 @@ import { MatrixContext } from '../../../context/SimplexContext'
 import '../tableau.css'
 
 const RConstants = () => {
-    const { rTableau } = useContext(MatrixContext)
+    const { responseTableau } = useContext(MatrixContext)
     
     return <>
         <div className='ic-wrapper'>

@@ -7,7 +7,8 @@ export const preventNewLine = (evt) => {
 
 
 export const push = (e, i, variable, tableau, setTableau, j) => {
-    let tempTab = tableau;
+   
+        let tempTab = tableau;
     let digit = Number(e.currentTarget.textContent);
     if (j !== undefined) {
         tempTab[variable][i][j] = digit;
@@ -17,12 +18,12 @@ export const push = (e, i, variable, tableau, setTableau, j) => {
     setTableau(tempTab);
 }
 export const fIpush = ( e,iTableau, setITableau) => {
-    let tempTab = iTableau;
+    let tempTab =iTableau;
     let digit = Number(e.currentTarget.textContent);
     tempTab.fValue = digit
     setITableau(tempTab);
 };
-export const createBasicVariables = (dimensions,setRows,tableau,setTableau)=>{
+export const createBasicVariables =(dimensions,setRows,tableau,setTableau,type)=>{
     let tempBv=[]
     let tempRows=[]
     let variable = 'basicVariables'
@@ -32,8 +33,14 @@ export const createBasicVariables = (dimensions,setRows,tableau,setTableau)=>{
         let len= dimensions.numberOfRows
         let num = i - len
         let j = 1
+        let digit;
         while (j<=len){
-            let digit = num+j
+            if(type == 'iteration'){
+                digit=0
+            }else{
+                digit = num+j
+            }
+            
             tempRows.push(<td>X<sub  contentEditable onKeyDown={
                 (e) =>preventNewLine(e)} onInput={
                   (e) => {
@@ -41,9 +48,11 @@ export const createBasicVariables = (dimensions,setRows,tableau,setTableau)=>{
             tempBv.push(digit)
            j++
         }
+       
         tempTab.basicVariables = tempBv
-        setRows(tempRows)
         setTableau(tempTab)
+        setRows(tempRows)
+
         tempRows=[]
     }
 

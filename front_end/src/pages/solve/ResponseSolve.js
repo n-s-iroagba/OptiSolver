@@ -27,7 +27,7 @@ const ResponseSolve= ()=>{
         <>
     
         <div className='solve-page-wrapper'>
-        <div><p className='solve-writeup' > Fill in the values for iteration number {iteration}</p></div>
+        <div><p className='solve-writeup' > Some values values for iteration number {iteration} are wrong and highlighted in red</p></div>
         <div className='initial-solve'><ResponseIterationTableau/></div>
         <br/>
         <div><Button variant='dark' onClick={check}>Recheck for iteration {iteration}</Button></div>

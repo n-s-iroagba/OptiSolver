@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { MatrixContext } from '../../../context/SimplexContext';
 import '../Tableau.css'
 import Ratio from '../../tableau_components/input/Ratio';
+import HistoryObjectiveCoefficient from '../../tableau_components/history/HistoryObjectiveCoefficient';
 
 const IterationTableau = () => {
     const {iTableau, setITableau} = useContext(MatrixContext)
@@ -16,8 +17,8 @@ const IterationTableau = () => {
      
         <div className='tableau'>
         <BasicCoefficients setTableau={setITableau} tableau={iTableau}/>
-        <BasicVariables setTableau={setITableau} tableau={iTableau}/>
-        <ConstraintEquations crow={true} setTableau={setITableau} tableau={iTableau}/>
+        <BasicVariables setTableau={setITableau} tableau={iTableau} type={'iteration'} />
+        <ConstraintEquations crow={true} setTableau={setITableau} tableau={iTableau} objectiveCoefficients = 'iteration'/>
         <Constants setTableau={setITableau} tableau={iTableau} />
         <Ratio/>
         </div>

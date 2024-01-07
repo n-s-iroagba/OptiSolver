@@ -16,7 +16,7 @@ const FirstSolve = ()=>{
    const check = async() => {
    
     const shouldAdvance= await checkFirstTableau(iTableau, solvedArray, 0, dimensions, responseTableau, setResponseTableau, setITableau)
-   
+    console.log(solvedArray)
     if(shouldAdvance){ 
         setPage(5)
         setIteration(2)

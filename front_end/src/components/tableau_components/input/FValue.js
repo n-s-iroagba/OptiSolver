@@ -4,13 +4,13 @@ import { preventNewLine } from "../../../utils/createTableauHelper";
 import { fIpush } from "../../../utils/createTableauHelper";
 
 
-const FValue =()=>{
+const FValue =React.memo(()=>{
     const {iTableau,setITableau} = useContext(MatrixContext)
     useEffect(()=>{
-        let tempTab = iTableau
+        let tempTab ={...iTableau}
         tempTab.fValue = 0
         setITableau(tempTab)
-    })
+    },[])
     let tempFValue; const content = (
         <span
             contentEditable
@@ -29,5 +29,5 @@ const FValue =()=>{
     return<>
     <div>{tempFValue}</div>
     </>
-}
+})
 export default FValue;

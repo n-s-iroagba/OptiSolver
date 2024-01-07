@@ -5,7 +5,7 @@ import { MatrixContext } from '../../../context/SimplexContext'
 import '../tableau.css'
 import Empty from '../Empty'
 
-const BasicCoefficients = (props) => {
+const BasicCoefficients =React.memo( (props) => {
 
   const [rows, setRows] = useState([])
 const { dimensions } = useContext(MatrixContext)
@@ -35,5 +35,5 @@ const { dimensions } = useContext(MatrixContext)
       <Empty/>
     </div>
   </>
-}
+})
 export default BasicCoefficients;

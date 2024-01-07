@@ -6,7 +6,7 @@ import { isAuthorized } from '../../utils/auth';
 import DashboardNav from '../../components/dashboardnav/DashboardNav';
 import Footer from '../../components/footer/Footer';
 
-const Dashboard = () => {
+const Dashboard =React.memo( () => {
   const navigate = useNavigate();
   const name = localStorage.getItem('optiUserName');
 
@@ -17,7 +17,7 @@ const Dashboard = () => {
       navigate('/login');
       alert('You are not authorised to view this page');
     }
-  }, [navigate]);
+  }, []);
 
   
   if (!isAuthorized()) {
@@ -34,6 +34,6 @@ const Dashboard = () => {
       </div>
     </>
   );
-};
+});
 
 export default Dashboard;

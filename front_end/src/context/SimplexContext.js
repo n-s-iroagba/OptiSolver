@@ -40,7 +40,7 @@ export const MatrixContextProvider = ({children}) => {
         basicVariables:[],
         constants:[],
         ratio:[],
-        fValue:null,
+        fValue:false,
         crow:[]
     })
     const tempDetails={username:'',password:'',email:''}

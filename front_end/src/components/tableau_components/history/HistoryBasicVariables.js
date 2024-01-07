@@ -16,7 +16,7 @@ return <>
         <tbody className='tableau-body'>
           {
             props.basicVariables.map((value, index) => {
-              return (<tr key={index}><td>{value}</td></tr>)
+              return (<tr key={index}><td>X<sub>{value}</sub></td></tr>)
             })
           }
         </tbody>
