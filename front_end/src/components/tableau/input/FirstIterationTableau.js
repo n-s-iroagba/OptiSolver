@@ -14,8 +14,8 @@ const {tableau} = useContext(MatrixContext)
         <div  className='tableau'>
             <HistoryBasicCoefficients basicCoefficients ={tableau.basicCoefficients}/>
             <HistoryBasicVariables basicVariables = {tableau.basicVariables}/>
-            <HistoryConstraintEquations crow = {'iteration'} constraintEquations ={tableau.constraintEquations}/>
-            <HistoryConstants fValue ={'iteration'} constants ={tableau.constants}/>
+            <HistoryConstraintEquations crow = 'iteration' constraintEquations ={tableau.constraintEquations}/>
+            <HistoryConstants fValue ='iteration' constants ={tableau.constants}/>
             <Ratio/>
         </div>
     )
