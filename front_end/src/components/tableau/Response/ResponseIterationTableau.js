@@ -12,7 +12,7 @@ const ResponseIterationTableau = () => {
             <RBasicCoefficients/>
             <RBasicVariables/>
             <RConstraintEquations/>
-            <RConstants/>
+            <RConstants fValue='iteration'/>
             <RRatio/>
        
         </div>

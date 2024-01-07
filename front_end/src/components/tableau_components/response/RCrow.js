@@ -14,11 +14,13 @@ return (
     <>
     <table className='crow'>
         <tbody>
+          <tr>
           {
             responseTableau.crow.map((row, index) => {
               return (<th key={index}>{row}</th>)
             })
           }
+          </tr>
         </tbody>
       </table>
     </>

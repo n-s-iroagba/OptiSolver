@@ -16,13 +16,13 @@ const IterationSolve = React.memo(() => {
             setPage(8)
 
         }
-        alert(JSON.stringify(solvedArray))
+       
     }, [])
 
     const check = async () => {
 
         const shouldAdvance = await checkTableau(iTableau, solvedArray, iteration - 1, dimensions, responseTableau, setResponseTableau, setITableau)
-        alert(JSON.stringify(iTableau))
+    
         if (!shouldAdvance) {
             setPage(7)
     

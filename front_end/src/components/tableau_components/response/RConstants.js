@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import Empty from '../Empty'
 import { MatrixContext } from '../../../context/SimplexContext'
 import '../tableau.css'
+import RFValue from './RFValue'
 
 const RConstants = (props) => {
     const { responseTableau } = useContext(MatrixContext)
@@ -32,9 +33,11 @@ else{
                             return (<tr key={index}>{row}</tr>)
                         })
                     }
-                    <tr className='f-box' >{responseTableau.fValue}</tr>
+                   
                 </tbody>
+                <RFValue/>  
             </table>
+         
         </div>
 
     </>

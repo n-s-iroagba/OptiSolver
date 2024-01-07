@@ -37,7 +37,7 @@ const checkFValue = (solution, responseTableau, setResponseTableau, iTableau) =>
     if (parseFloat(inputFValue.toFixed(2)) !== parseFloat(solvedFValue.toFixed(2))) {
         noMatch = true;
     }
-    alert(inputFValue)
+
     let tempRTableau = responseTableau;
     tempRTableau.fValue = noMatch;
     setResponseTableau(tempRTableau);
@@ -82,7 +82,7 @@ const createCell = (i,columnArray,iTableau,variable,j)=>{
 const checkSingleColumn = async (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau, variable) => {
     let noMatch = false;
     let tempRows = [];
-     
+     alert(JSON.stringify(solution))
     for (let j = 0; j < dimensions.numberOfRows; j++) {
         if (iTableau[variable] && solution[variable] &&
             iTableau[variable][j] !== undefined && solution[variable][j] !== undefined) {

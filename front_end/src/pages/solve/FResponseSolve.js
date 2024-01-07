@@ -11,12 +11,12 @@ const FResponseSolve= ()=>{
     
    const{iTableau,setPage, dimensions,solvedArray,responseTableau,iteration,setResponseTableau,setIteration,setITableau,page} = useContext(MatrixContext)
    const check = async() => {
-       alert(JSON.stringify(solvedArray[0]))
         const shouldAdvance = await checkFirstTableau(iTableau, solvedArray, 0, dimensions, responseTableau, setResponseTableau, setITableau)
          if (shouldAdvance){
            setPage(5)
            setIteration(2)
         }else{
+            alert(JSON.stringify(solvedArray))
             if(page===3){
                 setPage(4)
             }else{ setPage(3)}

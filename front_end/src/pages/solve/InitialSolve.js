@@ -32,7 +32,7 @@ const InitialSolve = React.memo(()=>{
 //     },[])
     
    const solve = async() => {
-    alert(JSON.stringify(tableau))
+   
          setClassname('not-seen')
         setLoading('seen')
        
