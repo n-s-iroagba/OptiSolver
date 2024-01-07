@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { createSingleColumn } from '../../../utils/createTableauHelper'
 import { MatrixContext } from '../../../context/SimplexContext'
 import Empty from '../Empty'
+import FValue from './FValue'
 
 const Constants = React.memo((props) => {
 
