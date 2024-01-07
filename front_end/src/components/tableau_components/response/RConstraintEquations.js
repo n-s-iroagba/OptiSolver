@@ -6,7 +6,7 @@ import '../tableau.css'
 import HistoryObjectiveCoefficient from '../history/HistoryObjectiveCoefficient';
 
 const RConstraintEquations=React.memo(()=>{
-  const {header,rTableau} = useContext(MatrixContext)
+  const {header,responseTableau} = useContext(MatrixContext)
  
  
   
@@ -28,7 +28,7 @@ const RConstraintEquations=React.memo(()=>{
           }
           
           {
-            rTableau.cRow.map((coefficient, index) => {
+            responseTableau.cRow.map((coefficient, index) => {
               return (<th className='last-row' style={{borderTop:'2px solid grey',height:'1.5cm'}} key={index}>{coefficient}</th>)
             })
           }
