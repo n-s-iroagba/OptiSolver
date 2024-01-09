@@ -2,20 +2,15 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { MatrixContext } from "../../context/SimplexContext";
 import { Button } from "react-bootstrap";
 import { getNames } from "../../utils/api";
 import './forms.css'
 import { isValidMatrix } from "../../utils/actions";
 const EntryForm = React.memo(() => {
-  const navigate = useNavigate()
   const { dimensions, tableau, setTableau, setDimensions, setPage } = useContext(MatrixContext)
-  const [validated, setValidated] = useState(false)
   const [names,setNames] = useState([])
   const [uniqueName,setUniqueName] = useState(true)
-
-  
    useEffect(()=>{
            const fetchNames = async ()=>{
             try {
@@ -29,7 +24,7 @@ const EntryForm = React.memo(() => {
           fetchNames();
    },[])
 
-  const handleSubmit = (event) => {
+  const handleSubmit = () => {
 
   const validEntry = isValidMatrix(dimensions)
   if (validEntry&&uniqueName) {
@@ -38,9 +33,6 @@ const EntryForm = React.memo(() => {
     alert('invalid entry')
   }
   };
-
-
-
   const handleChangeRows = async (e) => {
     let tempDimensions = { ...dimensions }
     tempDimensions.numberOfRows = e.target.value
@@ -62,11 +54,9 @@ const EntryForm = React.memo(() => {
     }
     await setTableau(tempTabs)
   }
-
   return (   
-    
     <div className="signup-container">
-    <Form noValidate  validated={validated} onSubmit={handleSubmit}>
+    <Form  onSubmit={handleSubmit}>
       <Form.Group controlId="formUsername" as={Col} lg={6} className="mx-auto" >
         <Form.Label>Give the problem a unique</Form.Label>
         <Form.Control

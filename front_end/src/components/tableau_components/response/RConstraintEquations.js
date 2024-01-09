@@ -21,7 +21,7 @@ const RConstraintEquations=React.memo(()=>{
               return (<th style={{ height: '1.6cm' }}  key={index}>{variable}</th>)
             })}
           </tr>
-        <tbody >
+        <tbody className='tableau-body' >
           {
              responseTableau.constraintEquations.map((row, index) => {
               return (<tr key={index}>{row}</tr>)

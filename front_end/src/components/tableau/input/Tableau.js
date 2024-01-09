@@ -8,19 +8,15 @@ import { MatrixContext } from '../../../context/SimplexContext';
 import '../Tableau.css'
 import ObjectiveCoefficients from '../../tableau_components/input/ObjectiveCoefficient';
 
-const InitialTableau = () => {
-    const {tableau, setTableau} = useContext(MatrixContext)
-    
-
+const Tableau = () => {
+    const { tableau, setTableau } = useContext(MatrixContext)
     return <>
-     
         <div className='tableau'>
-        <BasicCoefficients setTableau={setTableau} tableau={tableau}/>
-        <BasicVariables setTableau={setTableau} tableau={tableau}/>
-            <ConstraintEquations setTableau={setTableau} tableau={tableau} objectiveCoefficients={ObjectiveCoefficients}/>
-        <Constants setTableau={setTableau} tableau={tableau} rightEnd ={true} />
+            <BasicCoefficients setTableau={setTableau} tableau={tableau} />
+            <BasicVariables setTableau={setTableau} tableau={tableau} />
+            <ConstraintEquations setTableau={setTableau} tableau={tableau} objectiveCoefficients={ObjectiveCoefficients} />
+            <Constants setTableau={setTableau} tableau={tableau} rightEnd={true} />
         </div>
-    
     </>
 }
-export default InitialTableau;
+export default Tableau;
