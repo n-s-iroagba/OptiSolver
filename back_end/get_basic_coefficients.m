@@ -1,4 +1,4 @@
-function basic_coefficient_matrix = get_basic_coefficient_matrix(rows,variable)
+function basic_coefficient_matrix = get_basic_coefficients(rows,variable)
 
 
 basic_coefficient_matrix = zeros(rows, 1);

@@ -1,15 +1,15 @@
-from flask import Flask,request,session,jsonify
+from flask import Flask, abort,request,session,jsonify
 from flask_cors import CORS, cross_origin
 import matlab.engine
 import json
-from datetime import datetime,timedelta
+from datetime import datetime,timedelta, timezone
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity,set_access_cookies,get_jwt
 
 # Application configuration
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:97chocho@localhost/optisolver'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:97chocho@localhost/simplex'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'your_secret_key'  # Change this to a secure random key
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=100)  # Set the expiration time for access token
@@ -49,23 +49,25 @@ def hello_world():
 def solve_simplex(student_id):
     unsolved_tableau = json.dumps(request.get_json())
     solution = {}
+    id=0
     try:
         eng = matlab.engine.start_matlab()
         solution =  eng.simplex(unsolved_tableau)
         eng.quit()
-        response = Solution(problem=unsolved_tableau,solution= solution,iteration=0,student_id=student_id)
-        db.session.add(response)
-        db.session.commit()
+        # response = Solution(problem=unsolved_tableau,solution= solution,iteration=0,student_id=student_id)
+        # id = response.id
+        # db.session.add(response)
+        # db.session.commit()
     except Exception as e:
         print (f"Error starting MATLAB Engine: {e}")
-        db.session.rollback()
+        # db.session.rollback()
     finally:
-        db.session.close()
+        # db.session.close()
         response_data = {
             'problem': json.loads(unsolved_tableau),
-            'solution': json.loads(solution),
+            'solution': json.loads(solution), 
             'iteration': 0,
-            'student_id': student_id
+            'studentId': student_id,
         }
 
     return jsonify(response_data)
@@ -149,6 +151,28 @@ def names():
     for user in students:
         names_list.append(user.username)
     return json.dumps(names_list)
+
+@app.route('/save/<int:student_id>/<int:solution_id>')
+def update_solution(student_id, solution_id):
+    try:
+        solution = Solution.query.filter_by(id=solution_id, student_id=student_id).first()
+
+        if solution:
+            solution.completed_iteration = 1
+            db.session.commit()
+            return f'Successfully updated solution {solution_id} for student {student_id}'
+        else:
+            abort(404, description=f'Solution {solution_id} not found for student {student_id}')
+
+    except Exception as e:
+        print(f"Error updating solution: {e}")
+        db.session.rollback()
+        return 'Error updating solution'
+
+    finally:
+        db.session.close()
+
+
 @app.route('/continue/<int:student_id>')
 def retrieve_continuation(student_id):
     try:

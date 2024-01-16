@@ -1,3 +1,0 @@
-function basic_coefficient_matrix = next_get_basic_coefficient(basic_coefficient_matrix,objective_function_coefficients,minimum_row_index,most_negative_column)
-basic_coefficient_matrix(minimum_row_index,1) = objective_function_coefficients(1,most_negative_column);
-end

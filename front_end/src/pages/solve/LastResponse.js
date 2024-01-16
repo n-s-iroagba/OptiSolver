@@ -26,6 +26,7 @@ const LastResponse = () => {
 
     const navHome = async () => {
         navigate('/dashboard')
+        setPage(0)
     }
 
     const continueSolving = () => {

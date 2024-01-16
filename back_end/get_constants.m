@@ -1,4 +1,4 @@
-function constant_matrix = get_constant_matrix(rows,variable)
+function constant_matrix = get_constants(rows,variable)
 constants = variable
 
 constant_matrix = zeros(rows,1);

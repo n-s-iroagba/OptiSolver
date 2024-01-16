@@ -1,5 +1,4 @@
-function most_negative_column = get_most_negative_crow_value(columns, crow)
-
+function most_negative_column = get_most_negative_crow_index(columns, crow)
 most_negative = crow(1, 1);
 most_negative_column = 1; 
 for i = 2:columns

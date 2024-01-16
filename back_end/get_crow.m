@@ -9,5 +9,5 @@ for i = 1:columns
         t= temp_constraint(j,1);
         temp(1,j) =b*t;
     end
-    crow(1,i) = objective_function_coefficients(1,i)-sum(temp);
+    crow(1,i) = objective_function_coefficients(1,i)-sum(temp)
 end

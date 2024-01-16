@@ -1,4 +1,4 @@
-function constraint_equation_matrix = get_constraint_equations_matrix(rows,columns,equations)
+function constraint_equation_matrix = get_constraint_equations(rows,columns,equations)
 constraint_equation_matrix = zeros(rows,columns);
 
 
