@@ -1,15 +1,9 @@
 import React, { useContext } from 'react'
-
 import { MatrixContext } from '../../../context/SimplexContext'
 import '../tableau.css'
 
-
 const RCrow = () => {
-
- 
 const {responseTableau } = useContext(MatrixContext)
-
-
 return (
     <>
     <table className='crow'>

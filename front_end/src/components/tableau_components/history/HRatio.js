@@ -3,7 +3,7 @@ import React from 'react'
 import '../tableau.css'
 import Empty from './Empty'
 
-const HistoryRatio = (props) => {
+const HRatio = (props) => {
 
   return <>
     <div className='right-tableau-wrapper'>
@@ -26,4 +26,4 @@ const HistoryRatio = (props) => {
     </div>
   </>
 }
-export default HistoryRatio;
+export default HRatio;

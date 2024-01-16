@@ -14,7 +14,6 @@ function NavBar() {
       <Navbar.Collapse className='toggle' id="basic-navbar-nav">
         <Nav className="ms-lg-auto me-lg-auto">
           <Nav.Link className="nav-text" href="/signup">Register</Nav.Link>
-          <Nav.Link className="nav-text" href="/login">Login</Nav.Link>
           <Nav.Link className="nav-text" href="/dashboard">Dashboard</Nav.Link>
         </Nav>
       </Navbar.Collapse>

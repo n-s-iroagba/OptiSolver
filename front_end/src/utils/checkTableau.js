@@ -4,36 +4,55 @@ import { push } from "./createTableauHelper"
 
 
 const checkMultipleColumns = async (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau) => {
-    const inputConstraintEquations = iTableau.constraintEquations
-    const solvedConstraintEquations = solution.constraintEquations
-    const variable = 'constraintEquations'
-    let tempRow = []
-    let noMatch = false
+    if (!iTableau || !iTableau.constraintEquations || !solution || !solution.constraintEquations) {
+        // Handle the case where iTableau or solution is undefined or doesn't have the expected properties
+        console.log('iTableau or solution is undefined or missing properties');
+        return false; // or handle accordingly based on your use case
+    }
+    const inputConstraintEquations = iTableau.constraintEquations;
+    const solvedConstraintEquations = solution.constraintEquations;
+    const variable = 'constraintEquations';
+    let tempRow = [];
+    let noMatch = false;
+
     for (let i = 0; i < dimensions.numberOfRows; i++) {
-        let tempColumns = []
+        let tempColumns = [];
         for (let j = 0; j < dimensions.numberOfColumns; j++) {
-            if (parseFloat(inputConstraintEquations[i][j].toFixed(2)) !== parseFloat(solvedConstraintEquations[i][j].toFixed(2))) {
-                createRedCell(tempColumns, iTableau, setITableau, variable, i, j)
-                noMatch = true
+            if (
+                parseFloat(inputConstraintEquations[i][j].toFixed(2)) !==
+                parseFloat(solvedConstraintEquations[i][j].toFixed(2))
+            ) {
+                tempColumns.push(
+                    <td
+                        style={{ backgroundColor: 'red' }}
+                        contentEditable
+                        onKeyDown={(e) => preventNewLine(e)}
+                        onInput={(e) => push(e, i, variable, iTableau, setITableau, j)}
+                    >
+                        {inputConstraintEquations[i][j]}
+                    </td>
+                );
+                noMatch = true;
             } else {
-                createCell(i,tempColumns,iTableau,variable,j)
+                tempColumns.push(<td>{inputConstraintEquations[i][j]}</td>);
             }
         }
-        tempRow.push(tempColumns)
+        tempRow.push(tempColumns);
     }
-    let tempRTableau = responseTableau
-    tempRTableau.constraintEquations = tempRow
-    setResponseTableau(tempRTableau)
-    tempRow = []
-    return noMatch;
 
-}
+    let tempRTableau = responseTableau;
+    tempRTableau.constraintEquations = tempRow;
+    setResponseTableau(tempRTableau);
+    tempRow = [];
+    return noMatch;
+};
+
 
 const checkFValue = (solution, responseTableau, setResponseTableau, iTableau) => {
     let noMatch = false;
     const solvedFValue = solution.fValue;
     const inputFValue = iTableau.fValue;
-
+   console.log(inputFValue,solvedFValue)
     if (parseFloat(inputFValue.toFixed(2)) !== parseFloat(solvedFValue.toFixed(2))) {
         noMatch = true;
     }
@@ -45,24 +64,9 @@ const checkFValue = (solution, responseTableau, setResponseTableau, iTableau) =>
     return noMatch;
 };
 
-const createRedCell = (columnArray, iTableau, setITableau, variable, i, j) => {
-    const cellValue = j ? iTableau[variable][i][j] : iTableau[variable][i];
-    columnArray.push(
-      <td
-        style={{ backgroundColor: 'red' }}
-        contentEditable
-        onKeyDown={(e) => preventNewLine(e)}
-        onInput={(e) => push(e, i, variable, iTableau, setITableau, j)}
-      >
-        {cellValue}
-      </td>
-    );
-  };
-
-const createBasicVariableCell = (i,columnArray,iTableau)=>{
-  columnArray.push(<td>X<sub>{iTableau.basicVariables[i]}</sub></td>)
-}
-const createRedBasicVariableCell = (columnArray, iTableau, setITableau, variable, i) => {
+const createRedCell = (columnArray, iTableau, setITableau, variable, i) => {
+    const cellValue = iTableau[variable][i]
+    
     columnArray.push(
       <td
         style={{ backgroundColor: 'red' }}
@@ -70,19 +74,20 @@ const createRedBasicVariableCell = (columnArray, iTableau, setITableau, variable
         onKeyDown={(e) => preventNewLine(e)}
         onInput={(e) => push(e, i, variable, iTableau, setITableau)}
       >
-        X<sub>{iTableau.basicVariables[i]}</sub>
+        {cellValue}
       </td>
     );
   };
 
-const createCell = (i,columnArray,iTableau,variable,j)=>{
-     const cellValue = j ? iTableau[variable][i][j] : iTableau[variable][i];
+
+const createCell = (i,columnArray,iTableau,variable)=>{
+     const cellValue =  iTableau[variable][i];
     columnArray.push(<td> {cellValue}</td>)
 }
 const checkSingleColumn = async (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau, variable) => {
     let noMatch = false;
     let tempRows = [];
-     alert(JSON.stringify(solution))
+    
     for (let j = 0; j < dimensions.numberOfRows; j++) {
         if (iTableau[variable] && solution[variable] &&
             iTableau[variable][j] !== undefined && solution[variable][j] !== undefined) {
@@ -105,24 +110,27 @@ const checkSingleColumn = async (iTableau, solution, dimensions, responseTableau
     return noMatch;
 };
 
-const checkBasicVariables = async (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau, variable) => {
+const checkBasicVariables = async (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau) => {
     let noMatch = false;
     let tempRows = [];
-     
+    let variable = 'basicVariables'
+    console.log(iTableau.basicVariables)
     for (let j = 0; j < dimensions.numberOfRows; j++) {
         if (iTableau[variable] && solution[variable] &&
             iTableau[variable][j] !== undefined && solution[variable][j] !== undefined) {
-
-            if (parseFloat(iTableau[variable][j].toFixed(2)) !== parseFloat(solution[variable][j].toFixed(2))) {
-                createRedBasicVariableCell(tempRows, iTableau, setITableau, variable, j)  ;
+            if (parseFloat(iTableau.basicVariables[j].toFixed(2)) !== parseFloat(solution[variable][j].toFixed(2))) {
+                tempRows.push(
+                    <td  style={{ backgroundColor: 'red' }}>
+                      X<sub
+                      contentEditable
+                      onKeyDown={(e) => preventNewLine(e)}
+                      onInput={(e) => push(e, j, variable, iTableau, setITableau)}
+                      >{iTableau.basicVariables[j]}</sub>
+                    </td>)
                 noMatch = true;
             } else {
-                createBasicVariableCell(j,tempRows,iTableau);
+                tempRows.push(<td>X<sub>{iTableau.basicVariables[j]}</sub></td>)
             }
-        } else {
-            
-            console.log(`Undefined values detected for ${variable} at index ${j}`);
-          
         }
     }
     let tempTab = responseTableau;
@@ -155,8 +163,7 @@ const checkCrow= async (iTableau, solution, dimensions, responseTableau, setResp
         }
     }
     let tempTab = responseTableau;
-    tempTab.crow = tempRows;
-   
+    tempTab.crow = tempRows;   
     setResponseTableau(tempTab);
 
     return noMatch;
@@ -166,11 +173,12 @@ const checkCrow= async (iTableau, solution, dimensions, responseTableau, setResp
 export const checkTableau = async (iTableau, solvedArray, index, dimensions, responseTableau, setResponseTableau, setITableau) => {
    
     const solution = solvedArray[index]
+    console.log(solution.basicVariables)
     const constraintEquationDidNotMatch = await checkMultipleColumns (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau)
-    const basicVariablesDidNotMatch = await  checkBasicVariables (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau,'basicVariables')
     const constantsDidNotMatch = await  checkSingleColumn (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau,'constants')
     const basicCoefficientsDidNotMatch = await checkSingleColumn (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau,'basicCoefficients')
     const ratioDidNotMatch = await checkSingleColumn (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau,'ratio')
+    const basicVariablesDidNotMatch = await  checkBasicVariables (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau)
     const fValueDidNotMatch = checkFValue(solution, responseTableau, setResponseTableau, iTableau)
     const cRowDidNotMatch= await  checkCrow (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau)
     if (fValueDidNotMatch||basicCoefficientsDidNotMatch||ratioDidNotMatch||basicVariablesDidNotMatch || constraintEquationDidNotMatch||constantsDidNotMatch||cRowDidNotMatch) {

@@ -17,7 +17,7 @@ const IterationTableau = () => {
      
         <div className='tableau'>
         <BasicCoefficients setTableau={setITableau} tableau={iTableau}/>
-        <BasicVariables setTableau={setITableau} tableau={iTableau} type='iteration'/>
+        <BasicVariables setTableau={setITableau} tableau={iTableau} type='iteration' text = 'crow'/>
         <ConstraintEquations crow={true} setTableau={setITableau} tableau={iTableau} objectiveCoefficients = 'iteration'/>
         <Constants fValue ='iteration' setTableau={setITableau} tableau={iTableau} />
         <Ratio/>

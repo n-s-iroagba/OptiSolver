@@ -1,8 +1,8 @@
 import React from "react";
-import HistoryBasicCoefficients from "../../tableau_components/history/HistoryBasicCoefficients";
-import HistoryBasicVariables from "../../tableau_components/history/HistoryBasicVariables";
-import HistoryConstraintEquations from "../../tableau_components/history/HistoryConstraintEquations";
-import HistoryConstants from"../../tableau_components/history/HistoryConstants";
+import HBasicCoefficients from "../../tableau_components/history/HBasicCoefficients";
+import HBasicVariables from "../../tableau_components/history/HBasicVariables";
+import HConstraintEquations from "../../tableau_components/history/HConstraintEquations";
+import HConstants from"../../tableau_components/history/HConstants";
 import '../Tableau.css'
 import RRatio  from "../../tableau_components/response/RRatio"
 import { useContext } from "react";
@@ -16,10 +16,10 @@ const FResponseTableau = () => {
 const {tableau} = useContext(MatrixContext)
     return (
         <div  className='tableau'>
-            <HistoryBasicCoefficients basicCoefficients ={tableau.basicCoefficients}/>
-            <HistoryBasicVariables basicVariables = {tableau.basicVariables}/>
-            <HistoryConstraintEquations  crow = {'response'} constraintEquations ={tableau.constraintEquations}/>
-            <HistoryConstants fValue={'response'} constants ={tableau.constants}/>
+            <HBasicCoefficients basicCoefficients ={tableau.basicCoefficients}/>
+            <HBasicVariables basicVariables = {tableau.basicVariables}/>
+            <HConstraintEquations  crow = {'response'} constraintEquations ={tableau.constraintEquations}/>
+            <HConstants fValue={'response'} constants ={tableau.constants}/>
             <RRatio/>
         </div>
     )

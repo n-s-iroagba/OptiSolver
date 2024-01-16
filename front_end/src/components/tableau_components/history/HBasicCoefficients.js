@@ -2,7 +2,7 @@ import React from 'react';
 import '../tableau.css';
 import Empty from '../Empty';
 
-const HistoryBasicCoefficients = (props) => {
+const HBasicCoefficients = (props) => {
 
   return (
     <>
@@ -28,5 +28,5 @@ const HistoryBasicCoefficients = (props) => {
   );
 };
 
-export default HistoryBasicCoefficients;
+export default HBasicCoefficients;
 

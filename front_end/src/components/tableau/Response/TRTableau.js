@@ -7,11 +7,12 @@ import '../Tableau.css'
 
 const TerminalResponseTableau = () => {
     return (
-        <div>
+        <div className="tableau">
             <RBasicCoefficients/>
             <RBasicVariables/>
             <RConstraintEquations/>
-            <RConstants/>
+            <RConstants fValue ='iteration'  rightEnd ={true}/>
+            <RConstants fValue ='objective' rightEnd ={true}/>
         </div>
     )
 }

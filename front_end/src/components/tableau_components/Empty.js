@@ -25,7 +25,7 @@ const Empty = (props) => {
         classNames.push("center");
       }
   
-    return <div className={classNames.join(" ")}>{props.fValue}</div>;
+    return <div className={classNames.join(" ")}>{props.text}</div>;
   };
   
   export default Empty;

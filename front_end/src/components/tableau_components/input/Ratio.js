@@ -5,8 +5,7 @@ import { MatrixContext } from '../../../context/SimplexContext'
 import { createSingleColumn } from '../../../utils/createTableauHelper'
 import Empty from '../Empty'
 
-const Ratio = React.memo((props) => {
-
+const Ratio = React.memo(() => {
   const [rows, setRows] = useState([])
   const {iTableau, setITableau } = useContext(MatrixContext)
   const dimensions = {

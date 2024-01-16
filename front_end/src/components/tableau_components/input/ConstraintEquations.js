@@ -3,17 +3,18 @@ import { MatrixContext } from '../../../context/SimplexContext';
 import { useContext } from 'react';
 import '../tableau.css';
 import ObjectiveCoefficient from './ObjectiveCoefficient';
-import HistoryObjectiveCoefficient from '../history/HistoryObjectiveCoefficient';
+import HObjectiveCoefficient from '../history/HObjectiveCoefficient';
 import { createMultipleColumns } from '../../../utils/createTableauHelper';
 import Empty from '../Empty';
 import Crow from './Crow';
 
 const ConstraintEquations = React.memo((props) => {
   const [rows, setRows] = useState([]);
-  const { header, setHeader, dimensions,tableau} = useContext(MatrixContext);
-  let variable = 'constraintEquations';
+  const { header, setHeader, dimensions} = useContext(MatrixContext);
+ 
 
   useEffect(() => {
+    let variable = 'constraintEquations';
     createMultipleColumns(
       dimensions.numberOfRows,
       dimensions.numberOfColumns,
@@ -23,14 +24,14 @@ const ConstraintEquations = React.memo((props) => {
       variable,
       setHeader
     );
-alert(tableau)
+
   }, []);
 
   return (
     <>
       <div className='center-tableau-wrapper'>
         {props.objectiveCoefficients==='iteration'? (
-          <HistoryObjectiveCoefficient />
+          <HObjectiveCoefficient />
         ) : (
           <ObjectiveCoefficient />
         )}

@@ -9,12 +9,11 @@ const BasicVariables = React.memo((props) => {
 
   const [rows, setRows] = useState([])
   const { dimensions } = useContext(MatrixContext)
- 
-
 
   useEffect(()=>{
   
    createBasicVariables(dimensions,setRows,props.tableau,props.setTableau, props.type)
+
 },[])
   return <>
     <div className='center-tableau-wrapper'>

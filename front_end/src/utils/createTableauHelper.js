@@ -2,12 +2,9 @@ export const preventNewLine = (evt) => {
     if (evt.keyCode === 13) {
       evt.preventDefault();
     }
-
   }
 
-
 export const push = (e, i, variable, tableau, setTableau, j) => {
-   
         let tempTab = tableau;
     let digit = Number(e.currentTarget.textContent);
     if (j !== undefined) {
@@ -17,25 +14,29 @@ export const push = (e, i, variable, tableau, setTableau, j) => {
     }
     setTableau(tempTab);
 }
+
 export const fIpush = ( e,iTableau, setITableau) => {
     let tempTab =iTableau;
     let digit = Number(e.currentTarget.textContent);
     tempTab.fValue = digit
+    console.log(digit)
     setITableau(tempTab);
 };
 export const createBasicVariables =(dimensions,setRows,tableau,setTableau,type)=>{
     let tempBv=[]
     let tempRows=[]
     let variable = 'basicVariables'
-    let tempTab = tableau
-    
+    let tempTab = tableau    
         let i = dimensions.numberOfColumns
         let len= dimensions.numberOfRows
         let num = i - len
         let j = 1
         let digit;
+       
         while (j<=len){
-            if(type == 'iteration'){
+            let k = j-1
+        console.log('k is '+k)
+            if(type === 'iteration'){
                 digit=0
             }else{
                 digit = num+j
@@ -44,18 +45,19 @@ export const createBasicVariables =(dimensions,setRows,tableau,setTableau,type)=
             tempRows.push(<td>X<sub  contentEditable onKeyDown={
                 (e) =>preventNewLine(e)} onInput={
                   (e) => {
-                    push(e, i, variable, tableau, setTableau) }}>{digit}</sub></td>)
+                    push(e, k, variable, tableau, setTableau) }}>{digit}</sub></td>)
             tempBv.push(digit)
+            console.log(tempBv)
            j++
-        }
-       
+           k++
+        }      
         tempTab.basicVariables = tempBv
+        tempBv=[]
         setTableau(tempTab)
         setRows(tempRows)
 
         tempRows=[]
     }
-
 
 const createSingleEntry = (tableau, setTableau, cells, variable, i, j) => {
     return cells.push(<td contentEditable onKeyDown={

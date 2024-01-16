@@ -1,20 +1,16 @@
 
 
 import { MatrixContext } from '../../../context/SimplexContext'
-import React , { useContext, useEffect } from 'react';
+import React , { useContext } from 'react';
 import '../tableau.css'
-import HistoryObjectiveCoefficient from '../history/HistoryObjectiveCoefficient';
+import HObjectiveCoefficient from '../history/HObjectiveCoefficient';
 import RCrow from './RCrow';
 
 const RConstraintEquations=React.memo(()=>{
-  const {header,responseTableau} = useContext(MatrixContext)
- 
- 
-  
+  const {header,responseTableau} = useContext(MatrixContext)  
   return (<> 
-
     <div  className='center-tableau-wrapper'>
-    <HistoryObjectiveCoefficient />
+    <HObjectiveCoefficient />
       <table className='single-column'>
       <tr >{
             header.map((variable, index) => {
@@ -28,7 +24,6 @@ const RConstraintEquations=React.memo(()=>{
             })
 } 
         </tbody>
-
       </table >
      <RCrow/>
     </div></>)

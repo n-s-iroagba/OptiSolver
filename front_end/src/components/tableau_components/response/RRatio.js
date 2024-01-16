@@ -1,12 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { MatrixContext } from '../../../context/SimplexContext'
 import '../tableau.css'
 import Empty from '../Empty'
 const RRatio = () => {
     const { responseTableau } = useContext(MatrixContext)
-useEffect(()=>{
-alert(responseTableau.ratio)
-},[])
 
     return <>
            <div className='right-tableau-wrapper'>

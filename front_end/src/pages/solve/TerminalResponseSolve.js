@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { MatrixContext } from '../../context/SimplexContext'
 import { useContext} from 'react'
-import { solveSimplex } from '../../utils/api'
+import { checkLastTableau } from '../../utils/checkTableau'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-
 import './solve.css'
-
-import TerminalIterationTableau from '../../components/tableau/input/TerminalIterationTableau'
+import TRTableau from '../../components/tableau/Response/TRTableau'
 const TerminalResponseSolve= ()=>{
     const navigate = useNavigate()
-    const{iTableau,setPage, dimensions,solvedArray,responseTableau,iteration,setResponseTableau,setITableau} = useContext(MatrixContext)    
+    const{iTableau,setPage, dimensions,solvedArray,responseTableau,iteration,setResponseTableau,setITableau,page} = useContext(MatrixContext)    
     const id = localStorage.getItem('optiUserId');
     const token = localStorage.getItem('optiUserToken')
 
@@ -25,19 +23,18 @@ const TerminalResponseSolve= ()=>{
         
         }else{
           
-            if(page===9){
-                setPage(10)
-            }else{ setPage(9)}
+            if(page===10){
+                setPage(11)
+            }else{ setPage(10)}
             
         }
     }  
     
     return(
         <>
-    
         <div className='solve-page-wrapper'>
-        <div><p className='solve-writeup' > Fill in the values for iteration number {iteration}</p></div>
-        <div className='initial-solve'><TerminalIterationTableau/></div>
+        <div><p className='solve-writeup' > Fill in the values for iteration number {page}</p></div>
+        <div className='initial-solve'><TRTableau/></div>
         <br/>
         <div><Button variant='dark' onClick={solve}>Solve</Button></div>
         </div>

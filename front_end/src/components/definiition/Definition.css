@@ -1,0 +1,13 @@
+.definition-wrapper{
+    display: flex;
+    height: 6cm;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4cm;
+    color: white;
+    text-align: start;
+}
+.definition-wrapper div{
+    border-bottom: 2px solid white;
+}

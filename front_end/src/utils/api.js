@@ -1,26 +1,29 @@
 import axios from 'axios';
-import {getNamesUrl, loginUrl} from './data'
-import { solveServerUrl,registerUrl } from './data';
+const id = localStorage.getItem('optiUserId');
+export const solveServerUrl = id ? `http://localhost:5000/${id}` : 'http://localhost:3000/login';
+export const getNamesUrl = 'http://localhost:5000/names'
+export const loginUrl = 'http://localhost:5000/login'
+export const registerUrl = 'http://localhost:5000/register'
 
-export const solveSimplex = async(url,data,token)=>{
-    
-    try {
-        const response = await axios.post(url,data, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-    
-        
-        return (response.data);
-      } catch (error) {
-        console.error('Error:', error.message);
-    }
-    }
+export const solveSimplex = async (url, data, token) => {
 
-export const getNames = async ()=>{
-    return await axios.get(getNamesUrl)
+  try {
+    const response = await axios.post(url, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+
+
+    return (response.data);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+export const getNames = async () => {
+  return await axios.get(getNamesUrl)
 }
 
 export const login = async (userData) => {
@@ -30,7 +33,7 @@ export const login = async (userData) => {
     if (response.status === 200 || response.status === 201) {
       const authToken = response.data.token;
       const id = response.data.id;
-    
+
 
       localStorage.setItem('optiAuthToken', authToken);
       localStorage.setItem('optiUserName', JSON.parse(response.data.username));
@@ -46,7 +49,6 @@ export const login = async (userData) => {
     return false;
   }
 };
-
 
 export const signUp = async (userData) => {
   try {
@@ -64,6 +66,6 @@ export const signUp = async (userData) => {
     }
   } catch (error) {
     console.error('Error during user registration:', error.message);
-  
+
   }
 };

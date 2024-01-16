@@ -1,0 +1,20 @@
+import React from "react";
+import HBasicCoefficients from "./history/HBasicCoefficients";
+i
+import HBasicVariables from "./history/HBasicVariables";
+import HConstraintEquations from "./history/HConstraintEquations";
+import HConstants from "./history/HConstants";
+import '../Tableau.css'
+
+const HTTableau = () => {
+    return (
+        <div  className='tableau'>
+            <HBasicCoefficients/>
+            <HBasicVariables/>
+            <HConstraintEquations/>
+            <HConstants/>
+       
+        </div>
+    )
+}
+export default HTTableau; 

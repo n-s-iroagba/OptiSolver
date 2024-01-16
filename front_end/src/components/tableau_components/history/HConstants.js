@@ -4,7 +4,7 @@ import Empty from '../Empty';
 import FValue from '../input/FValue';
 import RFValue from '../response/RFValue';
 
-const HistoryConstants = (props) => {
+const HConstants = (props) => {
   return (
     <>
       <div className='center-tableau-wrapper'>
@@ -33,4 +33,4 @@ const HistoryConstants = (props) => {
   );
 };
 
-export default HistoryConstants;
+export default HConstants;

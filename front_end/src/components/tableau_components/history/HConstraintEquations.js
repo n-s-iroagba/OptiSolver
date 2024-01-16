@@ -2,19 +2,19 @@ import React from 'react';
 import { useContext } from 'react';
 import { MatrixContext } from '../../../context/SimplexContext';
 import '../tableau.css';
-import HistoryObjectiveCoefficient from './HistoryObjectiveCoefficient';
+import HObjectiveCoefficient from './HObjectiveCoefficient';
 import Crow from '../input/Crow';
 import Empty from '../Empty';
 import RCrow from '../response/RCrow'
 
 
-const HistoryConstraintEquations = (props) => {
+const HConstraintEquations = (props) => {
   let { header } = useContext(MatrixContext);
 
   return (
     <>
       <div className='center-tableau-wrapper'>
-        <HistoryObjectiveCoefficient />
+        <HObjectiveCoefficient />
         <table className='single-column'>
           <thead>
             <tr>
@@ -48,4 +48,4 @@ const HistoryConstraintEquations = (props) => {
   );
 };
 
-export default HistoryConstraintEquations;
+export default HConstraintEquations;

@@ -29,9 +29,6 @@ const LoginForm = () => {
     alert('invalid login email or password')
     }
   };
-
-
-
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setSignInDetails((prevDetails) => ({
@@ -39,8 +36,6 @@ const LoginForm = () => {
       [name]: value,
     }));
   };
- 
-
   return (
     <>
     <div className='signup-container'>

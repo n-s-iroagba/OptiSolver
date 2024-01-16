@@ -16,8 +16,6 @@ if(props.rightEnd){
 else{
   className = 'center-tableau-wrapper'
 }
-
-    
     return <>
         <div className={className}>
      <Empty  type ={emptyName} constant = {true} position='inverse-bottom'/>
@@ -32,8 +30,7 @@ else{
                         responseTableau.constants.map((row, index) => {
                             return (<tr key={index}>{row}</tr>)
                         })
-                    }
-                   
+                    } 
                 </tbody>
                 <RFValue/>  
             </table>

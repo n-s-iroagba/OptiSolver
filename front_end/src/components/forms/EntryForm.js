@@ -26,8 +26,7 @@ const EntryForm = React.memo(() => {
 
   const handleSubmit = () => {
 
-  const validEntry = isValidMatrix(dimensions)
-  if (validEntry&&uniqueName) {
+  if (uniqueName) {
     setPage(1)
   }else{
     alert('invalid entry')

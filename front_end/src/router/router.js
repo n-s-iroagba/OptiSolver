@@ -5,11 +5,6 @@ import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
 import Dashboard from "../pages/dashboard/Dashboard";
 
-import IterationSolve from "../pages/solve/IterationSolve";
-
-
-
-
 export const router = createBrowserRouter([
 
 {
@@ -20,10 +15,7 @@ export const router = createBrowserRouter([
     path:'/practice',
     element:<RenderPage/>
 },
-{
-    path:'/re',
-    element: <IterationSolve/>
-},
+
 {
     path:'/dashboard',
     element:<Dashboard/>
@@ -39,15 +31,12 @@ export const router = createBrowserRouter([
 },
 // {
 //     path:'/Re',
-//     element:
+//     element:<Definition/>
 // },
 {
 path:'/dashboard',
 element:<Dashboard/>
 },
-// {
-//     path:'/practice',
-//     element:<SignUp/>
-// },
+
 
 ])

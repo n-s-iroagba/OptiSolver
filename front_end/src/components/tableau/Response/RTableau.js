@@ -6,7 +6,7 @@ import RConstraintEquations from"../../tableau_components/response/RConstraintEq
 import RConstants from"../../tableau_components/response/RConstants";
 import '../Tableau.css'
 
-const ResponseIterationTableau = () => {
+const RTableau = () => {
     return (
         <div className='tableau'>
             <RBasicCoefficients/>
@@ -18,4 +18,4 @@ const ResponseIterationTableau = () => {
         </div>
     )
 }
-export default ResponseIterationTableau; 
+export default RTableau; 
