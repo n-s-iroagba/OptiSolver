@@ -10,4 +10,14 @@
 }
 .definition-wrapper div{
     border-bottom: 2px solid white;
+    color:white;
+    padding-top: 0.5cm;
+    padding-bottom: 0.4cm;
+}
+.definition-wrapper h6{
+    color:white;
+    padding-bottom: 1cm;
+}
+.the-button{
+    margin-top: 1cm;
 }

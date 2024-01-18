@@ -4,11 +4,10 @@ import { useContext } from 'react'
 import ITableau from '../../components/tableau/input/ITableau'
 import { checkTableau } from '../../utils/checkTableau'
 import { Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
 import './solve.css'
 
 
-const IterationSolve = React.memo(() => {
+const IterationTableau = React.memo(() => {
     const { setPage, length, setIteration, iteration, solvedArray, iTableau, setITableau, responseTableau, setResponseTableau, dimensions, page, solution } = useContext(MatrixContext)
     useEffect(() => {
         if (iteration === length && solvedArray[iteration - 1]?.ratio?.length === 0) {
@@ -18,10 +17,10 @@ const IterationSolve = React.memo(() => {
 
     const check = async () => {
         const shouldAdvance = await checkTableau(iTableau, solvedArray, iteration - 1, dimensions, responseTableau, setResponseTableau, setITableau)
-        console.log(solvedArray[iteration - 1].optimal)
+        console.log(solvedArray[iteration - 1])
         if (shouldAdvance) {
             if (solvedArray[iteration - 1].optimal == true) {
-                setPage(5)
+                setPage(-2)
             } else {
                 setIteration(iteration + 1)
                 if (page === 5) {
@@ -45,4 +44,4 @@ const IterationSolve = React.memo(() => {
         </>
     )
 })
-export default IterationSolve
+export default IterationTableau

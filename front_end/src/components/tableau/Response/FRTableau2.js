@@ -4,13 +4,13 @@ import HBasicVariables from "../../tableau_components/history/HBasicVariables";
 import HConstraintEquations from "../../tableau_components/history/HConstraintEquations";
 import HConstants from"../../tableau_components/history/HConstants";
 import '../Tableau.css'
-import RRatio  from "../../tableau_components/response/RRatio"
+
 import { useContext } from "react";
 import { MatrixContext } from "../../../context/SimplexContext";
 
 import '../Tableau.css'
 
-const FRTableau = () => {
+const FRTableau2 = () => {
   
      
 const {tableau} = useContext(MatrixContext)
@@ -18,10 +18,9 @@ const {tableau} = useContext(MatrixContext)
         <div  className='tableau'>
             <HBasicCoefficients basicCoefficients ={tableau.basicCoefficients}/>
             <HBasicVariables basicVariables = {tableau.basicVariables}/>
-            <HConstraintEquations  crow = {'response'} constraintEquations ={tableau.constraintEquations}/>
-            <HConstants fValue={'response'} constants ={tableau.constants}/>
-            <RRatio/>
+            <HConstraintEquations  crow = 'response' constraintEquations ={tableau.constraintEquations}/>
+            <HConstants fValue ='response' constants ={tableau.constants} rightEnd={true}/>
         </div>
     )
 }
-export default FRTableau; 
+export default FRTableau2; 

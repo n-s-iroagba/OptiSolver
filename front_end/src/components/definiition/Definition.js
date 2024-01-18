@@ -5,14 +5,22 @@ import "./Definition.css"
 
 
 const Definition =()=>{
-    const {solution,setPage} = useContext(MatrixContext)
-
+    const {solution,setPage,length} = useContext(MatrixContext)
+const navigatetopage =()=>{
+    console.log(length)
+    if (length===1){
+        setPage(-6)
+    }else{
+        setPage(2)
+    }
+}
     return<>
     <div className="definition-wrapper">
-    <div >Feasibility of solution: {solution.feasibility}</div>
-        <div>Boundedness of solution: {solution.boundedness}</div>
-        <div>uniqueness of solution: {solution.uniqueness}</div>
-        <Button variant='dark' onClick={()=>setPage(2)}>Cross Check Solutions</Button>
+    <h6>Details of the simplex solution</h6>
+    <div >Feasibility of solution:---- {solution.feasibility}</div>
+        <div>Boundedness of solution:---- {solution.boundedness}</div>
+        <div>uniqueness of solution:---- {solution.uniqueness}</div>
+        <Button className='the-button'variant='dark' onClick={navigatetopage}>Cross Check Solutions</Button>
     </div>
     
     </>

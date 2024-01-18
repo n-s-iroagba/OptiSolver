@@ -2,24 +2,21 @@ import React   from 'react'
 import { MatrixContext } from '../../context/SimplexContext'
 import { useContext} from 'react'
 import { Button } from 'react-bootstrap'
-
-
 import './solve.css'
 import FRTableau from '../../components/tableau/Response/FRTableau'
 import { checkFirstTableau } from '../../utils/checkTableau'
-const FResponseSolve= ()=>{
-    
+
+const FResponseTableau= ()=>{
    const{iTableau,setPage, dimensions,solvedArray,responseTableau,setResponseTableau,setIteration,setITableau,page,iteration,length} = useContext(MatrixContext)
    const check = async() => {
+    setPage(2)
         setITableau(JSON.parse(localStorage.getItem('optiITableau')))
         const shouldAdvance = await checkFirstTableau(iTableau, solvedArray, 0, dimensions, responseTableau, setResponseTableau, setITableau)
          if (shouldAdvance){
-            if (iteration === length) {
-                setPage(-2)
-            } else {
+           
            setPage(5)
            setIteration(2)
-            }
+        
         }else{
             const iTableauJSON = JSON.stringify(iTableau);
             localStorage.setItem('optiITableau', iTableauJSON);
@@ -39,4 +36,4 @@ const FResponseSolve= ()=>{
         </>
     )
 }
-export default FResponseSolve
+export default FResponseTableau

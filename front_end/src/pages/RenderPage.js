@@ -1,17 +1,21 @@
 import React, { useContext, useEffect } from 'react';
 import { MatrixContext } from '../context/SimplexContext';
 import Entry from './entry/Entry';
-import InitialSolve from './solve/InitialSolve';
-import IterationSolve from './solve/IterationSolve';
-import FirstSolve from './solve/FirstSolve';
-import FResponseSolve from './solve/FResponseSolve';
-import ResponseSolve from './solve/ResponseSolve';
-import TerminalSolve from './solve/TerminalSolve';
-import TerminalResponseSolve from './solve/TerminalResponseSolve';
+import InitialTableau from './solve/InitialTableau';
+import FIterationTableau from './solve/FIterationTableau';
+import FResponseTableau from './solve/FResponseTableau';
+import TResponseTableau from './solve/TResponseTableau';
 import Definition from "../components/definiition/Definition";
 import { isAuthorized } from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
-import LastResponse from './solve/LastResponse';
+import Result from './solve/Result';
+import IterationTableau from './solve/IterationTableau';
+import ResponseTableau from './solve/ResponseTableau';
+import TerminalTableau from './solve/TerminalTableau';
+import FResult from './solve/FResult';
+import FIterationTableau2 from './solve/FIterationTableau2';
+import FResponseTableau2 from './solve/FResponseTableau2';
+
 
 const RenderPage = React.memo(() => {
   const { page } = useContext(MatrixContext);
@@ -29,20 +33,24 @@ useEffect(()=>{
 
   const ConditionalRender = () => {
     switch (page) {
-      case -2:return <LastResponse/>
+      case -8: return <FResponseTableau2/>
+      case -7: return <FResponseTableau2/>
+      case -6 : return <FIterationTableau2/>
+      case -5: return <FResult/>
+      case -2:return <Result/>
       case -3: return <Definition />;
       case 0: return <Entry />;
-      case 1: return <InitialSolve />;
-      case 2: return <FirstSolve />;
-      case 3: return <FResponseSolve />;
-      case 4: return <FResponseSolve />;
-      case 5: return <IterationSolve />;
-      case 6: return <IterationSolve />;
-      case 7: return <ResponseSolve />;
-      case 8: return <ResponseSolve />;
-      case 9: return <TerminalSolve />;
-      case 10: return <TerminalResponseSolve />;
-      case 11: return <TerminalResponseSolve />;
+      case 1: return <InitialTableau />;
+      case 2: return <FIterationTableau />;
+      case 3: return <FResponseTableau />;
+      case 4: return <FResponseTableau />;
+      case 5: return <IterationTableau />;
+      case 6: return <IterationTableau />;
+      case 7: return <ResponseTableau/>;
+      case 8: return <ResponseTableau/>;
+      case 9: return <TerminalTableau/>;
+      case 10: return <TResponseTableau/>;
+      case 11: return <TResponseTableau/>;
       default: return <Entry />;
     }
   };

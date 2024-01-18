@@ -104,6 +104,7 @@ const checkSingleColumn = async (iTableau, solution, dimensions, responseTableau
           
         }
     }
+    console.log(iTableau.basicVariables)
     let tempTab = responseTableau;
     tempTab[variable] = tempRows;
     setResponseTableau(tempTab);
@@ -157,7 +158,7 @@ const checkCrow= async (iTableau, solution, dimensions, responseTableau, setResp
              
             }
         } else {
-            
+            console.log(solution)
             console.log(`Undefined values detected for ${variable} at index ${j}`);
           
         }
@@ -206,13 +207,17 @@ export const checkLastTableau = async (iTableau, solvedArray, index, dimensions,
 
 }
 export const checkFirstTableau =  async (iTableau, solvedArray, index, dimensions, responseTableau, setResponseTableau, setITableau)=>{
-
-    const solution = solvedArray[index]
+let solution;
+ if(!Array.isArray(solvedArray)){
+    solution = solvedArray
+ }else{
+    solution = solvedArray[index]
+ }
     console.log(solution)
     const ratioDidNotMatch = await checkSingleColumn (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau,'ratio')
     const fValueDidNotMatch = checkFValue(solution, responseTableau, setResponseTableau, iTableau)
     const cRowDidNotMatch= await  checkCrow (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau)
-    if (fValueDidNotMatch||ratioDidNotMatch||cRowDidNotMatch) {
+    if (cRowDidNotMatch||ratioDidNotMatch||fValueDidNotMatch) {
         return false
     } else {
        return true

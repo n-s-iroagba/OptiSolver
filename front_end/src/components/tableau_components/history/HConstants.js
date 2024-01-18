@@ -5,10 +5,20 @@ import FValue from '../input/FValue';
 import RFValue from '../response/RFValue';
 
 const HConstants = (props) => {
+
+let className = ''
+let emptyName = ''
+if(props.rightEnd){
+   className = 'right-tableau-wrapper'
+   emptyName= 'right'
+}
+else{
+  className = 'center-tableau-wrapper'
+}
   return (
     <>
-      <div className='center-tableau-wrapper'>
-        <Empty constant={true} position='inverse-bottom' />
+      <div  className={className}>
+        <Empty  type ={emptyName} constant={true} position='inverse-bottom' />
         <table className='constants'>
           <thead>
             <tr>

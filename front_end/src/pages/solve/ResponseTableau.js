@@ -8,22 +8,21 @@ import { checkTableau } from '../../utils/checkTableau'
 
 
 
-const ResponseSolve = () => {
+const ResponseTableau = () => {
    
     const { iTableau, setPage, dimensions, solvedArray, responseTableau, iteration, setResponseTableau, setIteration, setITableau, page} = useContext(MatrixContext)
     const check = async () => {
         const shouldAdvance = await checkTableau(iTableau, solvedArray, iteration-1, dimensions, responseTableau, setResponseTableau, setITableau)
         console.log(solvedArray[iteration-1])
         if (shouldAdvance) {
-            if (solvedArray[iteration - 1].optimal == true) {
-                console.log('AAPP')
+           if (solvedArray[iteration - 1].optimal == true) {
                 setPage(-2)
-            } else {
+            }else{
                 setPage(5)
                 setIteration(iteration + 1)
             }
-        }
-        else {
+      
+        }else {
             if (page === 7) {
                 setPage(8)
             } else { setPage(7) }
@@ -43,4 +42,4 @@ const ResponseSolve = () => {
         </>
     )
 }
-export default ResponseSolve
+export default ResponseTableau

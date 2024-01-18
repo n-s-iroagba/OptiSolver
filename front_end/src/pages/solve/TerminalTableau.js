@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { MatrixContext } from '../../context/SimplexContext'
 import { useContext} from 'react'
 import { Button } from 'react-bootstrap'
@@ -9,19 +8,12 @@ import './solve.css'
 import TTableau from '../../components/tableau/input/TTableau'
 
 
-const TerminalSolve = ()=>{
+const TerminalTableau = ()=>{
     
     const{responseTableau,setResponseTableau,iTableau,setITableau,setPage,iteration,solvedArray,dimensions,page} = useContext(MatrixContext)
-
-
     const navigate =  useNavigate()
-    
     const id = localStorage.getItem('optiUserId');
-
- 
      const check = async() => {
-
-   
         const shouldAdvance= await checkLastTableau(iTableau, solvedArray, iteration-1, dimensions, responseTableau, setResponseTableau, setITableau)
        
         if(shouldAdvance){ 
@@ -31,13 +23,9 @@ const TerminalSolve = ()=>{
         else{
             setPage(10)
         }
-    }
-   
-       
-    
+    } 
     return(
-        <>
-    
+        <>    
         <div className='solve-page-wrapper'>
         <div><p className='solve-writeup' > Fill in the values for the last iteration</p></div>
         <div className='initial-solve'><TTableau/></div>
@@ -47,4 +35,4 @@ const TerminalSolve = ()=>{
         </>
     )
 }
-export default TerminalSolve
+export default TerminalTableau
