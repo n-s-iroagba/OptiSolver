@@ -11,14 +11,13 @@ import TTableau from '../../components/tableau/input/TTableau'
 const TerminalTableau = ()=>{
     
     const{responseTableau,setResponseTableau,iTableau,setITableau,setPage,iteration,solvedArray,dimensions,page} = useContext(MatrixContext)
-    const navigate =  useNavigate()
-    const id = localStorage.getItem('optiUserId');
+   
+ 
      const check = async() => {
         const shouldAdvance= await checkLastTableau(iTableau, solvedArray, iteration-1, dimensions, responseTableau, setResponseTableau, setITableau)
        
         if(shouldAdvance){ 
-            navigate('/dashboard')
-            alert('Congratulations, you have solved the problem!')
+           setPage(-2)
         }
         else{
             setPage(10)

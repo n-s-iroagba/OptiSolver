@@ -1,6 +1,6 @@
 // SignupForm.js
 import React, { useState } from 'react';
-import { Form, Button, Container, Col } from 'react-bootstrap';
+import { Form, Button, Col } from 'react-bootstrap';
 import './forms.css';
 import { signUp } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';

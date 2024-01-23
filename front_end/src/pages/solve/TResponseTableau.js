@@ -19,10 +19,10 @@ const TResponseTableau = () => {
 
         const shouldAdvance = await checkLastTableau(iTableau, solvedArray, iteration - 1, dimensions, responseTableau, setResponseTableau, setITableau)
         if (shouldAdvance) {
-            navigate('/dashboard')
+            setPage(-2)
 
         } else {
-
+            console.log(iTableau)
             if (page === 10) {
                 setPage(11)
             } else { setPage(10) }
@@ -33,7 +33,7 @@ const TResponseTableau = () => {
     return (
         <>
             <div className='solve-page-wrapper'>
-                <div><p className='solve-writeup' > Fill in the values for iteration number {page}</p></div>
+                <div><p className='solve-writeup' > Fill in the values for iteration number {iteration}</p></div>
                 <div className='initial-solve'><TRTableau /></div>
                 <br />
                 <div><Button variant='dark' onClick={solve}>Solve</Button></div>

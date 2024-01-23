@@ -2,7 +2,6 @@
 import { preventNewLine } from "./createTableauHelper"
 import { push } from "./createTableauHelper"
 
-
 const checkMultipleColumns = async (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau) => {
     if (!iTableau || !iTableau.constraintEquations || !solution || !solution.constraintEquations) {
         // Handle the case where iTableau or solution is undefined or doesn't have the expected properties
@@ -46,8 +45,6 @@ const checkMultipleColumns = async (iTableau, solution, dimensions, responseTabl
     tempRow = [];
     return noMatch;
 };
-
-
 const checkFValue = (solution, responseTableau, setResponseTableau, iTableau) => {
     let noMatch = false;
     const solvedFValue = solution.fValue;
@@ -141,7 +138,6 @@ const checkBasicVariables = async (iTableau, solution, dimensions, responseTable
 };
 
 const checkCrow= async (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau) => {
-   
     let noMatch = false;
     let tempRows = [];
     let variable = 'crow'
@@ -169,10 +165,7 @@ const checkCrow= async (iTableau, solution, dimensions, responseTableau, setResp
 
     return noMatch;
 };
-
-
-export const checkTableau = async (iTableau, solvedArray, index, dimensions, responseTableau, setResponseTableau, setITableau) => {
-   
+export const checkTableau = async (iTableau, solvedArray, index, dimensions, responseTableau, setResponseTableau, setITableau) => { 
     const solution = solvedArray[index]
     console.log(solution.basicVariables)
     const constraintEquationDidNotMatch = await checkMultipleColumns (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau)
@@ -190,11 +183,10 @@ export const checkTableau = async (iTableau, solvedArray, index, dimensions, res
 
 }
 
-export const checkLastTableau = async (iTableau, solvedArray, index, dimensions, responseTableau, setResponseTableau, setITableau) => {
-   
+export const checkLastTableau = async (iTableau, solvedArray, index, dimensions, responseTableau, setResponseTableau, setITableau) => {   
     const solution = solvedArray[index]
     const constraintEquationDidNotMatch = await checkMultipleColumns (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau)
-    const basicVariablesDidNotMatch = await checkBasicVariables (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau, 'basicVariables')
+    const basicVariablesDidNotMatch = await  checkBasicVariables (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau)
     const constantsDidNotMatch = await  checkSingleColumn (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau,'constants')
     const basicCoefficientsDidNotMatch = await checkSingleColumn (iTableau, solution, dimensions, responseTableau, setResponseTableau, setITableau,'basicCoefficients')
     const fValueDidNotMatch = checkFValue(solution, responseTableau, setResponseTableau, iTableau)

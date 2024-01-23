@@ -26,7 +26,8 @@ useEffect(()=>{
   if (!authorised) {
     navigate('/login');
     alert('You are not authorised to view this page');
-  }},[])
+  }
+})
   window.onbeforeunload = function() {
     return 'Data will be lost if you leave the page, are you sure?';
   };
