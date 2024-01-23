@@ -10,7 +10,7 @@ import TTableau from '../../components/tableau/input/TTableau'
 
 const TerminalTableau = ()=>{
     
-    const{responseTableau,setResponseTableau,iTableau,setITableau,setPage,iteration,solvedArray,dimensions,page} = useContext(MatrixContext)
+    const{responseTableau,setResponseTableau,iTableau,setITableau,setPage,iteration,solvedArray,dimensions} = useContext(MatrixContext)
    
  
      const check = async() => {

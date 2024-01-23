@@ -3,18 +3,11 @@ import { MatrixContext } from '../../context/SimplexContext'
 import { useContext } from 'react'
 import { checkLastTableau } from '../../utils/checkTableau'
 import { Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
 import './solve.css'
 import TRTableau from '../../components/tableau/Response/TRTableau'
 const TResponseTableau = () => {
-    const navigate = useNavigate()
+   
     const { iTableau, setPage, dimensions, solvedArray, responseTableau, iteration, setResponseTableau, setITableau, page } = useContext(MatrixContext)
-    const id = localStorage.getItem('optiUserId');
-    const token = localStorage.getItem('optiUserToken')
-
-    const url = `http://localhost:5000/solve/${id}`
-
-
     const solve = async () => {
 
         const shouldAdvance = await checkLastTableau(iTableau, solvedArray, iteration - 1, dimensions, responseTableau, setResponseTableau, setITableau)
